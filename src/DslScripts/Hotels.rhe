@@ -1,0 +1,82 @@
+﻿Module Hotels
+{
+    Entity Hotel
+    {
+        ShortString Name;
+        ShortString Address;
+		
+		ItemFilter ContainsLockMark 'item => item.Name.Contains("lock")';
+		Lock ContainsLockMark '[Test] Name contains lock mark.';
+    }
+	
+	Entity Guest
+    {
+        ShortString Name;
+        ShortString Surname;
+		ShortString Phone;
+		ShortString Email { RegExMatch "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])" "Neispravna e-mail adresa."; }
+    }
+	
+	Entity RoomKind
+    {
+        ShortString Name;
+        Decimal Price;
+    }
+	
+	Entity Room
+    {
+        ShortString RoomNumber { Required; Unique; AutoCode; }
+        Reference Hotel { Detail; }
+		Reference RoomKind { Required; }
+		
+		UniqueMultiple 'Hotel RoomKind';
+		
+		Logging { AllProperties; }
+    }
+	
+	Entity Good
+	{
+		ShortString Name;
+		Decimal Price;
+	}
+	
+	Entity GoodKind
+	{
+		ShortString Name { Unique; Required; }
+	}
+	
+	Entity Service
+	{
+		Reference GoodKind;
+		Extends Hotels.Good;
+	}
+	
+	Entity Product
+	{
+		Reference GoodKind;
+		Extends Hotels.Good;
+	}
+	
+	Entity Reservation
+	{
+		DateTime DateFrom;
+		DateTime DateTo;
+		Reference Guest;
+		Reference Room; 
+	}
+	
+	Entity Invoice
+	{
+		Decimal Amount;
+		Integer Discount { MinValue 0; MaxValue 1; }
+		Bool Payed;
+		Reference Reservation;
+	}
+	
+	Entity Item
+	{
+		ShortString Name;
+		Reference Good;
+		Reference Invoice;
+	}
+}
