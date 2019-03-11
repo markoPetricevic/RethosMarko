@@ -233,6 +233,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Hotels_NumberOfRoomsWithoutLockMark">
+            <EntityTypeMapping TypeName="Common.Hotels_NumberOfRoomsWithoutLockMark">
+              <MappingFragment StoreEntitySet="Hotels_NumberOfRoomsWithoutLockMark">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NumberOfRooms" ColumnName="NumberOfRooms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Hotels_Invoice">
             <EntityTypeMapping TypeName="Common.Hotels_Invoice">
               <MappingFragment StoreEntitySet="Hotels_Invoice">
@@ -262,6 +270,15 @@
                 <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
                 <ScalarProperty Name="HotelID" ColumnName="HotelID" />
                 <ScalarProperty Name="RoomKindID" ColumnName="RoomKindID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels_ReservationsForCertainRoom">
+            <EntityTypeMapping TypeName="Common.Hotels_ReservationsForCertainRoom">
+              <MappingFragment StoreEntitySet="Hotels_ReservationsForCertainRoom">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NumberOfReservations" ColumnName="NumberOfReservations" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

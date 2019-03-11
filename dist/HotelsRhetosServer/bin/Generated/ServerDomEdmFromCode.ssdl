@@ -210,6 +210,13 @@
           <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
           <Property Name="Address" Type="nvarchar(max)" Nullable="true" />
         </EntityType>
+        <EntityType Name="Hotels_NumberOfRoomsWithoutLockMark">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" customannotation:Index="{ Name: IX_ID, Order: 0 }" Nullable="false" />
+          <Property Name="NumberOfRooms" Type="int" Nullable="true" />
+        </EntityType>
         <EntityType Name="Hotels_Invoice">
           <Key>
             <PropertyRef Name="ID" />
@@ -238,6 +245,14 @@
           <Property Name="RoomNumber" Type="nvarchar(max)" Nullable="true" />
           <Property Name="HotelID" Type="uniqueidentifier" customannotation:Index="{ Name: IX_HotelID, Order: 0 }" Nullable="true" />
           <Property Name="RoomKindID" Type="uniqueidentifier" customannotation:Index="{ Name: IX_RoomKindID, Order: 0 }" Nullable="true" />
+          <Property Name="Remark" Type="nvarchar(max)" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Hotels_ReservationsForCertainRoom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" customannotation:Index="{ Name: IX_ID, Order: 0 }" Nullable="false" />
+          <Property Name="NumberOfReservations" Type="int" Nullable="true" />
         </EntityType>
         <EntityType Name="Hotels_RoomKind">
           <Key>
@@ -436,6 +451,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Hotels_NumberOfRoomsWithoutLockMark_Base">
+          <End Role="Hotels_Hotel" Type="Self.Hotels_Hotel" Multiplicity="1" />
+          <End Role="Hotels_NumberOfRoomsWithoutLockMark" Type="Self.Hotels_NumberOfRoomsWithoutLockMark" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels_Hotel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Hotels_NumberOfRoomsWithoutLockMark">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Hotels_Reservation_Guest">
           <End Role="Hotels_Guest" Type="Self.Hotels_Guest" Multiplicity="0..1" />
           <End Role="Hotels_Reservation" Type="Self.Hotels_Reservation" Multiplicity="*" />
@@ -445,6 +472,18 @@
             </Principal>
             <Dependent Role="Hotels_Reservation">
               <PropertyRef Name="GuestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Hotels_ReservationsForCertainRoom_Base">
+          <End Role="Hotels_Room" Type="Self.Hotels_Room" Multiplicity="1" />
+          <End Role="Hotels_ReservationsForCertainRoom" Type="Self.Hotels_ReservationsForCertainRoom" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels_Room">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Hotels_ReservationsForCertainRoom">
+              <PropertyRef Name="ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -543,9 +582,11 @@
           <EntitySet Name="Hotels_Service" EntityType="Self.Hotels_Service" Schema="Hotels" Table="Service" />
           <EntitySet Name="Hotels_Guest" EntityType="Self.Hotels_Guest" Schema="Hotels" Table="Guest" />
           <EntitySet Name="Hotels_Hotel" EntityType="Self.Hotels_Hotel" Schema="Hotels" Table="Hotel" />
+          <EntitySet Name="Hotels_NumberOfRoomsWithoutLockMark" EntityType="Self.Hotels_NumberOfRoomsWithoutLockMark" Schema="Hotels" Table="NumberOfRoomsWithoutLockMark" />
           <EntitySet Name="Hotels_Invoice" EntityType="Self.Hotels_Invoice" Schema="Hotels" Table="Invoice" />
           <EntitySet Name="Hotels_Reservation" EntityType="Self.Hotels_Reservation" Schema="Hotels" Table="Reservation" />
           <EntitySet Name="Hotels_Room" EntityType="Self.Hotels_Room" Schema="Hotels" Table="Room" />
+          <EntitySet Name="Hotels_ReservationsForCertainRoom" EntityType="Self.Hotels_ReservationsForCertainRoom" Schema="Hotels" Table="ReservationsForCertainRoom" />
           <EntitySet Name="Hotels_RoomKind" EntityType="Self.Hotels_RoomKind" Schema="Hotels" Table="RoomKind" />
           <EntitySet Name="Hotels_Item" EntityType="Self.Hotels_Item" Schema="Hotels" Table="Item" />
           <AssociationSet Name="Common_LogRelatedItem_Log" Association="Self.Common_LogRelatedItem_Log">
@@ -608,9 +649,17 @@
             <End Role="Hotels_GoodKind" EntitySet="Hotels_GoodKind" />
             <End Role="Hotels_Service" EntitySet="Hotels_Service" />
           </AssociationSet>
+          <AssociationSet Name="Hotels_NumberOfRoomsWithoutLockMark_Base" Association="Self.Hotels_NumberOfRoomsWithoutLockMark_Base">
+            <End Role="Hotels_Hotel" EntitySet="Hotels_Hotel" />
+            <End Role="Hotels_NumberOfRoomsWithoutLockMark" EntitySet="Hotels_NumberOfRoomsWithoutLockMark" />
+          </AssociationSet>
           <AssociationSet Name="Hotels_Reservation_Guest" Association="Self.Hotels_Reservation_Guest">
             <End Role="Hotels_Guest" EntitySet="Hotels_Guest" />
             <End Role="Hotels_Reservation" EntitySet="Hotels_Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="Hotels_ReservationsForCertainRoom_Base" Association="Self.Hotels_ReservationsForCertainRoom_Base">
+            <End Role="Hotels_Room" EntitySet="Hotels_Room" />
+            <End Role="Hotels_ReservationsForCertainRoom" EntitySet="Hotels_ReservationsForCertainRoom" />
           </AssociationSet>
           <AssociationSet Name="Hotels_Room_Hotel" Association="Self.Hotels_Room_Hotel">
             <End Role="Hotels_Hotel" EntitySet="Hotels_Hotel" />

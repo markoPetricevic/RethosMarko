@@ -183,8 +183,13 @@ namespace Common
             builder.RegisterType<Hotels._Helper.Service_Repository>().Keyed<IRepository>("Hotels.Service").InstancePerLifetimeScope();
             builder.RegisterType<Hotels._Helper.Product_Repository>().Keyed<IRepository>("Hotels.Product").InstancePerLifetimeScope();
             builder.RegisterType<Hotels._Helper.Reservation_Repository>().Keyed<IRepository>("Hotels.Reservation").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.ReservationsForCertainRoom_Repository>().Keyed<IRepository>("Hotels.ReservationsForCertainRoom").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.RoomGrid_Repository>().Keyed<IRepository>("Hotels.RoomGrid").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.InsertViseSoba_Repository>().Keyed<IRepository>("Hotels.InsertViseSoba").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.InsertViseSoba_Repository>().Keyed<IActionRepository>("Hotels.InsertViseSoba").InstancePerLifetimeScope();
             builder.RegisterType<Hotels._Helper.Invoice_Repository>().Keyed<IRepository>("Hotels.Invoice").InstancePerLifetimeScope();
             builder.RegisterType<Hotels._Helper.Item_Repository>().Keyed<IRepository>("Hotels.Item").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.NumberOfRoomsWithoutLockMark_Repository>().Keyed<IRepository>("Hotels.NumberOfRoomsWithoutLockMark").InstancePerLifetimeScope();
             builder.RegisterType<Common._Helper.AutoCodeCache_Repository>().Keyed<IRepository>("Common.AutoCodeCache").InstancePerLifetimeScope();
             builder.RegisterType<Common._Helper.FilterId_Repository>().Keyed<IRepository>("Common.FilterId").InstancePerLifetimeScope();
             builder.RegisterType<Common._Helper.KeepSynchronizedMetadata_Repository>().Keyed<IRepository>("Common.KeepSynchronizedMetadata").InstancePerLifetimeScope();
@@ -372,11 +377,23 @@ namespace Hotels._Helper
         private Reservation_Repository _Reservation_Repository;
         public Reservation_Repository Reservation { get { return _Reservation_Repository ?? (_Reservation_Repository = (Reservation_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Reservation")); } }
 
+        private ReservationsForCertainRoom_Repository _ReservationsForCertainRoom_Repository;
+        public ReservationsForCertainRoom_Repository ReservationsForCertainRoom { get { return _ReservationsForCertainRoom_Repository ?? (_ReservationsForCertainRoom_Repository = (ReservationsForCertainRoom_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.ReservationsForCertainRoom")); } }
+
+        private RoomGrid_Repository _RoomGrid_Repository;
+        public RoomGrid_Repository RoomGrid { get { return _RoomGrid_Repository ?? (_RoomGrid_Repository = (RoomGrid_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.RoomGrid")); } }
+
+        private InsertViseSoba_Repository _InsertViseSoba_Repository;
+        public InsertViseSoba_Repository InsertViseSoba { get { return _InsertViseSoba_Repository ?? (_InsertViseSoba_Repository = (InsertViseSoba_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.InsertViseSoba")); } }
+
         private Invoice_Repository _Invoice_Repository;
         public Invoice_Repository Invoice { get { return _Invoice_Repository ?? (_Invoice_Repository = (Invoice_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Invoice")); } }
 
         private Item_Repository _Item_Repository;
         public Item_Repository Item { get { return _Item_Repository ?? (_Item_Repository = (Item_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Item")); } }
+
+        private NumberOfRoomsWithoutLockMark_Repository _NumberOfRoomsWithoutLockMark_Repository;
+        public NumberOfRoomsWithoutLockMark_Repository NumberOfRoomsWithoutLockMark { get { return _NumberOfRoomsWithoutLockMark_Repository ?? (_NumberOfRoomsWithoutLockMark_Repository = (NumberOfRoomsWithoutLockMark_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.NumberOfRoomsWithoutLockMark")); } }
 
         /*ModuleInfo RepositoryMembers Hotels*/
     }
@@ -550,6 +567,18 @@ namespace Hotels._Helper
             yield break;
         }
 
+        public IQueryable<Common.Queryable.Hotels_Hotel> Filter(IQueryable<Common.Queryable.Hotels_Hotel> localSource, NameSearch localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_Hotel>, Common.DomRepository, NameSearch/*ComposableFilterByInfo AdditionalParametersType Hotels.Hotel.NameSearch*/, IQueryable<Common.Queryable.Hotels_Hotel>> filterFunction =
+            (query, repository, parameter) =>
+		{
+			return query.Where(item => item.Name.Contains(parameter.Pattern));
+		};
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.Hotel.NameSearch*/
+            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Hotel.NameSearch*/);
+        }
+
         public IQueryable<Common.Queryable.Hotels_Hotel> Filter(IQueryable<Common.Queryable.Hotels_Hotel> localSource, Hotels.ContainsLockMark localParameter)
         {
             Func<IQueryable<Common.Queryable.Hotels_Hotel>, Common.DomRepository, Hotels.ContainsLockMark/*ComposableFilterByInfo AdditionalParametersType Hotels.Hotel.'Hotels.ContainsLockMark'*/, IQueryable<Common.Queryable.Hotels_Hotel>> filterFunction =
@@ -557,6 +586,14 @@ namespace Hotels._Helper
 
             /*ComposableFilterByInfo BeforeFilter Hotels.Hotel.'Hotels.ContainsLockMark'*/
             return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Hotel.'Hotels.ContainsLockMark'*/);
+        }
+
+        public global::Hotels.Hotel[] Filter(NameSearch filter_Parameter)
+        {
+            Func<Common.DomRepository, NameSearch/*FilterByInfo AdditionalParametersType Hotels.Hotel.NameSearch*/, Hotels.Hotel[]> filter_Function =
+                (repository, parameter) => repository.Hotels.Hotel.Filter(repository.Hotels.Hotel.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Hotel.NameSearch*/);
         }
 
         public global::Hotels.Hotel[] Filter(Hotels.ContainsLockMark filter_Parameter)
@@ -962,6 +999,15 @@ namespace Hotels._Helper
                         "DataStructure:Hotels.Room,ID:" + invalidItem.ID.ToString() + ",Property:RoomNumber",
                         null);
             }
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Remark != null && newItem.Remark.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "Room.Remark", "256" },
+                        "DataStructure:Hotels.Room,ID:" + invalidItem.ID.ToString() + ",Property:Remark",
+                        null);
+            }
             /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Room*/
 
             /*DataStructureInfo WritableOrm Initialization Hotels.Room*/
@@ -971,6 +1017,11 @@ namespace Hotels._Helper
             Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Room>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
             IEnumerable<Common.Queryable.Hotels_Room> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
             Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Room>)updated, updatedNew.Select(item => item.ID), item => item.ID);
+
+            AutoCodeHelper.UpdateCodesWithoutCache(
+                _executionContext.SqlExecuter, "Hotels.Room", "RoomNumber",
+                insertedNew.Select(item => AutoCodeItem.Create(item, item.RoomNumber/*AutoCodePropertyInfo Grouping Hotels.Room.RoomNumber*/)).ToList(),
+                (item, newCode) => item.RoomNumber = newCode/*AutoCodePropertyInfo GroupColumnMetadata Hotels.Room.RoomNumber*/);
 
             /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Room*/
 
@@ -1031,8 +1082,6 @@ namespace Hotels._Helper
                     ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Room,Property:HotelID,Referenced:Hotels.Hotel";
                 if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.RoomKind", @"ID", @"FK_Room_RoomKind_RoomKindID"))
                     ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Room,Property:RoomKindID,Referenced:Hotels.RoomKind";
-                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsUniqueError(interpretedException, @"Hotels.Room", @"IX_Room_Hotel_RoomKind"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Room,Property:Hotel RoomKind";
                 if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Reservation", @"RoomID", @"FK_Reservation_Room_RoomID"))
                     ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Reservation,Property:RoomID,Referenced:Hotels.Room";
                 if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsUniqueError(interpretedException, @"Hotels.Room", @"IX_Room_RoomNumber"))
@@ -1077,61 +1126,20 @@ namespace Hotels._Helper
         {
             if (onSave)
             {
-                var errorIds = this.Filter(this.Query(ids), new RoomNumber_MaxLengthFilter()).Select(item => item.ID).ToArray();
-                if (errorIds.Count() > 0)
-                    foreach (var error in GetErrorMessage_RoomNumber__MaxLengthFilter(errorIds))
-                        yield return error;
-            }
-            if (onSave)
-            {
-                var errorIds = this.Filter(this.Query(ids), new RoomNumber_MinLengthFilter()).Select(item => item.ID).ToArray();
-                if (errorIds.Count() > 0)
-                    foreach (var error in GetErrorMessage_RoomNumber__MinLengthFilter(errorIds))
-                        yield return error;
-            }
-            if (onSave)
-            {
                 var errorIds = this.Filter(this.Query(ids), new SystemRequiredHotel()).Select(item => item.ID).ToArray();
                 if (errorIds.Count() > 0)
                     foreach (var error in GetErrorMessage_SystemRequiredHotel(errorIds))
                         yield return error;
             }
+            if (onSave)
+            {
+                var errorIds = this.Filter(this.Query(ids), new SystemRequiredRoomNumber()).Select(item => item.ID).ToArray();
+                if (errorIds.Count() > 0)
+                    foreach (var error in GetErrorMessage_SystemRequiredRoomNumber(errorIds))
+                        yield return error;
+            }
             /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Room*/
             yield break;
-        }
-
-        public IEnumerable<InvalidDataMessage> GetErrorMessage_RoomNumber__MaxLengthFilter(IEnumerable<Guid> invalidData_Ids)
-        {
-            const string invalidData_Description = @"Maximum allowed length of {0} is {1} characters.";
-            IDictionary<string, object> metadata = new Dictionary<string, object>();
-            metadata["Validation"] = @"RoomNumber_MaxLengthFilter";
-            metadata[@"Property"] = @"RoomNumber";
-            /*InvalidDataInfo ErrorMetadata Hotels.Room.RoomNumber_MaxLengthFilter*/
-            return invalidData_Ids.Select(id => new InvalidDataMessage
-            {
-                ID = id,
-                Message = invalidData_Description,
-                MessageParameters = new object[] { @"RoomNumber", 5 },
-                Metadata = metadata
-            });
-            // /*InvalidDataInfo OverrideUserMessages Hotels.Room.RoomNumber_MaxLengthFilter*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
-        }
-
-        public IEnumerable<InvalidDataMessage> GetErrorMessage_RoomNumber__MinLengthFilter(IEnumerable<Guid> invalidData_Ids)
-        {
-            const string invalidData_Description = @"Minimum allowed length of {0} is {1} characters.";
-            IDictionary<string, object> metadata = new Dictionary<string, object>();
-            metadata["Validation"] = @"RoomNumber_MinLengthFilter";
-            metadata[@"Property"] = @"RoomNumber";
-            /*InvalidDataInfo ErrorMetadata Hotels.Room.RoomNumber_MinLengthFilter*/
-            return invalidData_Ids.Select(id => new InvalidDataMessage
-            {
-                ID = id,
-                Message = invalidData_Description,
-                MessageParameters = new object[] { @"RoomNumber", 1 },
-                Metadata = metadata
-            });
-            // /*InvalidDataInfo OverrideUserMessages Hotels.Room.RoomNumber_MinLengthFilter*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
         }
 
         public IEnumerable<InvalidDataMessage> GetErrorMessage_SystemRequiredHotel(IEnumerable<Guid> invalidData_Ids)
@@ -1151,22 +1159,21 @@ namespace Hotels._Helper
             // /*InvalidDataInfo OverrideUserMessages Hotels.Room.SystemRequiredHotel*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
         }
 
-        public IQueryable<Common.Queryable.Hotels_Room> Filter(IQueryable<Common.Queryable.Hotels_Room> localSource, Hotels.RoomNumber_MaxLengthFilter localParameter)
+        public IEnumerable<InvalidDataMessage> GetErrorMessage_SystemRequiredRoomNumber(IEnumerable<Guid> invalidData_Ids)
         {
-            Func<IQueryable<Common.Queryable.Hotels_Room>, Common.DomRepository, Hotels.RoomNumber_MaxLengthFilter/*ComposableFilterByInfo AdditionalParametersType Hotels.Room.'Hotels.RoomNumber_MaxLengthFilter'*/, IQueryable<Common.Queryable.Hotels_Room>> filterFunction =
-            (source, repository, parameter) => source.Where(item => !String.IsNullOrEmpty(item.RoomNumber) && item.RoomNumber.Length > 5);
-
-            /*ComposableFilterByInfo BeforeFilter Hotels.Room.'Hotels.RoomNumber_MaxLengthFilter'*/
-            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.RoomNumber_MaxLengthFilter'*/);
-        }
-
-        public IQueryable<Common.Queryable.Hotels_Room> Filter(IQueryable<Common.Queryable.Hotels_Room> localSource, Hotels.RoomNumber_MinLengthFilter localParameter)
-        {
-            Func<IQueryable<Common.Queryable.Hotels_Room>, Common.DomRepository, Hotels.RoomNumber_MinLengthFilter/*ComposableFilterByInfo AdditionalParametersType Hotels.Room.'Hotels.RoomNumber_MinLengthFilter'*/, IQueryable<Common.Queryable.Hotels_Room>> filterFunction =
-            (source, repository, parameter) => source.Where(item => !String.IsNullOrEmpty(item.RoomNumber) && item.RoomNumber.Length < 1);
-
-            /*ComposableFilterByInfo BeforeFilter Hotels.Room.'Hotels.RoomNumber_MinLengthFilter'*/
-            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.RoomNumber_MinLengthFilter'*/);
+            const string invalidData_Description = @"System required property {0} is not set.";
+            IDictionary<string, object> metadata = new Dictionary<string, object>();
+            metadata["Validation"] = @"SystemRequiredRoomNumber";
+            metadata[@"Property"] = @"RoomNumber";
+            /*InvalidDataInfo ErrorMetadata Hotels.Room.SystemRequiredRoomNumber*/
+            return invalidData_Ids.Select(id => new InvalidDataMessage
+            {
+                ID = id,
+                Message = invalidData_Description,
+                MessageParameters = new object[] { @"ShortString Hotels.Room.RoomNumber" },
+                Metadata = metadata
+            });
+            // /*InvalidDataInfo OverrideUserMessages Hotels.Room.SystemRequiredRoomNumber*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
         }
 
         public IQueryable<Common.Queryable.Hotels_Room> Filter(IQueryable<Common.Queryable.Hotels_Room> localSource, Hotels.SystemRequiredHotel localParameter)
@@ -1178,20 +1185,13 @@ namespace Hotels._Helper
             return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.SystemRequiredHotel'*/);
         }
 
-        public global::Hotels.Room[] Filter(Hotels.RoomNumber_MaxLengthFilter filter_Parameter)
+        public IQueryable<Common.Queryable.Hotels_Room> Filter(IQueryable<Common.Queryable.Hotels_Room> localSource, Hotels.SystemRequiredRoomNumber localParameter)
         {
-            Func<Common.DomRepository, Hotels.RoomNumber_MaxLengthFilter/*FilterByInfo AdditionalParametersType Hotels.Room.'Hotels.RoomNumber_MaxLengthFilter'*/, Hotels.Room[]> filter_Function =
-                (repository, parameter) => repository.Hotels.Room.Filter(repository.Hotels.Room.Query(), parameter).ToArray();
+            Func<IQueryable<Common.Queryable.Hotels_Room>, Common.DomRepository, Hotels.SystemRequiredRoomNumber/*ComposableFilterByInfo AdditionalParametersType Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/, IQueryable<Common.Queryable.Hotels_Room>> filterFunction =
+            (source, repository, parameter) => source.Where(item => item.RoomNumber == null);
 
-            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.RoomNumber_MaxLengthFilter'*/);
-        }
-
-        public global::Hotels.Room[] Filter(Hotels.RoomNumber_MinLengthFilter filter_Parameter)
-        {
-            Func<Common.DomRepository, Hotels.RoomNumber_MinLengthFilter/*FilterByInfo AdditionalParametersType Hotels.Room.'Hotels.RoomNumber_MinLengthFilter'*/, Hotels.Room[]> filter_Function =
-                (repository, parameter) => repository.Hotels.Room.Filter(repository.Hotels.Room.Query(), parameter).ToArray();
-
-            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.RoomNumber_MinLengthFilter'*/);
+            /*ComposableFilterByInfo BeforeFilter Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/
+            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/);
         }
 
         public global::Hotels.Room[] Filter(Hotels.SystemRequiredHotel filter_Parameter)
@@ -1200,6 +1200,14 @@ namespace Hotels._Helper
                 (repository, parameter) => repository.Hotels.Room.Filter(repository.Hotels.Room.Query(), parameter).ToArray();
 
             return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.SystemRequiredHotel'*/);
+        }
+
+        public global::Hotels.Room[] Filter(Hotels.SystemRequiredRoomNumber filter_Parameter)
+        {
+            Func<Common.DomRepository, Hotels.SystemRequiredRoomNumber/*FilterByInfo AdditionalParametersType Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/, Hotels.Room[]> filter_Function =
+                (repository, parameter) => repository.Hotels.Room.Filter(repository.Hotels.Room.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/);
         }
 
         /*DataStructureInfo RepositoryMembers Hotels.Room*/
@@ -1924,6 +1932,128 @@ namespace Hotels._Helper
         /*DataStructureInfo RepositoryMembers Hotels.Reservation*/
     }
 
+    /*DataStructureInfo RepositoryAttributes Hotels.ReservationsForCertainRoom*/
+    public class ReservationsForCertainRoom_Repository : /*DataStructureInfo OverrideBaseType Hotels.ReservationsForCertainRoom*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_ReservationsForCertainRoom, Hotels.ReservationsForCertainRoom> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_ReservationsForCertainRoom, Hotels.ReservationsForCertainRoom> // Common.ReadableRepositoryBase<Hotels.ReservationsForCertainRoom> // global::Common.RepositoryBase
+        /*DataStructureInfo RepositoryInterface Hotels.ReservationsForCertainRoom*/
+    {
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.ReservationsForCertainRoom*/
+
+        public ReservationsForCertainRoom_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext/*DataStructureInfo RepositoryConstructorArguments Hotels.ReservationsForCertainRoom*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.ReservationsForCertainRoom*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.ReservationsForCertainRoom[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_ReservationsForCertainRoom> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.ReservationsForCertainRoom*/
+            return _executionContext.EntityFrameworkContext.Hotels_ReservationsForCertainRoom.AsNoTracking();
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.ReservationsForCertainRoom*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.RoomGrid*/
+    public class RoomGrid_Repository : /*DataStructureInfo OverrideBaseType Hotels.RoomGrid*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_RoomGrid, Hotels.RoomGrid> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_RoomGrid, Hotels.RoomGrid> // Common.ReadableRepositoryBase<Hotels.RoomGrid> // global::Common.RepositoryBase
+        /*DataStructureInfo RepositoryInterface Hotels.RoomGrid*/
+    {
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.RoomGrid*/
+
+        public RoomGrid_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext/*DataStructureInfo RepositoryConstructorArguments Hotels.RoomGrid*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.RoomGrid*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.RoomGrid[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_RoomGrid> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.RoomGrid*/
+            return Query(_domRepository.Hotels.Room.Query());
+        }
+
+        public IQueryable<Common.Queryable.Hotels_RoomGrid> Query(IQueryable<Common.Queryable.Hotels_Room> source)
+        {
+            return source.Select(item => new Common.Queryable.Hotels_RoomGrid
+                {
+                    ID = item.ID,
+                    Base = item,
+                    RoomNumber = item.RoomNumber,
+                    HotelName = item.Hotel.Name,
+                    NumberOfReservations = item.Extension_ReservationsForCertainRoom.NumberOfReservations,
+                    /*BrowseDataStructureInfo BrowseProperties Hotels.RoomGrid*/
+                });
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.RoomGrid*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.InsertViseSoba*/
+    public class InsertViseSoba_Repository : /*DataStructureInfo OverrideBaseType Hotels.InsertViseSoba*/ global::Common.RepositoryBase
+        , IActionRepository/*DataStructureInfo RepositoryInterface Hotels.InsertViseSoba*/
+    {
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.InsertViseSoba*/
+
+        public InsertViseSoba_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext/*DataStructureInfo RepositoryConstructorArguments Hotels.InsertViseSoba*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.InsertViseSoba*/
+        }
+
+        public void Execute(Hotels.InsertViseSoba actionParameter)
+        {
+            Action<Hotels.InsertViseSoba, Common.DomRepository, IUserInfo/*DataStructureInfo AdditionalParametersType Hotels.InsertViseSoba*/> action_Object = (parameter, repository, userInfo) =>
+	{
+		for (int i=0; i<parameter.RoomCount; i++)
+		{
+			var newRoom = new Hotels.Room 
+			{ 
+				RoomNumber = parameter.Prefix, 
+				Remark = parameter.Remark, 
+				HotelID = parameter.HotelID,
+				RoomKindID = parameter.RoomKindID
+			};
+			repository.Hotels.Room.Insert(newRoom);
+		}
+	};
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*ActionInfo BeforeAction Hotels.InsertViseSoba*/
+                action_Object(actionParameter, _domRepository, _executionContext.UserInfo/*DataStructureInfo AdditionalParametersArgument Hotels.InsertViseSoba*/);
+                /*ActionInfo AfterAction Hotels.InsertViseSoba*/
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        void IActionRepository.Execute(object actionParameter)
+        {
+            Execute((Hotels.InsertViseSoba) actionParameter);
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.InsertViseSoba*/
+    }
+
     /*DataStructureInfo RepositoryAttributes Hotels.Invoice*/
     public class Invoice_Repository : /*DataStructureInfo OverrideBaseType Hotels.Invoice*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Invoice, Hotels.Invoice> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Invoice, Hotels.Invoice> // Common.ReadableRepositoryBase<Hotels.Invoice> // global::Common.RepositoryBase
         , IWritableRepository<Hotels.Invoice>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Invoice*/
@@ -2281,6 +2411,34 @@ namespace Hotels._Helper
         }
 
         /*DataStructureInfo RepositoryMembers Hotels.Item*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.NumberOfRoomsWithoutLockMark*/
+    public class NumberOfRoomsWithoutLockMark_Repository : /*DataStructureInfo OverrideBaseType Hotels.NumberOfRoomsWithoutLockMark*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark, Hotels.NumberOfRoomsWithoutLockMark> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark, Hotels.NumberOfRoomsWithoutLockMark> // Common.ReadableRepositoryBase<Hotels.NumberOfRoomsWithoutLockMark> // global::Common.RepositoryBase
+        /*DataStructureInfo RepositoryInterface Hotels.NumberOfRoomsWithoutLockMark*/
+    {
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.NumberOfRoomsWithoutLockMark*/
+
+        public NumberOfRoomsWithoutLockMark_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext/*DataStructureInfo RepositoryConstructorArguments Hotels.NumberOfRoomsWithoutLockMark*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.NumberOfRoomsWithoutLockMark*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.NumberOfRoomsWithoutLockMark[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.NumberOfRoomsWithoutLockMark*/
+            return _executionContext.EntityFrameworkContext.Hotels_NumberOfRoomsWithoutLockMark.AsNoTracking();
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.NumberOfRoomsWithoutLockMark*/
     }
 
     /*ModuleInfo HelperNamespaceMembers Hotels*/

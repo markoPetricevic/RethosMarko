@@ -226,6 +226,15 @@
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Extension_NumberOfRoomsWithoutLockMark" Relationship="Self.Hotels_NumberOfRoomsWithoutLockMark_Base" FromRole="Hotels_NumberOfRoomsWithoutLockMark_Base_Target" ToRole="Hotels_NumberOfRoomsWithoutLockMark_Base_Source" />
+        </EntityType>
+        <EntityType Name="Hotels_NumberOfRoomsWithoutLockMark" customannotation:ClrType="Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark, ServerDom.Model, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="NumberOfRooms" Type="Int32" />
+          <NavigationProperty Name="Base" Relationship="Self.Hotels_NumberOfRoomsWithoutLockMark_Base" FromRole="Hotels_NumberOfRoomsWithoutLockMark_Base_Source" ToRole="Hotels_NumberOfRoomsWithoutLockMark_Base_Target" />
         </EntityType>
         <EntityType Name="Hotels_Invoice" customannotation:ClrType="Common.Queryable.Hotels_Invoice, ServerDom.Model, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
           <Key>
@@ -258,8 +267,18 @@
           <Property Name="RoomNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HotelID" Type="Guid" />
           <Property Name="RoomKindID" Type="Guid" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Extension_ReservationsForCertainRoom" Relationship="Self.Hotels_ReservationsForCertainRoom_Base" FromRole="Hotels_ReservationsForCertainRoom_Base_Target" ToRole="Hotels_ReservationsForCertainRoom_Base_Source" />
           <NavigationProperty Name="Hotel" Relationship="Self.Hotels_Room_Hotel" FromRole="Hotels_Room_Hotel_Source" ToRole="Hotels_Room_Hotel_Target" />
           <NavigationProperty Name="RoomKind" Relationship="Self.Hotels_Room_RoomKind" FromRole="Hotels_Room_RoomKind_Source" ToRole="Hotels_Room_RoomKind_Target" />
+        </EntityType>
+        <EntityType Name="Hotels_ReservationsForCertainRoom" customannotation:ClrType="Common.Queryable.Hotels_ReservationsForCertainRoom, ServerDom.Model, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="NumberOfReservations" Type="Int32" />
+          <NavigationProperty Name="Base" Relationship="Self.Hotels_ReservationsForCertainRoom_Base" FromRole="Hotels_ReservationsForCertainRoom_Base_Source" ToRole="Hotels_ReservationsForCertainRoom_Base_Target" />
         </EntityType>
         <EntityType Name="Hotels_RoomKind" customannotation:ClrType="Common.Queryable.Hotels_RoomKind, ServerDom.Model, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
           <Key>
@@ -460,6 +479,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Hotels_NumberOfRoomsWithoutLockMark_Base">
+          <End Role="Hotels_NumberOfRoomsWithoutLockMark_Base_Source" Type="Self.Hotels_NumberOfRoomsWithoutLockMark" Multiplicity="0..1" />
+          <End Role="Hotels_NumberOfRoomsWithoutLockMark_Base_Target" Type="Self.Hotels_Hotel" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels_NumberOfRoomsWithoutLockMark_Base_Target">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Hotels_NumberOfRoomsWithoutLockMark_Base_Source">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Hotels_Reservation_Guest">
           <End Role="Hotels_Reservation_Guest_Source" Type="Self.Hotels_Reservation" Multiplicity="*" />
           <End Role="Hotels_Reservation_Guest_Target" Type="Self.Hotels_Guest" Multiplicity="0..1" />
@@ -469,6 +500,18 @@
             </Principal>
             <Dependent Role="Hotels_Reservation_Guest_Source">
               <PropertyRef Name="GuestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Hotels_ReservationsForCertainRoom_Base">
+          <End Role="Hotels_ReservationsForCertainRoom_Base_Source" Type="Self.Hotels_ReservationsForCertainRoom" Multiplicity="0..1" />
+          <End Role="Hotels_ReservationsForCertainRoom_Base_Target" Type="Self.Hotels_Room" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels_ReservationsForCertainRoom_Base_Target">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Hotels_ReservationsForCertainRoom_Base_Source">
+              <PropertyRef Name="ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -567,9 +610,11 @@
           <EntitySet Name="Hotels_Service" EntityType="Self.Hotels_Service" />
           <EntitySet Name="Hotels_Guest" EntityType="Self.Hotels_Guest" />
           <EntitySet Name="Hotels_Hotel" EntityType="Self.Hotels_Hotel" />
+          <EntitySet Name="Hotels_NumberOfRoomsWithoutLockMark" EntityType="Self.Hotels_NumberOfRoomsWithoutLockMark" />
           <EntitySet Name="Hotels_Invoice" EntityType="Self.Hotels_Invoice" />
           <EntitySet Name="Hotels_Reservation" EntityType="Self.Hotels_Reservation" />
           <EntitySet Name="Hotels_Room" EntityType="Self.Hotels_Room" />
+          <EntitySet Name="Hotels_ReservationsForCertainRoom" EntityType="Self.Hotels_ReservationsForCertainRoom" />
           <EntitySet Name="Hotels_RoomKind" EntityType="Self.Hotels_RoomKind" />
           <EntitySet Name="Hotels_Item" EntityType="Self.Hotels_Item" />
           <AssociationSet Name="Common_LogRelatedItem_Log" Association="Self.Common_LogRelatedItem_Log">
@@ -632,9 +677,17 @@
             <End Role="Hotels_Service_GoodKind_Source" EntitySet="Hotels_Service" />
             <End Role="Hotels_Service_GoodKind_Target" EntitySet="Hotels_GoodKind" />
           </AssociationSet>
+          <AssociationSet Name="Hotels_NumberOfRoomsWithoutLockMark_Base" Association="Self.Hotels_NumberOfRoomsWithoutLockMark_Base">
+            <End Role="Hotels_NumberOfRoomsWithoutLockMark_Base_Source" EntitySet="Hotels_NumberOfRoomsWithoutLockMark" />
+            <End Role="Hotels_NumberOfRoomsWithoutLockMark_Base_Target" EntitySet="Hotels_Hotel" />
+          </AssociationSet>
           <AssociationSet Name="Hotels_Reservation_Guest" Association="Self.Hotels_Reservation_Guest">
             <End Role="Hotels_Reservation_Guest_Source" EntitySet="Hotels_Reservation" />
             <End Role="Hotels_Reservation_Guest_Target" EntitySet="Hotels_Guest" />
+          </AssociationSet>
+          <AssociationSet Name="Hotels_ReservationsForCertainRoom_Base" Association="Self.Hotels_ReservationsForCertainRoom_Base">
+            <End Role="Hotels_ReservationsForCertainRoom_Base_Source" EntitySet="Hotels_ReservationsForCertainRoom" />
+            <End Role="Hotels_ReservationsForCertainRoom_Base_Target" EntitySet="Hotels_Room" />
           </AssociationSet>
           <AssociationSet Name="Hotels_Room_Hotel" Association="Self.Hotels_Room_Hotel">
             <End Role="Hotels_Room_Hotel_Source" EntitySet="Hotels_Room" />

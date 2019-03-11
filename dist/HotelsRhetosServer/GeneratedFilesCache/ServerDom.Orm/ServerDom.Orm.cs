@@ -141,6 +141,9 @@ namespace Common
             modelBuilder.Entity<Common.Queryable.Hotels_Reservation>()
                 .HasOptional(t => t.Room).WithMany()
                 .HasForeignKey(t => t.RoomID);
+            modelBuilder.Ignore<global::Hotels.ReservationsForCertainRoom>();
+            modelBuilder.Entity<Common.Queryable.Hotels_ReservationsForCertainRoom>().Map(m => { m.MapInheritedProperties(); m.ToTable("ReservationsForCertainRoom", "Hotels"); });
+            modelBuilder.Entity<Common.Queryable.Hotels_ReservationsForCertainRoom>().HasRequired(t => t.Base).WithOptional(t => t.Extension_ReservationsForCertainRoom);
             modelBuilder.Ignore<global::Hotels.Invoice>();
             modelBuilder.Entity<Common.Queryable.Hotels_Invoice>().Map(m => { m.MapInheritedProperties(); m.ToTable("Invoice", "Hotels"); });
             modelBuilder.Entity<Common.Queryable.Hotels_Invoice>().Property(t => t.Amount).HasPrecision(28, 10);
@@ -155,6 +158,9 @@ namespace Common
             modelBuilder.Entity<Common.Queryable.Hotels_Item>()
                 .HasOptional(t => t.Invoice).WithMany()
                 .HasForeignKey(t => t.InvoiceID);
+            modelBuilder.Ignore<global::Hotels.NumberOfRoomsWithoutLockMark>();
+            modelBuilder.Entity<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>().Map(m => { m.MapInheritedProperties(); m.ToTable("NumberOfRoomsWithoutLockMark", "Hotels"); });
+            modelBuilder.Entity<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>().HasRequired(t => t.Base).WithOptional(t => t.Extension_NumberOfRoomsWithoutLockMark);
             modelBuilder.Ignore<global::Common.AutoCodeCache>();
             modelBuilder.Entity<Common.Queryable.Common_AutoCodeCache>().Map(m => { m.MapInheritedProperties(); m.ToTable("AutoCodeCache", "Common"); });
             modelBuilder.Ignore<global::Common.FilterId>();
@@ -221,6 +227,7 @@ namespace Common
                 .HasOptional(t => t.Log).WithMany()
                 .HasForeignKey(t => t.LogID);
             modelBuilder.Entity<Common.Queryable.Common_Claim>().Ignore(t => t.Extension_MyClaim);
+            modelBuilder.Entity<Common.Queryable.Hotels_Room>().Ignore(t => t.Extension_RoomGrid);
             /*EntityFrameworkOnModelCreating*/
         }
 
@@ -233,8 +240,10 @@ namespace Common
         public System.Data.Entity.DbSet<Common.Queryable.Hotels_Service> Hotels_Service { get; set; }
         public System.Data.Entity.DbSet<Common.Queryable.Hotels_Product> Hotels_Product { get; set; }
         public System.Data.Entity.DbSet<Common.Queryable.Hotels_Reservation> Hotels_Reservation { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_ReservationsForCertainRoom> Hotels_ReservationsForCertainRoom { get; set; }
         public System.Data.Entity.DbSet<Common.Queryable.Hotels_Invoice> Hotels_Invoice { get; set; }
         public System.Data.Entity.DbSet<Common.Queryable.Hotels_Item> Hotels_Item { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark> Hotels_NumberOfRoomsWithoutLockMark { get; set; }
         public System.Data.Entity.DbSet<Common.Queryable.Common_AutoCodeCache> Common_AutoCodeCache { get; set; }
         public System.Data.Entity.DbSet<Common.Queryable.Common_FilterId> Common_FilterId { get; set; }
         public System.Data.Entity.DbSet<Common.Queryable.Common_KeepSynchronizedMetadata> Common_KeepSynchronizedMetadata { get; set; }
