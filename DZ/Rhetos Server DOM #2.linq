@@ -57,9 +57,31 @@ void Main()
         var context = container.Resolve<Common.ExecutionContext>();
         var repository = context.Repository;
 
-		var soba = repository.Hotels.Room.Load().First();
-		soba.Remark = "Zadnja izmjena";
-		repository.Hotels.Room.Update(soba);
+		// 3a	
+		Console.WriteLine("#3a");
+		var rooms = repository.Hotels.Room.Load();
+		foreach (var r in rooms)
+		{
+			var hotel = repository.Hotels.Hotel.Load(h => h.ID == r.HotelID.Value).FirstOrDefault();
+			Console.WriteLine("{0}, room {1}", hotel.Name, r.RoomNumber);
+		}
+		
+		// 3b
+		var q3b = repository.Hotels.Room.Query()
+			.Select(r => new { r.Hotel.Name, r.RoomNumber });
+		q3b.ToString().Dump("sql #3b");
+		q3b.ToList().Dump(1);
+
+		// 3c
+		repository.Hotels.InsertViseSoba.Execute(
+			new Hotels.InsertViseSoba
+			{
+				RoomCount = 3,
+				Remark = "Test inserta više soba odjednom",
+				Prefix = "TS+++",
+				RoomKindID = Guid.Parse("9baaec1b-ee13-4eae-bf6b-34b2ce46e9df"),
+				HotelID = Guid.Parse("b61b4ce3-764f-477c-8744-4875e2cc9efe")
+			});
 
 		Console.WriteLine("Done.");
 	}

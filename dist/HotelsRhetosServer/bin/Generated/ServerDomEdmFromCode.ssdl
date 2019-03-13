@@ -73,9 +73,9 @@
           <Property Name="ContextInfo" Type="nvarchar(max)" Nullable="true" />
           <Property Name="Action" Type="nvarchar(max)" Nullable="true" />
           <Property Name="TableName" Type="nvarchar(max)" Nullable="true" />
-          <Property Name="Created" Type="datetime" Nullable="true" />
           <Property Name="ItemId" Type="uniqueidentifier" Nullable="true" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="Created" Type="datetime" Nullable="true" />
         </EntityType>
         <EntityType Name="Common_LogRelatedItem">
           <Key>
@@ -94,8 +94,8 @@
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="TableName" Type="nvarchar(max)" Nullable="true" />
           <Property Name="Relation" Type="nvarchar(max)" Nullable="true" />
-          <Property Name="LogID" Type="uniqueidentifier" customannotation:Index="{ Name: IX_LogID, Order: 0 }" Nullable="true" />
           <Property Name="ItemId" Type="uniqueidentifier" Nullable="true" />
+          <Property Name="LogID" Type="uniqueidentifier" customannotation:Index="{ Name: IX_LogID, Order: 0 }" Nullable="true" />
         </EntityType>
         <EntityType Name="Common_Principal">
           <Key>
@@ -142,9 +142,9 @@
           <Property Name="ContextInfo" Type="nvarchar(max)" Nullable="true" />
           <Property Name="Action" Type="nvarchar(max)" Nullable="true" />
           <Property Name="TableName" Type="nvarchar(max)" Nullable="true" />
-          <Property Name="Created" Type="datetime" Nullable="true" />
           <Property Name="ItemId" Type="uniqueidentifier" Nullable="true" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="Created" Type="datetime" Nullable="true" />
         </EntityType>
         <EntityType Name="Common_RoleInheritsRole">
           <Key>
@@ -209,6 +209,7 @@
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
           <Property Name="Address" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="Manager" Type="nvarchar(max)" Nullable="true" />
         </EntityType>
         <EntityType Name="Hotels_NumberOfRoomsWithoutLockMark">
           <Key>
@@ -246,6 +247,7 @@
           <Property Name="HotelID" Type="uniqueidentifier" customannotation:Index="{ Name: IX_HotelID, Order: 0 }" Nullable="true" />
           <Property Name="RoomKindID" Type="uniqueidentifier" customannotation:Index="{ Name: IX_RoomKindID, Order: 0 }" Nullable="true" />
           <Property Name="Remark" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="VrijemeZadnjeIzmjene" Type="datetime" Nullable="true" />
         </EntityType>
         <EntityType Name="Hotels_ReservationsForCertainRoom">
           <Key>
@@ -270,6 +272,14 @@
           <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
           <Property Name="GoodID" Type="uniqueidentifier" customannotation:Index="{ Name: IX_GoodID, Order: 0 }" Nullable="true" />
           <Property Name="InvoiceID" Type="uniqueidentifier" customannotation:Index="{ Name: IX_InvoiceID, Order: 0 }" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Hotels_S1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Oznaka" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="Naziv" Type="nvarchar(max)" Nullable="true" />
         </EntityType>
         <Association Name="Common_LogRelatedItem_Log">
           <End Role="Common_Log" Type="Self.Common_Log" Multiplicity="0..1" />
@@ -589,6 +599,7 @@
           <EntitySet Name="Hotels_ReservationsForCertainRoom" EntityType="Self.Hotels_ReservationsForCertainRoom" Schema="Hotels" Table="ReservationsForCertainRoom" />
           <EntitySet Name="Hotels_RoomKind" EntityType="Self.Hotels_RoomKind" Schema="Hotels" Table="RoomKind" />
           <EntitySet Name="Hotels_Item" EntityType="Self.Hotels_Item" Schema="Hotels" Table="Item" />
+          <EntitySet Name="Hotels_S1" EntityType="Self.Hotels_S1" Schema="Hotels" Table="S1" />
           <AssociationSet Name="Common_LogRelatedItem_Log" Association="Self.Common_LogRelatedItem_Log">
             <End Role="Common_Log" EntitySet="Common_Log" />
             <End Role="Common_LogRelatedItem" EntitySet="Common_LogRelatedItem" />

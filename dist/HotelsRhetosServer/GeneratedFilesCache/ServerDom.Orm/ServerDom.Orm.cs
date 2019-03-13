@@ -101,66 +101,6 @@ namespace Common
 
         protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
         {
-            modelBuilder.Ignore<global::Hotels.Hotel>();
-            modelBuilder.Entity<Common.Queryable.Hotels_Hotel>().Map(m => { m.MapInheritedProperties(); m.ToTable("Hotel", "Hotels"); });
-            modelBuilder.Ignore<global::Hotels.Guest>();
-            modelBuilder.Entity<Common.Queryable.Hotels_Guest>().Map(m => { m.MapInheritedProperties(); m.ToTable("Guest", "Hotels"); });
-            modelBuilder.Ignore<global::Hotels.RoomKind>();
-            modelBuilder.Entity<Common.Queryable.Hotels_RoomKind>().Map(m => { m.MapInheritedProperties(); m.ToTable("RoomKind", "Hotels"); });
-            modelBuilder.Entity<Common.Queryable.Hotels_RoomKind>().Property(t => t.Price).HasPrecision(28, 10);
-            modelBuilder.Ignore<global::Hotels.Room>();
-            modelBuilder.Entity<Common.Queryable.Hotels_Room>().Map(m => { m.MapInheritedProperties(); m.ToTable("Room", "Hotels"); });
-            modelBuilder.Entity<Common.Queryable.Hotels_Room>()
-                .HasOptional(t => t.Hotel).WithMany()
-                .HasForeignKey(t => t.HotelID);
-            modelBuilder.Entity<Common.Queryable.Hotels_Room>()
-                .HasOptional(t => t.RoomKind).WithMany()
-                .HasForeignKey(t => t.RoomKindID);
-            modelBuilder.Ignore<global::Hotels.Good>();
-            modelBuilder.Entity<Common.Queryable.Hotels_Good>().Map(m => { m.MapInheritedProperties(); m.ToTable("Good", "Hotels"); });
-            modelBuilder.Entity<Common.Queryable.Hotels_Good>().Property(t => t.Price).HasPrecision(28, 10);
-            modelBuilder.Ignore<global::Hotels.GoodKind>();
-            modelBuilder.Entity<Common.Queryable.Hotels_GoodKind>().Map(m => { m.MapInheritedProperties(); m.ToTable("GoodKind", "Hotels"); });
-            modelBuilder.Ignore<global::Hotels.Service>();
-            modelBuilder.Entity<Common.Queryable.Hotels_Service>().Map(m => { m.MapInheritedProperties(); m.ToTable("Service", "Hotels"); });
-            modelBuilder.Entity<Common.Queryable.Hotels_Service>()
-                .HasOptional(t => t.GoodKind).WithMany()
-                .HasForeignKey(t => t.GoodKindID);
-            modelBuilder.Entity<Common.Queryable.Hotels_Service>().HasRequired(t => t.Base).WithOptional(t => t.Extension_Service);
-            modelBuilder.Ignore<global::Hotels.Product>();
-            modelBuilder.Entity<Common.Queryable.Hotels_Product>().Map(m => { m.MapInheritedProperties(); m.ToTable("Product", "Hotels"); });
-            modelBuilder.Entity<Common.Queryable.Hotels_Product>()
-                .HasOptional(t => t.GoodKind).WithMany()
-                .HasForeignKey(t => t.GoodKindID);
-            modelBuilder.Entity<Common.Queryable.Hotels_Product>().HasRequired(t => t.Base).WithOptional(t => t.Extension_Product);
-            modelBuilder.Ignore<global::Hotels.Reservation>();
-            modelBuilder.Entity<Common.Queryable.Hotels_Reservation>().Map(m => { m.MapInheritedProperties(); m.ToTable("Reservation", "Hotels"); });
-            modelBuilder.Entity<Common.Queryable.Hotels_Reservation>()
-                .HasOptional(t => t.Guest).WithMany()
-                .HasForeignKey(t => t.GuestID);
-            modelBuilder.Entity<Common.Queryable.Hotels_Reservation>()
-                .HasOptional(t => t.Room).WithMany()
-                .HasForeignKey(t => t.RoomID);
-            modelBuilder.Ignore<global::Hotels.ReservationsForCertainRoom>();
-            modelBuilder.Entity<Common.Queryable.Hotels_ReservationsForCertainRoom>().Map(m => { m.MapInheritedProperties(); m.ToTable("ReservationsForCertainRoom", "Hotels"); });
-            modelBuilder.Entity<Common.Queryable.Hotels_ReservationsForCertainRoom>().HasRequired(t => t.Base).WithOptional(t => t.Extension_ReservationsForCertainRoom);
-            modelBuilder.Ignore<global::Hotels.Invoice>();
-            modelBuilder.Entity<Common.Queryable.Hotels_Invoice>().Map(m => { m.MapInheritedProperties(); m.ToTable("Invoice", "Hotels"); });
-            modelBuilder.Entity<Common.Queryable.Hotels_Invoice>().Property(t => t.Amount).HasPrecision(28, 10);
-            modelBuilder.Entity<Common.Queryable.Hotels_Invoice>()
-                .HasOptional(t => t.Reservation).WithMany()
-                .HasForeignKey(t => t.ReservationID);
-            modelBuilder.Ignore<global::Hotels.Item>();
-            modelBuilder.Entity<Common.Queryable.Hotels_Item>().Map(m => { m.MapInheritedProperties(); m.ToTable("Item", "Hotels"); });
-            modelBuilder.Entity<Common.Queryable.Hotels_Item>()
-                .HasOptional(t => t.Good).WithMany()
-                .HasForeignKey(t => t.GoodID);
-            modelBuilder.Entity<Common.Queryable.Hotels_Item>()
-                .HasOptional(t => t.Invoice).WithMany()
-                .HasForeignKey(t => t.InvoiceID);
-            modelBuilder.Ignore<global::Hotels.NumberOfRoomsWithoutLockMark>();
-            modelBuilder.Entity<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>().Map(m => { m.MapInheritedProperties(); m.ToTable("NumberOfRoomsWithoutLockMark", "Hotels"); });
-            modelBuilder.Entity<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>().HasRequired(t => t.Base).WithOptional(t => t.Extension_NumberOfRoomsWithoutLockMark);
             modelBuilder.Ignore<global::Common.AutoCodeCache>();
             modelBuilder.Entity<Common.Queryable.Common_AutoCodeCache>().Map(m => { m.MapInheritedProperties(); m.ToTable("AutoCodeCache", "Common"); });
             modelBuilder.Ignore<global::Common.FilterId>();
@@ -223,6 +163,68 @@ namespace Common
             modelBuilder.Entity<Common.Queryable.Common_RolePermission>()
                 .HasOptional(t => t.Claim).WithMany()
                 .HasForeignKey(t => t.ClaimID);
+            modelBuilder.Ignore<global::Hotels.Hotel>();
+            modelBuilder.Entity<Common.Queryable.Hotels_Hotel>().Map(m => { m.MapInheritedProperties(); m.ToTable("Hotel", "Hotels"); });
+            modelBuilder.Ignore<global::Hotels.Guest>();
+            modelBuilder.Entity<Common.Queryable.Hotels_Guest>().Map(m => { m.MapInheritedProperties(); m.ToTable("Guest", "Hotels"); });
+            modelBuilder.Ignore<global::Hotels.RoomKind>();
+            modelBuilder.Entity<Common.Queryable.Hotels_RoomKind>().Map(m => { m.MapInheritedProperties(); m.ToTable("RoomKind", "Hotels"); });
+            modelBuilder.Entity<Common.Queryable.Hotels_RoomKind>().Property(t => t.Price).HasPrecision(28, 10);
+            modelBuilder.Ignore<global::Hotels.Room>();
+            modelBuilder.Entity<Common.Queryable.Hotels_Room>().Map(m => { m.MapInheritedProperties(); m.ToTable("Room", "Hotels"); });
+            modelBuilder.Entity<Common.Queryable.Hotels_Room>()
+                .HasOptional(t => t.Hotel).WithMany()
+                .HasForeignKey(t => t.HotelID);
+            modelBuilder.Entity<Common.Queryable.Hotels_Room>()
+                .HasOptional(t => t.RoomKind).WithMany()
+                .HasForeignKey(t => t.RoomKindID);
+            modelBuilder.Ignore<global::Hotels.Good>();
+            modelBuilder.Entity<Common.Queryable.Hotels_Good>().Map(m => { m.MapInheritedProperties(); m.ToTable("Good", "Hotels"); });
+            modelBuilder.Entity<Common.Queryable.Hotels_Good>().Property(t => t.Price).HasPrecision(28, 10);
+            modelBuilder.Ignore<global::Hotels.GoodKind>();
+            modelBuilder.Entity<Common.Queryable.Hotels_GoodKind>().Map(m => { m.MapInheritedProperties(); m.ToTable("GoodKind", "Hotels"); });
+            modelBuilder.Ignore<global::Hotels.Service>();
+            modelBuilder.Entity<Common.Queryable.Hotels_Service>().Map(m => { m.MapInheritedProperties(); m.ToTable("Service", "Hotels"); });
+            modelBuilder.Entity<Common.Queryable.Hotels_Service>()
+                .HasOptional(t => t.GoodKind).WithMany()
+                .HasForeignKey(t => t.GoodKindID);
+            modelBuilder.Entity<Common.Queryable.Hotels_Service>().HasRequired(t => t.Base).WithOptional(t => t.Extension_Service);
+            modelBuilder.Ignore<global::Hotels.Product>();
+            modelBuilder.Entity<Common.Queryable.Hotels_Product>().Map(m => { m.MapInheritedProperties(); m.ToTable("Product", "Hotels"); });
+            modelBuilder.Entity<Common.Queryable.Hotels_Product>()
+                .HasOptional(t => t.GoodKind).WithMany()
+                .HasForeignKey(t => t.GoodKindID);
+            modelBuilder.Entity<Common.Queryable.Hotels_Product>().HasRequired(t => t.Base).WithOptional(t => t.Extension_Product);
+            modelBuilder.Ignore<global::Hotels.Reservation>();
+            modelBuilder.Entity<Common.Queryable.Hotels_Reservation>().Map(m => { m.MapInheritedProperties(); m.ToTable("Reservation", "Hotels"); });
+            modelBuilder.Entity<Common.Queryable.Hotels_Reservation>()
+                .HasOptional(t => t.Guest).WithMany()
+                .HasForeignKey(t => t.GuestID);
+            modelBuilder.Entity<Common.Queryable.Hotels_Reservation>()
+                .HasOptional(t => t.Room).WithMany()
+                .HasForeignKey(t => t.RoomID);
+            modelBuilder.Ignore<global::Hotels.ReservationsForCertainRoom>();
+            modelBuilder.Entity<Common.Queryable.Hotels_ReservationsForCertainRoom>().Map(m => { m.MapInheritedProperties(); m.ToTable("ReservationsForCertainRoom", "Hotels"); });
+            modelBuilder.Entity<Common.Queryable.Hotels_ReservationsForCertainRoom>().HasRequired(t => t.Base).WithOptional(t => t.Extension_ReservationsForCertainRoom);
+            modelBuilder.Ignore<global::Hotels.Invoice>();
+            modelBuilder.Entity<Common.Queryable.Hotels_Invoice>().Map(m => { m.MapInheritedProperties(); m.ToTable("Invoice", "Hotels"); });
+            modelBuilder.Entity<Common.Queryable.Hotels_Invoice>().Property(t => t.Amount).HasPrecision(28, 10);
+            modelBuilder.Entity<Common.Queryable.Hotels_Invoice>()
+                .HasOptional(t => t.Reservation).WithMany()
+                .HasForeignKey(t => t.ReservationID);
+            modelBuilder.Ignore<global::Hotels.Item>();
+            modelBuilder.Entity<Common.Queryable.Hotels_Item>().Map(m => { m.MapInheritedProperties(); m.ToTable("Item", "Hotels"); });
+            modelBuilder.Entity<Common.Queryable.Hotels_Item>()
+                .HasOptional(t => t.Good).WithMany()
+                .HasForeignKey(t => t.GoodID);
+            modelBuilder.Entity<Common.Queryable.Hotels_Item>()
+                .HasOptional(t => t.Invoice).WithMany()
+                .HasForeignKey(t => t.InvoiceID);
+            modelBuilder.Ignore<global::Hotels.NumberOfRoomsWithoutLockMark>();
+            modelBuilder.Entity<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>().Map(m => { m.MapInheritedProperties(); m.ToTable("NumberOfRoomsWithoutLockMark", "Hotels"); });
+            modelBuilder.Entity<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>().HasRequired(t => t.Base).WithOptional(t => t.Extension_NumberOfRoomsWithoutLockMark);
+            modelBuilder.Ignore<global::Hotels.S1>();
+            modelBuilder.Entity<Common.Queryable.Hotels_S1>().Map(m => { m.MapInheritedProperties(); m.ToTable("S1", "Hotels"); });
             modelBuilder.Entity<Common.Queryable.Common_LogRelatedItemReader>()
                 .HasOptional(t => t.Log).WithMany()
                 .HasForeignKey(t => t.LogID);
@@ -231,19 +233,6 @@ namespace Common
             /*EntityFrameworkOnModelCreating*/
         }
 
-        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Hotel> Hotels_Hotel { get; set; }
-        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Guest> Hotels_Guest { get; set; }
-        public System.Data.Entity.DbSet<Common.Queryable.Hotels_RoomKind> Hotels_RoomKind { get; set; }
-        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Room> Hotels_Room { get; set; }
-        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Good> Hotels_Good { get; set; }
-        public System.Data.Entity.DbSet<Common.Queryable.Hotels_GoodKind> Hotels_GoodKind { get; set; }
-        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Service> Hotels_Service { get; set; }
-        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Product> Hotels_Product { get; set; }
-        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Reservation> Hotels_Reservation { get; set; }
-        public System.Data.Entity.DbSet<Common.Queryable.Hotels_ReservationsForCertainRoom> Hotels_ReservationsForCertainRoom { get; set; }
-        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Invoice> Hotels_Invoice { get; set; }
-        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Item> Hotels_Item { get; set; }
-        public System.Data.Entity.DbSet<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark> Hotels_NumberOfRoomsWithoutLockMark { get; set; }
         public System.Data.Entity.DbSet<Common.Queryable.Common_AutoCodeCache> Common_AutoCodeCache { get; set; }
         public System.Data.Entity.DbSet<Common.Queryable.Common_FilterId> Common_FilterId { get; set; }
         public System.Data.Entity.DbSet<Common.Queryable.Common_KeepSynchronizedMetadata> Common_KeepSynchronizedMetadata { get; set; }
@@ -260,6 +249,20 @@ namespace Common
         public System.Data.Entity.DbSet<Common.Queryable.Common_RoleInheritsRole> Common_RoleInheritsRole { get; set; }
         public System.Data.Entity.DbSet<Common.Queryable.Common_PrincipalPermission> Common_PrincipalPermission { get; set; }
         public System.Data.Entity.DbSet<Common.Queryable.Common_RolePermission> Common_RolePermission { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Hotel> Hotels_Hotel { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Guest> Hotels_Guest { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_RoomKind> Hotels_RoomKind { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Room> Hotels_Room { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Good> Hotels_Good { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_GoodKind> Hotels_GoodKind { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Service> Hotels_Service { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Product> Hotels_Product { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Reservation> Hotels_Reservation { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_ReservationsForCertainRoom> Hotels_ReservationsForCertainRoom { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Invoice> Hotels_Invoice { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_Item> Hotels_Item { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark> Hotels_NumberOfRoomsWithoutLockMark { get; set; }
+        public System.Data.Entity.DbSet<Common.Queryable.Hotels_S1> Hotels_S1 { get; set; }
         /*EntityFrameworkContextMembers*/
     }
 

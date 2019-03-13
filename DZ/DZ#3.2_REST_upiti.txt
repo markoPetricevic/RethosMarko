@@ -1,0 +1,11 @@
+#3.2
+localhost/HotelsRhetosServer/rest/Hotels/hotel/
+localhost/HotelsRhetosServer/rest/Hotels/hotel/?filters=[{'Filter':'Hotels.ContainsLockMark'}]
+localhost/HotelsRhetosServer/rest/Hotels/hotel/?filters=[{'Filter':'Hotels.NameSearch','Value':{'Pattern':'hotel1l'}}]
+localhost/HotelsRhetosServer/rest/Hotels/hotel/?filters=[{'Property':'Name','Operation':'Equals', 'Value':'Hotel1'}]
+localhost/HotelsRhetosServer/rest/Hotels/Room/?top=5&skip=5&sort=RoomNumber
+
+#3.3
+INSERT: metoda POST, URL=localhost/HotelsRhetosServer/rest/Hotels/Hotel/ , u tijelo poruke staviti podatke, npr. { "Name": "Hotel2", "Address": "HotelAddress2" }
+UPDATE: metoda PUT, URL=localhost/HotelsRhetosServer/rest/Hotels/Hotel/801BE8BB-CAA2-4000-94A8-B3A67193FD66 , u tijelo poruke staviti podatke, npr { "Name": "Hotel2", "Address": "HotelAddress22" }
+DELETE: metoda DELETE, URL=localhost/HotelsRhetosServer/rest/Hotels/Hotel/801BE8BB-CAA2-4000-94A8-B3A67193FD66

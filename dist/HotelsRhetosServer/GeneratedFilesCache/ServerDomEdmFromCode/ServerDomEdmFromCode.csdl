@@ -73,9 +73,9 @@
           <Property Name="ContextInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TableName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Created" Type="DateTime" />
           <Property Name="ItemId" Type="Guid" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" />
         </EntityType>
         <EntityType Name="Common_LogRelatedItem" customannotation:ClrType="Common.Queryable.Common_LogRelatedItem, ServerDom.Model, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
           <Key>
@@ -95,8 +95,8 @@
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="TableName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Relation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="LogID" Type="Guid" />
           <Property Name="ItemId" Type="Guid" />
+          <Property Name="LogID" Type="Guid" />
           <NavigationProperty Name="Log" Relationship="Self.Common_LogRelatedItemReader_Log" FromRole="Common_LogRelatedItemReader_Log_Source" ToRole="Common_LogRelatedItemReader_Log_Target" />
         </EntityType>
         <EntityType Name="Common_Principal" customannotation:ClrType="Common.Queryable.Common_Principal, ServerDom.Model, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -148,9 +148,9 @@
           <Property Name="ContextInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TableName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Created" Type="DateTime" />
           <Property Name="ItemId" Type="Guid" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" />
           <NavigationProperty Name="Log" Relationship="Self.Common_RelatedEventsSource_Log" FromRole="Common_RelatedEventsSource_Log_Source" ToRole="Common_RelatedEventsSource_Log_Target" />
         </EntityType>
         <EntityType Name="Common_RoleInheritsRole" customannotation:ClrType="Common.Queryable.Common_RoleInheritsRole, ServerDom.Model, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -226,6 +226,7 @@
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Manager" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Extension_NumberOfRoomsWithoutLockMark" Relationship="Self.Hotels_NumberOfRoomsWithoutLockMark_Base" FromRole="Hotels_NumberOfRoomsWithoutLockMark_Base_Target" ToRole="Hotels_NumberOfRoomsWithoutLockMark_Base_Source" />
         </EntityType>
         <EntityType Name="Hotels_NumberOfRoomsWithoutLockMark" customannotation:ClrType="Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark, ServerDom.Model, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -268,6 +269,7 @@
           <Property Name="HotelID" Type="Guid" />
           <Property Name="RoomKindID" Type="Guid" />
           <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VrijemeZadnjeIzmjene" Type="DateTime" />
           <NavigationProperty Name="Extension_ReservationsForCertainRoom" Relationship="Self.Hotels_ReservationsForCertainRoom_Base" FromRole="Hotels_ReservationsForCertainRoom_Base_Target" ToRole="Hotels_ReservationsForCertainRoom_Base_Source" />
           <NavigationProperty Name="Hotel" Relationship="Self.Hotels_Room_Hotel" FromRole="Hotels_Room_Hotel_Source" ToRole="Hotels_Room_Hotel_Target" />
           <NavigationProperty Name="RoomKind" Relationship="Self.Hotels_Room_RoomKind" FromRole="Hotels_Room_RoomKind_Source" ToRole="Hotels_Room_RoomKind_Target" />
@@ -298,6 +300,14 @@
           <Property Name="InvoiceID" Type="Guid" />
           <NavigationProperty Name="Good" Relationship="Self.Hotels_Item_Good" FromRole="Hotels_Item_Good_Source" ToRole="Hotels_Item_Good_Target" />
           <NavigationProperty Name="Invoice" Relationship="Self.Hotels_Item_Invoice" FromRole="Hotels_Item_Invoice_Source" ToRole="Hotels_Item_Invoice_Target" />
+        </EntityType>
+        <EntityType Name="Hotels_S1" customannotation:ClrType="Common.Queryable.Hotels_S1, ServerDom.Model, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Oznaka" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Naziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="Common_LogRelatedItem_Log">
           <End Role="Common_LogRelatedItem_Log_Source" Type="Self.Common_LogRelatedItem" Multiplicity="*" />
@@ -617,6 +627,7 @@
           <EntitySet Name="Hotels_ReservationsForCertainRoom" EntityType="Self.Hotels_ReservationsForCertainRoom" />
           <EntitySet Name="Hotels_RoomKind" EntityType="Self.Hotels_RoomKind" />
           <EntitySet Name="Hotels_Item" EntityType="Self.Hotels_Item" />
+          <EntitySet Name="Hotels_S1" EntityType="Self.Hotels_S1" />
           <AssociationSet Name="Common_LogRelatedItem_Log" Association="Self.Common_LogRelatedItem_Log">
             <End Role="Common_LogRelatedItem_Log_Source" EntitySet="Common_LogRelatedItem" />
             <End Role="Common_LogRelatedItem_Log_Target" EntitySet="Common_Log" />

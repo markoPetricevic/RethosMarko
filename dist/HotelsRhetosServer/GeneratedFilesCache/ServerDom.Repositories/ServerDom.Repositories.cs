@@ -46,11 +46,11 @@ namespace Common
             _repositories = repositories;
         }
 
-        private Hotels._Helper._ModuleRepository _Hotels;
-        public Hotels._Helper._ModuleRepository Hotels { get { return _Hotels ?? (_Hotels = new Hotels._Helper._ModuleRepository(_repositories)); } }
-
         private Common._Helper._ModuleRepository _Common;
         public Common._Helper._ModuleRepository Common { get { return _Common ?? (_Common = new Common._Helper._ModuleRepository(_repositories)); } }
+
+        private Hotels._Helper._ModuleRepository _Hotels;
+        public Hotels._Helper._ModuleRepository Hotels { get { return _Hotels ?? (_Hotels = new Hotels._Helper._ModuleRepository(_repositories)); } }
 
         /*CommonDomRepositoryMembers*/
     }
@@ -174,22 +174,6 @@ namespace Common
             builder.RegisterInstance(Infrastructure.RegisteredInterfaceImplementationName).ExternallyOwned();
             builder.RegisterInstance(Infrastructure.ApplyFiltersOnClientRead).ExternallyOwned();
             builder.RegisterInstance(Infrastructure.CurrentKeepSynchronizedMetadata).ExternallyOwned();
-            builder.RegisterType<Hotels._Helper.Hotel_Repository>().Keyed<IRepository>("Hotels.Hotel").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.Guest_Repository>().Keyed<IRepository>("Hotels.Guest").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.RoomKind_Repository>().Keyed<IRepository>("Hotels.RoomKind").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.Room_Repository>().Keyed<IRepository>("Hotels.Room").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.Good_Repository>().Keyed<IRepository>("Hotels.Good").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.GoodKind_Repository>().Keyed<IRepository>("Hotels.GoodKind").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.Service_Repository>().Keyed<IRepository>("Hotels.Service").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.Product_Repository>().Keyed<IRepository>("Hotels.Product").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.Reservation_Repository>().Keyed<IRepository>("Hotels.Reservation").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.ReservationsForCertainRoom_Repository>().Keyed<IRepository>("Hotels.ReservationsForCertainRoom").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.RoomGrid_Repository>().Keyed<IRepository>("Hotels.RoomGrid").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.InsertViseSoba_Repository>().Keyed<IRepository>("Hotels.InsertViseSoba").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.InsertViseSoba_Repository>().Keyed<IActionRepository>("Hotels.InsertViseSoba").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.Invoice_Repository>().Keyed<IRepository>("Hotels.Invoice").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.Item_Repository>().Keyed<IRepository>("Hotels.Item").InstancePerLifetimeScope();
-            builder.RegisterType<Hotels._Helper.NumberOfRoomsWithoutLockMark_Repository>().Keyed<IRepository>("Hotels.NumberOfRoomsWithoutLockMark").InstancePerLifetimeScope();
             builder.RegisterType<Common._Helper.AutoCodeCache_Repository>().Keyed<IRepository>("Common.AutoCodeCache").InstancePerLifetimeScope();
             builder.RegisterType<Common._Helper.FilterId_Repository>().Keyed<IRepository>("Common.FilterId").InstancePerLifetimeScope();
             builder.RegisterType<Common._Helper.KeepSynchronizedMetadata_Repository>().Keyed<IRepository>("Common.KeepSynchronizedMetadata").InstancePerLifetimeScope();
@@ -213,6 +197,23 @@ namespace Common
             builder.RegisterType<Common._Helper.RoleInheritsRole_Repository>().Keyed<IRepository>("Common.RoleInheritsRole").InstancePerLifetimeScope();
             builder.RegisterType<Common._Helper.PrincipalPermission_Repository>().Keyed<IRepository>("Common.PrincipalPermission").InstancePerLifetimeScope();
             builder.RegisterType<Common._Helper.RolePermission_Repository>().Keyed<IRepository>("Common.RolePermission").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.Hotel_Repository>().Keyed<IRepository>("Hotels.Hotel").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.Guest_Repository>().Keyed<IRepository>("Hotels.Guest").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.RoomKind_Repository>().Keyed<IRepository>("Hotels.RoomKind").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.Room_Repository>().Keyed<IRepository>("Hotels.Room").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.Good_Repository>().Keyed<IRepository>("Hotels.Good").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.GoodKind_Repository>().Keyed<IRepository>("Hotels.GoodKind").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.Service_Repository>().Keyed<IRepository>("Hotels.Service").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.Product_Repository>().Keyed<IRepository>("Hotels.Product").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.Reservation_Repository>().Keyed<IRepository>("Hotels.Reservation").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.ReservationsForCertainRoom_Repository>().Keyed<IRepository>("Hotels.ReservationsForCertainRoom").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.RoomGrid_Repository>().Keyed<IRepository>("Hotels.RoomGrid").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.InsertViseSoba_Repository>().Keyed<IRepository>("Hotels.InsertViseSoba").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.InsertViseSoba_Repository>().Keyed<IActionRepository>("Hotels.InsertViseSoba").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.Invoice_Repository>().Keyed<IRepository>("Hotels.Invoice").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.Item_Repository>().Keyed<IRepository>("Hotels.Item").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.NumberOfRoomsWithoutLockMark_Repository>().Keyed<IRepository>("Hotels.NumberOfRoomsWithoutLockMark").InstancePerLifetimeScope();
+            builder.RegisterType<Hotels._Helper.S1_Repository>().Keyed<IRepository>("Hotels.S1").InstancePerLifetimeScope();
             builder.RegisterType<Common._Helper.FilterId_Repository>().As<IQueryableRepository<Rhetos.Dom.DefaultConcepts.ICommonFilterId>>().InstancePerLifetimeScope();
             builder.RegisterType<Common._Helper.KeepSynchronizedMetadata_Repository>().As<IQueryableRepository<Rhetos.Dom.DefaultConcepts.IKeepSynchronizedMetadata>>().InstancePerLifetimeScope();
             builder.RegisterType<Common._Helper.Claim_Repository>().As<IQueryableRepository<Rhetos.Dom.DefaultConcepts.ICommonClaim>>().InstancePerLifetimeScope();
@@ -326,2122 +327,6 @@ namespace Common
     {
     }
     /*CommonNamespaceMembers*/
-}
-
-namespace Hotels._Helper
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
-    using Rhetos.Dom.DefaultConcepts;
-    using Rhetos.Utilities;
-
-    /*ModuleInfo Using Hotels*/
-
-    public class _ModuleRepository
-    {
-        private readonly Rhetos.Extensibility.INamedPlugins<IRepository> _repositories;
-
-        public _ModuleRepository(Rhetos.Extensibility.INamedPlugins<IRepository> repositories)
-        {
-            _repositories = repositories;
-        }
-
-        private Hotel_Repository _Hotel_Repository;
-        public Hotel_Repository Hotel { get { return _Hotel_Repository ?? (_Hotel_Repository = (Hotel_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Hotel")); } }
-
-        private Guest_Repository _Guest_Repository;
-        public Guest_Repository Guest { get { return _Guest_Repository ?? (_Guest_Repository = (Guest_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Guest")); } }
-
-        private RoomKind_Repository _RoomKind_Repository;
-        public RoomKind_Repository RoomKind { get { return _RoomKind_Repository ?? (_RoomKind_Repository = (RoomKind_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.RoomKind")); } }
-
-        private Room_Repository _Room_Repository;
-        public Room_Repository Room { get { return _Room_Repository ?? (_Room_Repository = (Room_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Room")); } }
-
-        private Good_Repository _Good_Repository;
-        public Good_Repository Good { get { return _Good_Repository ?? (_Good_Repository = (Good_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Good")); } }
-
-        private GoodKind_Repository _GoodKind_Repository;
-        public GoodKind_Repository GoodKind { get { return _GoodKind_Repository ?? (_GoodKind_Repository = (GoodKind_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.GoodKind")); } }
-
-        private Service_Repository _Service_Repository;
-        public Service_Repository Service { get { return _Service_Repository ?? (_Service_Repository = (Service_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Service")); } }
-
-        private Product_Repository _Product_Repository;
-        public Product_Repository Product { get { return _Product_Repository ?? (_Product_Repository = (Product_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Product")); } }
-
-        private Reservation_Repository _Reservation_Repository;
-        public Reservation_Repository Reservation { get { return _Reservation_Repository ?? (_Reservation_Repository = (Reservation_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Reservation")); } }
-
-        private ReservationsForCertainRoom_Repository _ReservationsForCertainRoom_Repository;
-        public ReservationsForCertainRoom_Repository ReservationsForCertainRoom { get { return _ReservationsForCertainRoom_Repository ?? (_ReservationsForCertainRoom_Repository = (ReservationsForCertainRoom_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.ReservationsForCertainRoom")); } }
-
-        private RoomGrid_Repository _RoomGrid_Repository;
-        public RoomGrid_Repository RoomGrid { get { return _RoomGrid_Repository ?? (_RoomGrid_Repository = (RoomGrid_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.RoomGrid")); } }
-
-        private InsertViseSoba_Repository _InsertViseSoba_Repository;
-        public InsertViseSoba_Repository InsertViseSoba { get { return _InsertViseSoba_Repository ?? (_InsertViseSoba_Repository = (InsertViseSoba_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.InsertViseSoba")); } }
-
-        private Invoice_Repository _Invoice_Repository;
-        public Invoice_Repository Invoice { get { return _Invoice_Repository ?? (_Invoice_Repository = (Invoice_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Invoice")); } }
-
-        private Item_Repository _Item_Repository;
-        public Item_Repository Item { get { return _Item_Repository ?? (_Item_Repository = (Item_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Item")); } }
-
-        private NumberOfRoomsWithoutLockMark_Repository _NumberOfRoomsWithoutLockMark_Repository;
-        public NumberOfRoomsWithoutLockMark_Repository NumberOfRoomsWithoutLockMark { get { return _NumberOfRoomsWithoutLockMark_Repository ?? (_NumberOfRoomsWithoutLockMark_Repository = (NumberOfRoomsWithoutLockMark_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.NumberOfRoomsWithoutLockMark")); } }
-
-        /*ModuleInfo RepositoryMembers Hotels*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.Hotel*/
-    public class Hotel_Repository : /*DataStructureInfo OverrideBaseType Hotels.Hotel*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Hotel, Hotels.Hotel> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Hotel, Hotels.Hotel> // Common.ReadableRepositoryBase<Hotels.Hotel> // global::Common.RepositoryBase
-        , IWritableRepository<Hotels.Hotel>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Hotel*/
-    {
-        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.Hotel*/
-
-        public Hotel_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Hotel*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            this._sqlUtility = _sqlUtility;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.Hotel*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.Hotel[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_Hotel> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.Hotel*/
-            return _executionContext.EntityFrameworkContext.Hotels_Hotel.AsNoTracking();
-        }
-
-        public void Save(IEnumerable<Hotels.Hotel> insertedNew, IEnumerable<Hotels.Hotel> updatedNew, IEnumerable<Hotels.Hotel> deletedIds, bool checkUserPermissions = false)
-        {
-            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
-                return;
-
-            /*DataStructureInfo WritableOrm ClearContext Hotels.Hotel*/
-
-            {
-                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Name != null && newItem.Name.Length > 256).FirstOrDefault();
-                if (invalidItem != null)
-                    throw new Rhetos.UserException(
-                        "Maximum length of property {0} is {1}.",
-                        new[] { "Hotel.Name", "256" },
-                        "DataStructure:Hotels.Hotel,ID:" + invalidItem.ID.ToString() + ",Property:Name",
-                        null);
-            }
-            {
-                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Address != null && newItem.Address.Length > 256).FirstOrDefault();
-                if (invalidItem != null)
-                    throw new Rhetos.UserException(
-                        "Maximum length of property {0} is {1}.",
-                        new[] { "Hotel.Address", "256" },
-                        "DataStructure:Hotels.Hotel,ID:" + invalidItem.ID.ToString() + ",Property:Address",
-                        null);
-            }
-            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Hotel*/
-
-            /*DataStructureInfo WritableOrm Initialization Hotels.Hotel*/
-
-            // Using old data, including lazy loading of navigation properties:
-            IEnumerable<Common.Queryable.Hotels_Hotel> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Hotel>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
-            IEnumerable<Common.Queryable.Hotels_Hotel> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Hotel>)updated, updatedNew.Select(item => item.ID), item => item.ID);
-
-            if (updatedNew.Count() > 0 || deletedIds.Count() > 0)
-            {
-                Hotels.Hotel[] changedItems = updated.Concat(deleted).ToArray();
-
-                var lockedItems = _domRepository.Hotels.Hotel.Filter(this.Query(changedItems.Select(item => item.ID)), new ContainsLockMark());
-                if (lockedItems.Count() > 0)
-                    throw new Rhetos.UserException(@"[Test] Name contains lock mark.", "DataStructure:Hotels.Hotel,ID:" + lockedItems.First().ID.ToString()/*LockItemsInfo ClientMessage Hotels.Hotel.ContainsLockMark*/);
-            }
-            if (deletedIds.Count() > 0)
-            {
-                List<Hotels.Room> childItems = deletedIds
-                    .SelectMany(parent => _executionContext.Repository.Hotels.Room.Query()
-                        .Where(child => child.HotelID == parent.ID)
-                        .Select(child => child.ID)
-                        .ToList())
-                    .Select(childId => new Hotels.Room { ID = childId })
-                    .ToList();
-
-                if (childItems.Count() > 0)
-                    _domRepository.Hotels.Room.Delete(childItems);
-            }
-
-            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Hotel*/
-
-            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Hotel*/
-
-            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
-            try
-            {
-                if (deletedIds.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Delete;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (updatedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Update;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (insertedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Insert;
-                    _executionContext.EntityFrameworkContext.Hotels_Hotel.AddRange(insertedNew.Select(item => item.ToNavigation()));
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                saveOperation = DomHelper.SaveOperation.None;
-                _executionContext.EntityFrameworkContext.ClearCache();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
-            {
-                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
-        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
-        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Room", @"HotelID", @"FK_Room_Hotel_HotelID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Room,Property:HotelID,Referenced:Hotels.Hotel";
-                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Hotel*/
-                if (checkUserPermissions)
-                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Hotel");
-
-                if (interpretedException != null)
-        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
-                var sqlException = _sqlUtility.ExtractSqlException(saveException);
-                if (sqlException != null)
-                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
-                throw;
-            }
-
-            deleted = null;
-            updated = this.Query(updatedNew.Select(item => item.ID));
-            IEnumerable<Common.Queryable.Hotels_Hotel> inserted = this.Query(insertedNew.Select(item => item.ID));
-
-            bool allEffectsCompleted = false;
-            try
-            {
-                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Hotel*/
-
-                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Hotel*/
-
-                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Hotel");
-
-                /*DataStructureInfo WritableOrm AfterSave Hotels.Hotel*/
-
-                allEffectsCompleted = true;
-            }
-            finally
-            {
-                if (!allEffectsCompleted)
-                    _executionContext.PersistenceTransaction.DiscardChanges();
-            }
-        }
-
-        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
-        {
-            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Hotel*/
-            yield break;
-        }
-
-        public IQueryable<Common.Queryable.Hotels_Hotel> Filter(IQueryable<Common.Queryable.Hotels_Hotel> localSource, NameSearch localParameter)
-        {
-            Func<IQueryable<Common.Queryable.Hotels_Hotel>, Common.DomRepository, NameSearch/*ComposableFilterByInfo AdditionalParametersType Hotels.Hotel.NameSearch*/, IQueryable<Common.Queryable.Hotels_Hotel>> filterFunction =
-            (query, repository, parameter) =>
-		{
-			return query.Where(item => item.Name.Contains(parameter.Pattern));
-		};
-
-            /*ComposableFilterByInfo BeforeFilter Hotels.Hotel.NameSearch*/
-            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Hotel.NameSearch*/);
-        }
-
-        public IQueryable<Common.Queryable.Hotels_Hotel> Filter(IQueryable<Common.Queryable.Hotels_Hotel> localSource, Hotels.ContainsLockMark localParameter)
-        {
-            Func<IQueryable<Common.Queryable.Hotels_Hotel>, Common.DomRepository, Hotels.ContainsLockMark/*ComposableFilterByInfo AdditionalParametersType Hotels.Hotel.'Hotels.ContainsLockMark'*/, IQueryable<Common.Queryable.Hotels_Hotel>> filterFunction =
-            (source, repository, parameter) => source.Where(item => item.Name.Contains("lock"));
-
-            /*ComposableFilterByInfo BeforeFilter Hotels.Hotel.'Hotels.ContainsLockMark'*/
-            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Hotel.'Hotels.ContainsLockMark'*/);
-        }
-
-        public global::Hotels.Hotel[] Filter(NameSearch filter_Parameter)
-        {
-            Func<Common.DomRepository, NameSearch/*FilterByInfo AdditionalParametersType Hotels.Hotel.NameSearch*/, Hotels.Hotel[]> filter_Function =
-                (repository, parameter) => repository.Hotels.Hotel.Filter(repository.Hotels.Hotel.Query(), parameter).ToArray();
-
-            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Hotel.NameSearch*/);
-        }
-
-        public global::Hotels.Hotel[] Filter(Hotels.ContainsLockMark filter_Parameter)
-        {
-            Func<Common.DomRepository, Hotels.ContainsLockMark/*FilterByInfo AdditionalParametersType Hotels.Hotel.'Hotels.ContainsLockMark'*/, Hotels.Hotel[]> filter_Function =
-                (repository, parameter) => repository.Hotels.Hotel.Filter(repository.Hotels.Hotel.Query(), parameter).ToArray();
-
-            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Hotel.'Hotels.ContainsLockMark'*/);
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.Hotel*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.Guest*/
-    public class Guest_Repository : /*DataStructureInfo OverrideBaseType Hotels.Guest*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Guest, Hotels.Guest> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Guest, Hotels.Guest> // Common.ReadableRepositoryBase<Hotels.Guest> // global::Common.RepositoryBase
-        , IWritableRepository<Hotels.Guest>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Guest*/
-    {
-        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.Guest*/
-
-        public Guest_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Guest*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            this._sqlUtility = _sqlUtility;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.Guest*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.Guest[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_Guest> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.Guest*/
-            return _executionContext.EntityFrameworkContext.Hotels_Guest.AsNoTracking();
-        }
-
-        public void Save(IEnumerable<Hotels.Guest> insertedNew, IEnumerable<Hotels.Guest> updatedNew, IEnumerable<Hotels.Guest> deletedIds, bool checkUserPermissions = false)
-        {
-            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
-                return;
-
-            /*DataStructureInfo WritableOrm ClearContext Hotels.Guest*/
-
-            {
-                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Name != null && newItem.Name.Length > 256).FirstOrDefault();
-                if (invalidItem != null)
-                    throw new Rhetos.UserException(
-                        "Maximum length of property {0} is {1}.",
-                        new[] { "Guest.Name", "256" },
-                        "DataStructure:Hotels.Guest,ID:" + invalidItem.ID.ToString() + ",Property:Name",
-                        null);
-            }
-            {
-                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Surname != null && newItem.Surname.Length > 256).FirstOrDefault();
-                if (invalidItem != null)
-                    throw new Rhetos.UserException(
-                        "Maximum length of property {0} is {1}.",
-                        new[] { "Guest.Surname", "256" },
-                        "DataStructure:Hotels.Guest,ID:" + invalidItem.ID.ToString() + ",Property:Surname",
-                        null);
-            }
-            {
-                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Phone != null && newItem.Phone.Length > 256).FirstOrDefault();
-                if (invalidItem != null)
-                    throw new Rhetos.UserException(
-                        "Maximum length of property {0} is {1}.",
-                        new[] { "Guest.Phone", "256" },
-                        "DataStructure:Hotels.Guest,ID:" + invalidItem.ID.ToString() + ",Property:Phone",
-                        null);
-            }
-            {
-                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Email != null && newItem.Email.Length > 256).FirstOrDefault();
-                if (invalidItem != null)
-                    throw new Rhetos.UserException(
-                        "Maximum length of property {0} is {1}.",
-                        new[] { "Guest.Email", "256" },
-                        "DataStructure:Hotels.Guest,ID:" + invalidItem.ID.ToString() + ",Property:Email",
-                        null);
-            }
-            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Guest*/
-
-            /*DataStructureInfo WritableOrm Initialization Hotels.Guest*/
-
-            // Using old data, including lazy loading of navigation properties:
-            IEnumerable<Common.Queryable.Hotels_Guest> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Guest>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
-            IEnumerable<Common.Queryable.Hotels_Guest> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Guest>)updated, updatedNew.Select(item => item.ID), item => item.ID);
-
-            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Guest*/
-
-            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Guest*/
-
-            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
-            try
-            {
-                if (deletedIds.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Delete;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (updatedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Update;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (insertedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Insert;
-                    _executionContext.EntityFrameworkContext.Hotels_Guest.AddRange(insertedNew.Select(item => item.ToNavigation()));
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                saveOperation = DomHelper.SaveOperation.None;
-                _executionContext.EntityFrameworkContext.ClearCache();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
-            {
-                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
-        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
-        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Reservation", @"GuestID", @"FK_Reservation_Guest_GuestID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Reservation,Property:GuestID,Referenced:Hotels.Guest";
-                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Guest*/
-                if (checkUserPermissions)
-                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Guest");
-
-                if (interpretedException != null)
-        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
-                var sqlException = _sqlUtility.ExtractSqlException(saveException);
-                if (sqlException != null)
-                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
-                throw;
-            }
-
-            deleted = null;
-            updated = this.Query(updatedNew.Select(item => item.ID));
-            IEnumerable<Common.Queryable.Hotels_Guest> inserted = this.Query(insertedNew.Select(item => item.ID));
-
-            bool allEffectsCompleted = false;
-            try
-            {
-                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Guest*/
-
-                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Guest*/
-
-                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Guest");
-
-                /*DataStructureInfo WritableOrm AfterSave Hotels.Guest*/
-
-                allEffectsCompleted = true;
-            }
-            finally
-            {
-                if (!allEffectsCompleted)
-                    _executionContext.PersistenceTransaction.DiscardChanges();
-            }
-        }
-
-        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
-        {
-            if (onSave)
-            {
-                var errorIds = this.Filter(this.Query(ids), new Hotels.Email_RegExMatchFilter()).Select(item => item.ID).ToArray();
-                if (errorIds.Count() > 0)
-                    foreach (var error in GetErrorMessage_Email_RegExMatchFilter(errorIds))
-                        yield return error;
-            }
-            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Guest*/
-            yield break;
-        }
-
-        public IQueryable<Common.Queryable.Hotels_Guest> Filter(IQueryable<Common.Queryable.Hotels_Guest> localSource, Hotels.Email_RegExMatchFilter localParameter)
-        {
-            Func<IQueryable<Common.Queryable.Hotels_Guest>, Common.DomRepository, Hotels.Email_RegExMatchFilter/*ComposableFilterByInfo AdditionalParametersType Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/, IQueryable<Common.Queryable.Hotels_Guest>> filterFunction =
-            (source, repository, parameter) =>
-                {
-                    var items = source.Where(item => !string.IsNullOrEmpty(item.Email)).Select(item => new { item.ID, item.Email }).ToList();
-                    var regex = new System.Text.RegularExpressions.Regex(@"^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$");
-                    var invalidItemIds = items.Where(item => !regex.IsMatch(item.Email)).Select(item => item.ID).ToList();
-                    return Filter(source, invalidItemIds);
-                };
-
-            /*ComposableFilterByInfo BeforeFilter Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/
-            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/);
-        }
-
-        public IEnumerable<InvalidDataMessage> GetErrorMessage_Email_RegExMatchFilter(IEnumerable<Guid> invalidData_Ids)
-        {
-            const string invalidData_Description = @"Neispravna e-mail adresa.";
-            IDictionary<string, object> metadata = new Dictionary<string, object>();
-            metadata["Validation"] = @"Hotels.Email_RegExMatchFilter";
-            metadata[@"Property"] = @"Email";
-            /*InvalidDataInfo ErrorMetadata Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/
-            /*InvalidDataInfo OverrideUserMessages Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
-        }
-
-        public global::Hotels.Guest[] Filter(Hotels.Email_RegExMatchFilter filter_Parameter)
-        {
-            Func<Common.DomRepository, Hotels.Email_RegExMatchFilter/*FilterByInfo AdditionalParametersType Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/, Hotels.Guest[]> filter_Function =
-                (repository, parameter) => repository.Hotels.Guest.Filter(repository.Hotels.Guest.Query(), parameter).ToArray();
-
-            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/);
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.Guest*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.RoomKind*/
-    public class RoomKind_Repository : /*DataStructureInfo OverrideBaseType Hotels.RoomKind*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_RoomKind, Hotels.RoomKind> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_RoomKind, Hotels.RoomKind> // Common.ReadableRepositoryBase<Hotels.RoomKind> // global::Common.RepositoryBase
-        , IWritableRepository<Hotels.RoomKind>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.RoomKind*/
-    {
-        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.RoomKind*/
-
-        public RoomKind_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.RoomKind*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            this._sqlUtility = _sqlUtility;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.RoomKind*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.RoomKind[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_RoomKind> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.RoomKind*/
-            return _executionContext.EntityFrameworkContext.Hotels_RoomKind.AsNoTracking();
-        }
-
-        public void Save(IEnumerable<Hotels.RoomKind> insertedNew, IEnumerable<Hotels.RoomKind> updatedNew, IEnumerable<Hotels.RoomKind> deletedIds, bool checkUserPermissions = false)
-        {
-            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
-                return;
-
-            /*DataStructureInfo WritableOrm ClearContext Hotels.RoomKind*/
-
-            {
-                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Name != null && newItem.Name.Length > 256).FirstOrDefault();
-                if (invalidItem != null)
-                    throw new Rhetos.UserException(
-                        "Maximum length of property {0} is {1}.",
-                        new[] { "RoomKind.Name", "256" },
-                        "DataStructure:Hotels.RoomKind,ID:" + invalidItem.ID.ToString() + ",Property:Name",
-                        null);
-            }
-            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.RoomKind*/
-
-            /*DataStructureInfo WritableOrm Initialization Hotels.RoomKind*/
-
-            // Using old data, including lazy loading of navigation properties:
-            IEnumerable<Common.Queryable.Hotels_RoomKind> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_RoomKind>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
-            IEnumerable<Common.Queryable.Hotels_RoomKind> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_RoomKind>)updated, updatedNew.Select(item => item.ID), item => item.ID);
-
-            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.RoomKind*/
-
-            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.RoomKind*/
-
-            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
-            try
-            {
-                if (deletedIds.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Delete;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (updatedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Update;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (insertedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Insert;
-                    _executionContext.EntityFrameworkContext.Hotels_RoomKind.AddRange(insertedNew.Select(item => item.ToNavigation()));
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                saveOperation = DomHelper.SaveOperation.None;
-                _executionContext.EntityFrameworkContext.ClearCache();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
-            {
-                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
-        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
-        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Room", @"RoomKindID", @"FK_Room_RoomKind_RoomKindID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Room,Property:RoomKindID,Referenced:Hotels.RoomKind";
-                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.RoomKind*/
-                if (checkUserPermissions)
-                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.RoomKind");
-
-                if (interpretedException != null)
-        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
-                var sqlException = _sqlUtility.ExtractSqlException(saveException);
-                if (sqlException != null)
-                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
-                throw;
-            }
-
-            deleted = null;
-            updated = this.Query(updatedNew.Select(item => item.ID));
-            IEnumerable<Common.Queryable.Hotels_RoomKind> inserted = this.Query(insertedNew.Select(item => item.ID));
-
-            bool allEffectsCompleted = false;
-            try
-            {
-                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.RoomKind*/
-
-                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.RoomKind*/
-
-                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.RoomKind");
-
-                /*DataStructureInfo WritableOrm AfterSave Hotels.RoomKind*/
-
-                allEffectsCompleted = true;
-            }
-            finally
-            {
-                if (!allEffectsCompleted)
-                    _executionContext.PersistenceTransaction.DiscardChanges();
-            }
-        }
-
-        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
-        {
-            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.RoomKind*/
-            yield break;
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.RoomKind*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.Room*/
-    public class Room_Repository : /*DataStructureInfo OverrideBaseType Hotels.Room*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Room, Hotels.Room> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Room, Hotels.Room> // Common.ReadableRepositoryBase<Hotels.Room> // global::Common.RepositoryBase
-        , IWritableRepository<Hotels.Room>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Room*/
-    {
-        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.Room*/
-
-        public Room_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Room*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            this._sqlUtility = _sqlUtility;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.Room*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.Room[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_Room> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.Room*/
-            return _executionContext.EntityFrameworkContext.Hotels_Room.AsNoTracking();
-        }
-
-        public void Save(IEnumerable<Hotels.Room> insertedNew, IEnumerable<Hotels.Room> updatedNew, IEnumerable<Hotels.Room> deletedIds, bool checkUserPermissions = false)
-        {
-            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
-                return;
-
-            /*DataStructureInfo WritableOrm ClearContext Hotels.Room*/
-
-            {
-                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.RoomNumber != null && newItem.RoomNumber.Length > 256).FirstOrDefault();
-                if (invalidItem != null)
-                    throw new Rhetos.UserException(
-                        "Maximum length of property {0} is {1}.",
-                        new[] { "Room.RoomNumber", "256" },
-                        "DataStructure:Hotels.Room,ID:" + invalidItem.ID.ToString() + ",Property:RoomNumber",
-                        null);
-            }
-            {
-                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Remark != null && newItem.Remark.Length > 256).FirstOrDefault();
-                if (invalidItem != null)
-                    throw new Rhetos.UserException(
-                        "Maximum length of property {0} is {1}.",
-                        new[] { "Room.Remark", "256" },
-                        "DataStructure:Hotels.Room,ID:" + invalidItem.ID.ToString() + ",Property:Remark",
-                        null);
-            }
-            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Room*/
-
-            /*DataStructureInfo WritableOrm Initialization Hotels.Room*/
-
-            // Using old data, including lazy loading of navigation properties:
-            IEnumerable<Common.Queryable.Hotels_Room> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Room>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
-            IEnumerable<Common.Queryable.Hotels_Room> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Room>)updated, updatedNew.Select(item => item.ID), item => item.ID);
-
-            AutoCodeHelper.UpdateCodesWithoutCache(
-                _executionContext.SqlExecuter, "Hotels.Room", "RoomNumber",
-                insertedNew.Select(item => AutoCodeItem.Create(item, item.RoomNumber/*AutoCodePropertyInfo Grouping Hotels.Room.RoomNumber*/)).ToList(),
-                (item, newCode) => item.RoomNumber = newCode/*AutoCodePropertyInfo GroupColumnMetadata Hotels.Room.RoomNumber*/);
-
-            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Room*/
-
-            {
-                var invalid = insertedNew.Concat(updatedNew).FirstOrDefault(item => item.RoomNumber == null || string.IsNullOrWhiteSpace(item.RoomNumber) /*RequiredPropertyInfo OrCondition Hotels.Room.RoomNumber*/);
-                if (invalid != null)
-                    throw new Rhetos.UserException("It is not allowed to enter {0} because the required property {1} is not set.",
-                        new[] { "Hotels.Room", "RoomNumber" },
-                        "DataStructure:Hotels.Room,ID:" + invalid.ID.ToString() + ",Property:RoomNumber", null);
-            }
-            {
-                var invalid = insertedNew.Concat(updatedNew).FirstOrDefault(item => item.RoomKindID == null /*RequiredPropertyInfo OrCondition Hotels.Room.RoomKind*/);
-                if (invalid != null)
-                    throw new Rhetos.UserException("It is not allowed to enter {0} because the required property {1} is not set.",
-                        new[] { "Hotels.Room", "RoomKind" },
-                        "DataStructure:Hotels.Room,ID:" + invalid.ID.ToString() + ",Property:RoomKindID", null);
-            }
-            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Room*/
-
-            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
-            try
-            {
-                if (deletedIds.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Delete;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (updatedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Update;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (insertedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Insert;
-                    _executionContext.EntityFrameworkContext.Hotels_Room.AddRange(insertedNew.Select(item => item.ToNavigation()));
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                saveOperation = DomHelper.SaveOperation.None;
-                _executionContext.EntityFrameworkContext.ClearCache();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
-            {
-                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
-        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
-        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.Hotel", @"ID", @"FK_Room_Hotel_HotelID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Room,Property:HotelID,Referenced:Hotels.Hotel";
-                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.RoomKind", @"ID", @"FK_Room_RoomKind_RoomKindID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Room,Property:RoomKindID,Referenced:Hotels.RoomKind";
-                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Reservation", @"RoomID", @"FK_Reservation_Room_RoomID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Reservation,Property:RoomID,Referenced:Hotels.Room";
-                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsUniqueError(interpretedException, @"Hotels.Room", @"IX_Room_RoomNumber"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Room,Property:RoomNumber";
-                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Room*/
-                if (checkUserPermissions)
-                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Room");
-
-                if (interpretedException != null)
-        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
-                var sqlException = _sqlUtility.ExtractSqlException(saveException);
-                if (sqlException != null)
-                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
-                throw;
-            }
-
-            deleted = null;
-            updated = this.Query(updatedNew.Select(item => item.ID));
-            IEnumerable<Common.Queryable.Hotels_Room> inserted = this.Query(insertedNew.Select(item => item.ID));
-
-            bool allEffectsCompleted = false;
-            try
-            {
-                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Room*/
-
-                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Room*/
-
-                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Room");
-
-                /*DataStructureInfo WritableOrm AfterSave Hotels.Room*/
-
-                allEffectsCompleted = true;
-            }
-            finally
-            {
-                if (!allEffectsCompleted)
-                    _executionContext.PersistenceTransaction.DiscardChanges();
-            }
-        }
-
-        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
-        {
-            if (onSave)
-            {
-                var errorIds = this.Filter(this.Query(ids), new SystemRequiredHotel()).Select(item => item.ID).ToArray();
-                if (errorIds.Count() > 0)
-                    foreach (var error in GetErrorMessage_SystemRequiredHotel(errorIds))
-                        yield return error;
-            }
-            if (onSave)
-            {
-                var errorIds = this.Filter(this.Query(ids), new SystemRequiredRoomNumber()).Select(item => item.ID).ToArray();
-                if (errorIds.Count() > 0)
-                    foreach (var error in GetErrorMessage_SystemRequiredRoomNumber(errorIds))
-                        yield return error;
-            }
-            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Room*/
-            yield break;
-        }
-
-        public IEnumerable<InvalidDataMessage> GetErrorMessage_SystemRequiredHotel(IEnumerable<Guid> invalidData_Ids)
-        {
-            const string invalidData_Description = @"System required property {0} is not set.";
-            IDictionary<string, object> metadata = new Dictionary<string, object>();
-            metadata["Validation"] = @"SystemRequiredHotel";
-            metadata[@"Property"] = @"Hotel";
-            /*InvalidDataInfo ErrorMetadata Hotels.Room.SystemRequiredHotel*/
-            return invalidData_Ids.Select(id => new InvalidDataMessage
-            {
-                ID = id,
-                Message = invalidData_Description,
-                MessageParameters = new object[] { @"Reference Hotels.Room.Hotel" },
-                Metadata = metadata
-            });
-            // /*InvalidDataInfo OverrideUserMessages Hotels.Room.SystemRequiredHotel*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
-        }
-
-        public IEnumerable<InvalidDataMessage> GetErrorMessage_SystemRequiredRoomNumber(IEnumerable<Guid> invalidData_Ids)
-        {
-            const string invalidData_Description = @"System required property {0} is not set.";
-            IDictionary<string, object> metadata = new Dictionary<string, object>();
-            metadata["Validation"] = @"SystemRequiredRoomNumber";
-            metadata[@"Property"] = @"RoomNumber";
-            /*InvalidDataInfo ErrorMetadata Hotels.Room.SystemRequiredRoomNumber*/
-            return invalidData_Ids.Select(id => new InvalidDataMessage
-            {
-                ID = id,
-                Message = invalidData_Description,
-                MessageParameters = new object[] { @"ShortString Hotels.Room.RoomNumber" },
-                Metadata = metadata
-            });
-            // /*InvalidDataInfo OverrideUserMessages Hotels.Room.SystemRequiredRoomNumber*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
-        }
-
-        public IQueryable<Common.Queryable.Hotels_Room> Filter(IQueryable<Common.Queryable.Hotels_Room> localSource, Hotels.SystemRequiredHotel localParameter)
-        {
-            Func<IQueryable<Common.Queryable.Hotels_Room>, Common.DomRepository, Hotels.SystemRequiredHotel/*ComposableFilterByInfo AdditionalParametersType Hotels.Room.'Hotels.SystemRequiredHotel'*/, IQueryable<Common.Queryable.Hotels_Room>> filterFunction =
-            (source, repository, parameter) => source.Where(item => item.Hotel == null);
-
-            /*ComposableFilterByInfo BeforeFilter Hotels.Room.'Hotels.SystemRequiredHotel'*/
-            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.SystemRequiredHotel'*/);
-        }
-
-        public IQueryable<Common.Queryable.Hotels_Room> Filter(IQueryable<Common.Queryable.Hotels_Room> localSource, Hotels.SystemRequiredRoomNumber localParameter)
-        {
-            Func<IQueryable<Common.Queryable.Hotels_Room>, Common.DomRepository, Hotels.SystemRequiredRoomNumber/*ComposableFilterByInfo AdditionalParametersType Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/, IQueryable<Common.Queryable.Hotels_Room>> filterFunction =
-            (source, repository, parameter) => source.Where(item => item.RoomNumber == null);
-
-            /*ComposableFilterByInfo BeforeFilter Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/
-            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/);
-        }
-
-        public global::Hotels.Room[] Filter(Hotels.SystemRequiredHotel filter_Parameter)
-        {
-            Func<Common.DomRepository, Hotels.SystemRequiredHotel/*FilterByInfo AdditionalParametersType Hotels.Room.'Hotels.SystemRequiredHotel'*/, Hotels.Room[]> filter_Function =
-                (repository, parameter) => repository.Hotels.Room.Filter(repository.Hotels.Room.Query(), parameter).ToArray();
-
-            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.SystemRequiredHotel'*/);
-        }
-
-        public global::Hotels.Room[] Filter(Hotels.SystemRequiredRoomNumber filter_Parameter)
-        {
-            Func<Common.DomRepository, Hotels.SystemRequiredRoomNumber/*FilterByInfo AdditionalParametersType Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/, Hotels.Room[]> filter_Function =
-                (repository, parameter) => repository.Hotels.Room.Filter(repository.Hotels.Room.Query(), parameter).ToArray();
-
-            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/);
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.Room*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.Good*/
-    public class Good_Repository : /*DataStructureInfo OverrideBaseType Hotels.Good*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Good, Hotels.Good> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Good, Hotels.Good> // Common.ReadableRepositoryBase<Hotels.Good> // global::Common.RepositoryBase
-        , IWritableRepository<Hotels.Good>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Good*/
-    {
-        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.Good*/
-
-        public Good_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Good*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            this._sqlUtility = _sqlUtility;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.Good*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.Good[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_Good> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.Good*/
-            return _executionContext.EntityFrameworkContext.Hotels_Good.AsNoTracking();
-        }
-
-        public void Save(IEnumerable<Hotels.Good> insertedNew, IEnumerable<Hotels.Good> updatedNew, IEnumerable<Hotels.Good> deletedIds, bool checkUserPermissions = false)
-        {
-            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
-                return;
-
-            /*DataStructureInfo WritableOrm ClearContext Hotels.Good*/
-
-            {
-                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Name != null && newItem.Name.Length > 256).FirstOrDefault();
-                if (invalidItem != null)
-                    throw new Rhetos.UserException(
-                        "Maximum length of property {0} is {1}.",
-                        new[] { "Good.Name", "256" },
-                        "DataStructure:Hotels.Good,ID:" + invalidItem.ID.ToString() + ",Property:Name",
-                        null);
-            }
-            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Good*/
-
-            /*DataStructureInfo WritableOrm Initialization Hotels.Good*/
-
-            // Using old data, including lazy loading of navigation properties:
-            IEnumerable<Common.Queryable.Hotels_Good> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Good>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
-            IEnumerable<Common.Queryable.Hotels_Good> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Good>)updated, updatedNew.Select(item => item.ID), item => item.ID);
-
-            if (deletedIds.Count() > 0)
-            {
-                List<Hotels.Service> childItems = _executionContext.Repository.Hotels.Service
-                    .Query(deletedIds.Select(parent => parent.ID))
-                    .Select(child => child.ID).ToList()
-                    .Select(childId => new Hotels.Service { ID = childId }).ToList();
-
-                if (childItems.Count() > 0)
-                    _domRepository.Hotels.Service.Delete(childItems);
-            }
-
-            if (deletedIds.Count() > 0)
-            {
-                List<Hotels.Product> childItems = _executionContext.Repository.Hotels.Product
-                    .Query(deletedIds.Select(parent => parent.ID))
-                    .Select(child => child.ID).ToList()
-                    .Select(childId => new Hotels.Product { ID = childId }).ToList();
-
-                if (childItems.Count() > 0)
-                    _domRepository.Hotels.Product.Delete(childItems);
-            }
-
-            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Good*/
-
-            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Good*/
-
-            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
-            try
-            {
-                if (deletedIds.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Delete;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (updatedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Update;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (insertedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Insert;
-                    _executionContext.EntityFrameworkContext.Hotels_Good.AddRange(insertedNew.Select(item => item.ToNavigation()));
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                saveOperation = DomHelper.SaveOperation.None;
-                _executionContext.EntityFrameworkContext.ClearCache();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
-            {
-                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
-        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
-        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Service", @"ID", @"FK_Service_Good_ID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Service,Property:ID,Referenced:Hotels.Good";
-                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Product", @"ID", @"FK_Product_Good_ID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Product,Property:ID,Referenced:Hotels.Good";
-                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Item", @"GoodID", @"FK_Item_Good_GoodID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Item,Property:GoodID,Referenced:Hotels.Good";
-                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Good*/
-                if (checkUserPermissions)
-                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Good");
-
-                if (interpretedException != null)
-        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
-                var sqlException = _sqlUtility.ExtractSqlException(saveException);
-                if (sqlException != null)
-                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
-                throw;
-            }
-
-            deleted = null;
-            updated = this.Query(updatedNew.Select(item => item.ID));
-            IEnumerable<Common.Queryable.Hotels_Good> inserted = this.Query(insertedNew.Select(item => item.ID));
-
-            bool allEffectsCompleted = false;
-            try
-            {
-                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Good*/
-
-                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Good*/
-
-                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Good");
-
-                /*DataStructureInfo WritableOrm AfterSave Hotels.Good*/
-
-                allEffectsCompleted = true;
-            }
-            finally
-            {
-                if (!allEffectsCompleted)
-                    _executionContext.PersistenceTransaction.DiscardChanges();
-            }
-        }
-
-        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
-        {
-            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Good*/
-            yield break;
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.Good*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.GoodKind*/
-    public class GoodKind_Repository : /*DataStructureInfo OverrideBaseType Hotels.GoodKind*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_GoodKind, Hotels.GoodKind> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_GoodKind, Hotels.GoodKind> // Common.ReadableRepositoryBase<Hotels.GoodKind> // global::Common.RepositoryBase
-        , IWritableRepository<Hotels.GoodKind>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.GoodKind*/
-    {
-        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.GoodKind*/
-
-        public GoodKind_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.GoodKind*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            this._sqlUtility = _sqlUtility;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.GoodKind*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.GoodKind[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_GoodKind> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.GoodKind*/
-            return _executionContext.EntityFrameworkContext.Hotels_GoodKind.AsNoTracking();
-        }
-
-        public void Save(IEnumerable<Hotels.GoodKind> insertedNew, IEnumerable<Hotels.GoodKind> updatedNew, IEnumerable<Hotels.GoodKind> deletedIds, bool checkUserPermissions = false)
-        {
-            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
-                return;
-
-            /*DataStructureInfo WritableOrm ClearContext Hotels.GoodKind*/
-
-            {
-                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Name != null && newItem.Name.Length > 256).FirstOrDefault();
-                if (invalidItem != null)
-                    throw new Rhetos.UserException(
-                        "Maximum length of property {0} is {1}.",
-                        new[] { "GoodKind.Name", "256" },
-                        "DataStructure:Hotels.GoodKind,ID:" + invalidItem.ID.ToString() + ",Property:Name",
-                        null);
-            }
-            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.GoodKind*/
-
-            /*DataStructureInfo WritableOrm Initialization Hotels.GoodKind*/
-
-            // Using old data, including lazy loading of navigation properties:
-            IEnumerable<Common.Queryable.Hotels_GoodKind> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_GoodKind>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
-            IEnumerable<Common.Queryable.Hotels_GoodKind> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_GoodKind>)updated, updatedNew.Select(item => item.ID), item => item.ID);
-
-            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.GoodKind*/
-
-            {
-                var invalid = insertedNew.Concat(updatedNew).FirstOrDefault(item => item.Name == null || string.IsNullOrWhiteSpace(item.Name) /*RequiredPropertyInfo OrCondition Hotels.GoodKind.Name*/);
-                if (invalid != null)
-                    throw new Rhetos.UserException("It is not allowed to enter {0} because the required property {1} is not set.",
-                        new[] { "Hotels.GoodKind", "Name" },
-                        "DataStructure:Hotels.GoodKind,ID:" + invalid.ID.ToString() + ",Property:Name", null);
-            }
-            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.GoodKind*/
-
-            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
-            try
-            {
-                if (deletedIds.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Delete;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (updatedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Update;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (insertedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Insert;
-                    _executionContext.EntityFrameworkContext.Hotels_GoodKind.AddRange(insertedNew.Select(item => item.ToNavigation()));
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                saveOperation = DomHelper.SaveOperation.None;
-                _executionContext.EntityFrameworkContext.ClearCache();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
-            {
-                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
-        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
-        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Service", @"GoodKindID", @"FK_Service_GoodKind_GoodKindID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Service,Property:GoodKindID,Referenced:Hotels.GoodKind";
-                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Product", @"GoodKindID", @"FK_Product_GoodKind_GoodKindID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Product,Property:GoodKindID,Referenced:Hotels.GoodKind";
-                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsUniqueError(interpretedException, @"Hotels.GoodKind", @"IX_GoodKind_Name"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.GoodKind,Property:Name";
-                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.GoodKind*/
-                if (checkUserPermissions)
-                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.GoodKind");
-
-                if (interpretedException != null)
-        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
-                var sqlException = _sqlUtility.ExtractSqlException(saveException);
-                if (sqlException != null)
-                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
-                throw;
-            }
-
-            deleted = null;
-            updated = this.Query(updatedNew.Select(item => item.ID));
-            IEnumerable<Common.Queryable.Hotels_GoodKind> inserted = this.Query(insertedNew.Select(item => item.ID));
-
-            bool allEffectsCompleted = false;
-            try
-            {
-                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.GoodKind*/
-
-                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.GoodKind*/
-
-                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.GoodKind");
-
-                /*DataStructureInfo WritableOrm AfterSave Hotels.GoodKind*/
-
-                allEffectsCompleted = true;
-            }
-            finally
-            {
-                if (!allEffectsCompleted)
-                    _executionContext.PersistenceTransaction.DiscardChanges();
-            }
-        }
-
-        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
-        {
-            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.GoodKind*/
-            yield break;
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.GoodKind*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.Service*/
-    public class Service_Repository : /*DataStructureInfo OverrideBaseType Hotels.Service*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Service, Hotels.Service> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Service, Hotels.Service> // Common.ReadableRepositoryBase<Hotels.Service> // global::Common.RepositoryBase
-        , IWritableRepository<Hotels.Service>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Service*/
-    {
-        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.Service*/
-
-        public Service_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Service*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            this._sqlUtility = _sqlUtility;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.Service*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.Service[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_Service> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.Service*/
-            return _executionContext.EntityFrameworkContext.Hotels_Service.AsNoTracking();
-        }
-
-        public void Save(IEnumerable<Hotels.Service> insertedNew, IEnumerable<Hotels.Service> updatedNew, IEnumerable<Hotels.Service> deletedIds, bool checkUserPermissions = false)
-        {
-            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
-                return;
-
-            /*DataStructureInfo WritableOrm ClearContext Hotels.Service*/
-
-            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Service*/
-
-            /*DataStructureInfo WritableOrm Initialization Hotels.Service*/
-
-            // Using old data, including lazy loading of navigation properties:
-            IEnumerable<Common.Queryable.Hotels_Service> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Service>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
-            IEnumerable<Common.Queryable.Hotels_Service> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Service>)updated, updatedNew.Select(item => item.ID), item => item.ID);
-
-            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Service*/
-
-            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Service*/
-
-            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
-            try
-            {
-                if (deletedIds.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Delete;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (updatedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Update;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (insertedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Insert;
-                    _executionContext.EntityFrameworkContext.Hotels_Service.AddRange(insertedNew.Select(item => item.ToNavigation()));
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                saveOperation = DomHelper.SaveOperation.None;
-                _executionContext.EntityFrameworkContext.ClearCache();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
-            {
-                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
-        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
-        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.GoodKind", @"ID", @"FK_Service_GoodKind_GoodKindID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Service,Property:GoodKindID,Referenced:Hotels.GoodKind";
-                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Service*/
-                if (checkUserPermissions)
-                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Service");
-
-                if (interpretedException != null)
-        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
-                var sqlException = _sqlUtility.ExtractSqlException(saveException);
-                if (sqlException != null)
-                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
-                throw;
-            }
-
-            deleted = null;
-            updated = this.Query(updatedNew.Select(item => item.ID));
-            IEnumerable<Common.Queryable.Hotels_Service> inserted = this.Query(insertedNew.Select(item => item.ID));
-
-            bool allEffectsCompleted = false;
-            try
-            {
-                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Service*/
-
-                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Service*/
-
-                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Service");
-
-                /*DataStructureInfo WritableOrm AfterSave Hotels.Service*/
-
-                allEffectsCompleted = true;
-            }
-            finally
-            {
-                if (!allEffectsCompleted)
-                    _executionContext.PersistenceTransaction.DiscardChanges();
-            }
-        }
-
-        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
-        {
-            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Service*/
-            yield break;
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.Service*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.Product*/
-    public class Product_Repository : /*DataStructureInfo OverrideBaseType Hotels.Product*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Product, Hotels.Product> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Product, Hotels.Product> // Common.ReadableRepositoryBase<Hotels.Product> // global::Common.RepositoryBase
-        , IWritableRepository<Hotels.Product>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Product*/
-    {
-        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.Product*/
-
-        public Product_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Product*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            this._sqlUtility = _sqlUtility;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.Product*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.Product[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_Product> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.Product*/
-            return _executionContext.EntityFrameworkContext.Hotels_Product.AsNoTracking();
-        }
-
-        public void Save(IEnumerable<Hotels.Product> insertedNew, IEnumerable<Hotels.Product> updatedNew, IEnumerable<Hotels.Product> deletedIds, bool checkUserPermissions = false)
-        {
-            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
-                return;
-
-            /*DataStructureInfo WritableOrm ClearContext Hotels.Product*/
-
-            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Product*/
-
-            /*DataStructureInfo WritableOrm Initialization Hotels.Product*/
-
-            // Using old data, including lazy loading of navigation properties:
-            IEnumerable<Common.Queryable.Hotels_Product> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Product>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
-            IEnumerable<Common.Queryable.Hotels_Product> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Product>)updated, updatedNew.Select(item => item.ID), item => item.ID);
-
-            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Product*/
-
-            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Product*/
-
-            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
-            try
-            {
-                if (deletedIds.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Delete;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (updatedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Update;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (insertedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Insert;
-                    _executionContext.EntityFrameworkContext.Hotels_Product.AddRange(insertedNew.Select(item => item.ToNavigation()));
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                saveOperation = DomHelper.SaveOperation.None;
-                _executionContext.EntityFrameworkContext.ClearCache();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
-            {
-                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
-        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
-        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.GoodKind", @"ID", @"FK_Product_GoodKind_GoodKindID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Product,Property:GoodKindID,Referenced:Hotels.GoodKind";
-                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Product*/
-                if (checkUserPermissions)
-                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Product");
-
-                if (interpretedException != null)
-        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
-                var sqlException = _sqlUtility.ExtractSqlException(saveException);
-                if (sqlException != null)
-                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
-                throw;
-            }
-
-            deleted = null;
-            updated = this.Query(updatedNew.Select(item => item.ID));
-            IEnumerable<Common.Queryable.Hotels_Product> inserted = this.Query(insertedNew.Select(item => item.ID));
-
-            bool allEffectsCompleted = false;
-            try
-            {
-                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Product*/
-
-                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Product*/
-
-                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Product");
-
-                /*DataStructureInfo WritableOrm AfterSave Hotels.Product*/
-
-                allEffectsCompleted = true;
-            }
-            finally
-            {
-                if (!allEffectsCompleted)
-                    _executionContext.PersistenceTransaction.DiscardChanges();
-            }
-        }
-
-        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
-        {
-            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Product*/
-            yield break;
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.Product*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.Reservation*/
-    public class Reservation_Repository : /*DataStructureInfo OverrideBaseType Hotels.Reservation*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Reservation, Hotels.Reservation> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Reservation, Hotels.Reservation> // Common.ReadableRepositoryBase<Hotels.Reservation> // global::Common.RepositoryBase
-        , IWritableRepository<Hotels.Reservation>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Reservation*/
-    {
-        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.Reservation*/
-
-        public Reservation_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Reservation*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            this._sqlUtility = _sqlUtility;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.Reservation*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.Reservation[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_Reservation> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.Reservation*/
-            return _executionContext.EntityFrameworkContext.Hotels_Reservation.AsNoTracking();
-        }
-
-        public void Save(IEnumerable<Hotels.Reservation> insertedNew, IEnumerable<Hotels.Reservation> updatedNew, IEnumerable<Hotels.Reservation> deletedIds, bool checkUserPermissions = false)
-        {
-            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
-                return;
-
-            /*DataStructureInfo WritableOrm ClearContext Hotels.Reservation*/
-
-            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Reservation*/
-
-            /*DataStructureInfo WritableOrm Initialization Hotels.Reservation*/
-
-            // Using old data, including lazy loading of navigation properties:
-            IEnumerable<Common.Queryable.Hotels_Reservation> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Reservation>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
-            IEnumerable<Common.Queryable.Hotels_Reservation> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Reservation>)updated, updatedNew.Select(item => item.ID), item => item.ID);
-
-            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Reservation*/
-
-            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Reservation*/
-
-            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
-            try
-            {
-                if (deletedIds.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Delete;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (updatedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Update;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (insertedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Insert;
-                    _executionContext.EntityFrameworkContext.Hotels_Reservation.AddRange(insertedNew.Select(item => item.ToNavigation()));
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                saveOperation = DomHelper.SaveOperation.None;
-                _executionContext.EntityFrameworkContext.ClearCache();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
-            {
-                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
-        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
-        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.Guest", @"ID", @"FK_Reservation_Guest_GuestID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Reservation,Property:GuestID,Referenced:Hotels.Guest";
-                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.Room", @"ID", @"FK_Reservation_Room_RoomID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Reservation,Property:RoomID,Referenced:Hotels.Room";
-                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Invoice", @"ReservationID", @"FK_Invoice_Reservation_ReservationID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Invoice,Property:ReservationID,Referenced:Hotels.Reservation";
-                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Reservation*/
-                if (checkUserPermissions)
-                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Reservation");
-
-                if (interpretedException != null)
-        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
-                var sqlException = _sqlUtility.ExtractSqlException(saveException);
-                if (sqlException != null)
-                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
-                throw;
-            }
-
-            deleted = null;
-            updated = this.Query(updatedNew.Select(item => item.ID));
-            IEnumerable<Common.Queryable.Hotels_Reservation> inserted = this.Query(insertedNew.Select(item => item.ID));
-
-            bool allEffectsCompleted = false;
-            try
-            {
-                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Reservation*/
-
-                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Reservation*/
-
-                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Reservation");
-
-                /*DataStructureInfo WritableOrm AfterSave Hotels.Reservation*/
-
-                allEffectsCompleted = true;
-            }
-            finally
-            {
-                if (!allEffectsCompleted)
-                    _executionContext.PersistenceTransaction.DiscardChanges();
-            }
-        }
-
-        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
-        {
-            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Reservation*/
-            yield break;
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.Reservation*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.ReservationsForCertainRoom*/
-    public class ReservationsForCertainRoom_Repository : /*DataStructureInfo OverrideBaseType Hotels.ReservationsForCertainRoom*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_ReservationsForCertainRoom, Hotels.ReservationsForCertainRoom> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_ReservationsForCertainRoom, Hotels.ReservationsForCertainRoom> // Common.ReadableRepositoryBase<Hotels.ReservationsForCertainRoom> // global::Common.RepositoryBase
-        /*DataStructureInfo RepositoryInterface Hotels.ReservationsForCertainRoom*/
-    {
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.ReservationsForCertainRoom*/
-
-        public ReservationsForCertainRoom_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext/*DataStructureInfo RepositoryConstructorArguments Hotels.ReservationsForCertainRoom*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.ReservationsForCertainRoom*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.ReservationsForCertainRoom[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_ReservationsForCertainRoom> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.ReservationsForCertainRoom*/
-            return _executionContext.EntityFrameworkContext.Hotels_ReservationsForCertainRoom.AsNoTracking();
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.ReservationsForCertainRoom*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.RoomGrid*/
-    public class RoomGrid_Repository : /*DataStructureInfo OverrideBaseType Hotels.RoomGrid*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_RoomGrid, Hotels.RoomGrid> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_RoomGrid, Hotels.RoomGrid> // Common.ReadableRepositoryBase<Hotels.RoomGrid> // global::Common.RepositoryBase
-        /*DataStructureInfo RepositoryInterface Hotels.RoomGrid*/
-    {
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.RoomGrid*/
-
-        public RoomGrid_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext/*DataStructureInfo RepositoryConstructorArguments Hotels.RoomGrid*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.RoomGrid*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.RoomGrid[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_RoomGrid> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.RoomGrid*/
-            return Query(_domRepository.Hotels.Room.Query());
-        }
-
-        public IQueryable<Common.Queryable.Hotels_RoomGrid> Query(IQueryable<Common.Queryable.Hotels_Room> source)
-        {
-            return source.Select(item => new Common.Queryable.Hotels_RoomGrid
-                {
-                    ID = item.ID,
-                    Base = item,
-                    RoomNumber = item.RoomNumber,
-                    HotelName = item.Hotel.Name,
-                    NumberOfReservations = item.Extension_ReservationsForCertainRoom.NumberOfReservations,
-                    /*BrowseDataStructureInfo BrowseProperties Hotels.RoomGrid*/
-                });
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.RoomGrid*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.InsertViseSoba*/
-    public class InsertViseSoba_Repository : /*DataStructureInfo OverrideBaseType Hotels.InsertViseSoba*/ global::Common.RepositoryBase
-        , IActionRepository/*DataStructureInfo RepositoryInterface Hotels.InsertViseSoba*/
-    {
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.InsertViseSoba*/
-
-        public InsertViseSoba_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext/*DataStructureInfo RepositoryConstructorArguments Hotels.InsertViseSoba*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.InsertViseSoba*/
-        }
-
-        public void Execute(Hotels.InsertViseSoba actionParameter)
-        {
-            Action<Hotels.InsertViseSoba, Common.DomRepository, IUserInfo/*DataStructureInfo AdditionalParametersType Hotels.InsertViseSoba*/> action_Object = (parameter, repository, userInfo) =>
-	{
-		for (int i=0; i<parameter.RoomCount; i++)
-		{
-			var newRoom = new Hotels.Room 
-			{ 
-				RoomNumber = parameter.Prefix, 
-				Remark = parameter.Remark, 
-				HotelID = parameter.HotelID,
-				RoomKindID = parameter.RoomKindID
-			};
-			repository.Hotels.Room.Insert(newRoom);
-		}
-	};
-
-            bool allEffectsCompleted = false;
-            try
-            {
-                /*ActionInfo BeforeAction Hotels.InsertViseSoba*/
-                action_Object(actionParameter, _domRepository, _executionContext.UserInfo/*DataStructureInfo AdditionalParametersArgument Hotels.InsertViseSoba*/);
-                /*ActionInfo AfterAction Hotels.InsertViseSoba*/
-                allEffectsCompleted = true;
-            }
-            finally
-            {
-                if (!allEffectsCompleted)
-                    _executionContext.PersistenceTransaction.DiscardChanges();
-            }
-        }
-
-        void IActionRepository.Execute(object actionParameter)
-        {
-            Execute((Hotels.InsertViseSoba) actionParameter);
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.InsertViseSoba*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.Invoice*/
-    public class Invoice_Repository : /*DataStructureInfo OverrideBaseType Hotels.Invoice*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Invoice, Hotels.Invoice> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Invoice, Hotels.Invoice> // Common.ReadableRepositoryBase<Hotels.Invoice> // global::Common.RepositoryBase
-        , IWritableRepository<Hotels.Invoice>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Invoice*/
-    {
-        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.Invoice*/
-
-        public Invoice_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Invoice*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            this._sqlUtility = _sqlUtility;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.Invoice*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.Invoice[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_Invoice> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.Invoice*/
-            return _executionContext.EntityFrameworkContext.Hotels_Invoice.AsNoTracking();
-        }
-
-        public void Save(IEnumerable<Hotels.Invoice> insertedNew, IEnumerable<Hotels.Invoice> updatedNew, IEnumerable<Hotels.Invoice> deletedIds, bool checkUserPermissions = false)
-        {
-            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
-                return;
-
-            /*DataStructureInfo WritableOrm ClearContext Hotels.Invoice*/
-
-            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Invoice*/
-
-            /*DataStructureInfo WritableOrm Initialization Hotels.Invoice*/
-
-            // Using old data, including lazy loading of navigation properties:
-            IEnumerable<Common.Queryable.Hotels_Invoice> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Invoice>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
-            IEnumerable<Common.Queryable.Hotels_Invoice> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Invoice>)updated, updatedNew.Select(item => item.ID), item => item.ID);
-
-            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Invoice*/
-
-            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Invoice*/
-
-            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
-            try
-            {
-                if (deletedIds.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Delete;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (updatedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Update;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (insertedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Insert;
-                    _executionContext.EntityFrameworkContext.Hotels_Invoice.AddRange(insertedNew.Select(item => item.ToNavigation()));
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                saveOperation = DomHelper.SaveOperation.None;
-                _executionContext.EntityFrameworkContext.ClearCache();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
-            {
-                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
-        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
-        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.Reservation", @"ID", @"FK_Invoice_Reservation_ReservationID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Invoice,Property:ReservationID,Referenced:Hotels.Reservation";
-                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Item", @"InvoiceID", @"FK_Item_Invoice_InvoiceID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Item,Property:InvoiceID,Referenced:Hotels.Invoice";
-                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Invoice*/
-                if (checkUserPermissions)
-                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Invoice");
-
-                if (interpretedException != null)
-        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
-                var sqlException = _sqlUtility.ExtractSqlException(saveException);
-                if (sqlException != null)
-                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
-                throw;
-            }
-
-            deleted = null;
-            updated = this.Query(updatedNew.Select(item => item.ID));
-            IEnumerable<Common.Queryable.Hotels_Invoice> inserted = this.Query(insertedNew.Select(item => item.ID));
-
-            bool allEffectsCompleted = false;
-            try
-            {
-                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Invoice*/
-
-                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Invoice*/
-
-                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Invoice");
-
-                /*DataStructureInfo WritableOrm AfterSave Hotels.Invoice*/
-
-                allEffectsCompleted = true;
-            }
-            finally
-            {
-                if (!allEffectsCompleted)
-                    _executionContext.PersistenceTransaction.DiscardChanges();
-            }
-        }
-
-        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
-        {
-            if (onSave)
-            {
-                var errorIds = this.Filter(this.Query(ids), new Hotels.Discount_MaxValueFilter()).Select(item => item.ID).ToArray();
-                if (errorIds.Count() > 0)
-                    foreach (var error in GetErrorMessage_Discount_MaxValueFilter(errorIds))
-                        yield return error;
-            }
-            if (onSave)
-            {
-                var errorIds = this.Filter(this.Query(ids), new Hotels.Discount_MinValueFilter()).Select(item => item.ID).ToArray();
-                if (errorIds.Count() > 0)
-                    foreach (var error in GetErrorMessage_Discount_MinValueFilter(errorIds))
-                        yield return error;
-            }
-            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Invoice*/
-            yield break;
-        }
-
-        public IQueryable<Common.Queryable.Hotels_Invoice> Filter(IQueryable<Common.Queryable.Hotels_Invoice> localSource, Hotels.Discount_MaxValueFilter localParameter)
-        {
-            Func<IQueryable<Common.Queryable.Hotels_Invoice>, Common.DomRepository, Hotels.Discount_MaxValueFilter/*ComposableFilterByInfo AdditionalParametersType Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/, IQueryable<Common.Queryable.Hotels_Invoice>> filterFunction =
-            (items, repository, parameter) => { int limit = 1; return items.Where(item => item.Discount != null && item.Discount > limit); };
-
-            /*ComposableFilterByInfo BeforeFilter Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/
-            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/);
-        }
-
-        public IEnumerable<InvalidDataMessage> GetErrorMessage_Discount_MaxValueFilter(IEnumerable<Guid> invalidData_Ids)
-        {
-            const string invalidData_Description = @"Maximum value of {0} is {1}.";
-            IDictionary<string, object> metadata = new Dictionary<string, object>();
-            metadata["Validation"] = @"Hotels.Discount_MaxValueFilter";
-            metadata[@"Property"] = @"Discount";
-            /*InvalidDataInfo ErrorMetadata Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/
-            return invalidData_Ids.Select(id => new InvalidDataMessage
-            {
-                ID = id,
-                Message = invalidData_Description,
-                MessageParameters = new object[] { @"Discount", @"1" },
-                Metadata = metadata
-            });
-            // /*InvalidDataInfo OverrideUserMessages Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
-        }
-
-        public IQueryable<Common.Queryable.Hotels_Invoice> Filter(IQueryable<Common.Queryable.Hotels_Invoice> localSource, Hotels.Discount_MinValueFilter localParameter)
-        {
-            Func<IQueryable<Common.Queryable.Hotels_Invoice>, Common.DomRepository, Hotels.Discount_MinValueFilter/*ComposableFilterByInfo AdditionalParametersType Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/, IQueryable<Common.Queryable.Hotels_Invoice>> filterFunction =
-            (items, repository, parameter) => { int limit = 0; return items.Where(item => item.Discount != null && item.Discount < limit); };
-
-            /*ComposableFilterByInfo BeforeFilter Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/
-            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/);
-        }
-
-        public IEnumerable<InvalidDataMessage> GetErrorMessage_Discount_MinValueFilter(IEnumerable<Guid> invalidData_Ids)
-        {
-            const string invalidData_Description = @"Minimum value of {0} is {1}.";
-            IDictionary<string, object> metadata = new Dictionary<string, object>();
-            metadata["Validation"] = @"Hotels.Discount_MinValueFilter";
-            metadata[@"Property"] = @"Discount";
-            /*InvalidDataInfo ErrorMetadata Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/
-            return invalidData_Ids.Select(id => new InvalidDataMessage
-            {
-                ID = id,
-                Message = invalidData_Description,
-                MessageParameters = new object[] { @"Discount", @"0" },
-                Metadata = metadata
-            });
-            // /*InvalidDataInfo OverrideUserMessages Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
-        }
-
-        public global::Hotels.Invoice[] Filter(Hotels.Discount_MaxValueFilter filter_Parameter)
-        {
-            Func<Common.DomRepository, Hotels.Discount_MaxValueFilter/*FilterByInfo AdditionalParametersType Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/, Hotels.Invoice[]> filter_Function =
-                (repository, parameter) => repository.Hotels.Invoice.Filter(repository.Hotels.Invoice.Query(), parameter).ToArray();
-
-            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/);
-        }
-
-        public global::Hotels.Invoice[] Filter(Hotels.Discount_MinValueFilter filter_Parameter)
-        {
-            Func<Common.DomRepository, Hotels.Discount_MinValueFilter/*FilterByInfo AdditionalParametersType Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/, Hotels.Invoice[]> filter_Function =
-                (repository, parameter) => repository.Hotels.Invoice.Filter(repository.Hotels.Invoice.Query(), parameter).ToArray();
-
-            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/);
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.Invoice*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.Item*/
-    public class Item_Repository : /*DataStructureInfo OverrideBaseType Hotels.Item*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Item, Hotels.Item> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Item, Hotels.Item> // Common.ReadableRepositoryBase<Hotels.Item> // global::Common.RepositoryBase
-        , IWritableRepository<Hotels.Item>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Item*/
-    {
-        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.Item*/
-
-        public Item_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Item*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            this._sqlUtility = _sqlUtility;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.Item*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.Item[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_Item> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.Item*/
-            return _executionContext.EntityFrameworkContext.Hotels_Item.AsNoTracking();
-        }
-
-        public void Save(IEnumerable<Hotels.Item> insertedNew, IEnumerable<Hotels.Item> updatedNew, IEnumerable<Hotels.Item> deletedIds, bool checkUserPermissions = false)
-        {
-            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
-                return;
-
-            /*DataStructureInfo WritableOrm ClearContext Hotels.Item*/
-
-            {
-                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Name != null && newItem.Name.Length > 256).FirstOrDefault();
-                if (invalidItem != null)
-                    throw new Rhetos.UserException(
-                        "Maximum length of property {0} is {1}.",
-                        new[] { "Item.Name", "256" },
-                        "DataStructure:Hotels.Item,ID:" + invalidItem.ID.ToString() + ",Property:Name",
-                        null);
-            }
-            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Item*/
-
-            /*DataStructureInfo WritableOrm Initialization Hotels.Item*/
-
-            // Using old data, including lazy loading of navigation properties:
-            IEnumerable<Common.Queryable.Hotels_Item> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Item>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
-            IEnumerable<Common.Queryable.Hotels_Item> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
-            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Item>)updated, updatedNew.Select(item => item.ID), item => item.ID);
-
-            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Item*/
-
-            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Item*/
-
-            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
-            try
-            {
-                if (deletedIds.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Delete;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (updatedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Update;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
-                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
-                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                if (insertedNew.Count() > 0)
-                {
-                    saveOperation = DomHelper.SaveOperation.Insert;
-                    _executionContext.EntityFrameworkContext.Hotels_Item.AddRange(insertedNew.Select(item => item.ToNavigation()));
-                    _executionContext.EntityFrameworkContext.SaveChanges();
-                }
-
-                saveOperation = DomHelper.SaveOperation.None;
-                _executionContext.EntityFrameworkContext.ClearCache();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
-            {
-                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
-        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
-        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.Good", @"ID", @"FK_Item_Good_GoodID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Item,Property:GoodID,Referenced:Hotels.Good";
-                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.Invoice", @"ID", @"FK_Item_Invoice_InvoiceID"))
-                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Item,Property:InvoiceID,Referenced:Hotels.Invoice";
-                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Item*/
-                if (checkUserPermissions)
-                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Item");
-
-                if (interpretedException != null)
-        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
-                var sqlException = _sqlUtility.ExtractSqlException(saveException);
-                if (sqlException != null)
-                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
-                throw;
-            }
-
-            deleted = null;
-            updated = this.Query(updatedNew.Select(item => item.ID));
-            IEnumerable<Common.Queryable.Hotels_Item> inserted = this.Query(insertedNew.Select(item => item.ID));
-
-            bool allEffectsCompleted = false;
-            try
-            {
-                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Item*/
-
-                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Item*/
-
-                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Item");
-
-                /*DataStructureInfo WritableOrm AfterSave Hotels.Item*/
-
-                allEffectsCompleted = true;
-            }
-            finally
-            {
-                if (!allEffectsCompleted)
-                    _executionContext.PersistenceTransaction.DiscardChanges();
-            }
-        }
-
-        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
-        {
-            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Item*/
-            yield break;
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.Item*/
-    }
-
-    /*DataStructureInfo RepositoryAttributes Hotels.NumberOfRoomsWithoutLockMark*/
-    public class NumberOfRoomsWithoutLockMark_Repository : /*DataStructureInfo OverrideBaseType Hotels.NumberOfRoomsWithoutLockMark*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark, Hotels.NumberOfRoomsWithoutLockMark> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark, Hotels.NumberOfRoomsWithoutLockMark> // Common.ReadableRepositoryBase<Hotels.NumberOfRoomsWithoutLockMark> // global::Common.RepositoryBase
-        /*DataStructureInfo RepositoryInterface Hotels.NumberOfRoomsWithoutLockMark*/
-    {
-        /*DataStructureInfo RepositoryPrivateMembers Hotels.NumberOfRoomsWithoutLockMark*/
-
-        public NumberOfRoomsWithoutLockMark_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext/*DataStructureInfo RepositoryConstructorArguments Hotels.NumberOfRoomsWithoutLockMark*/)
-        {
-            _domRepository = domRepository;
-            _executionContext = executionContext;
-            /*DataStructureInfo RepositoryConstructorCode Hotels.NumberOfRoomsWithoutLockMark*/
-        }
-
-        [Obsolete("Use Load() or Query() method.")]
-        public override global::Hotels.NumberOfRoomsWithoutLockMark[] All()
-        {
-            return Query().ToSimple().ToArray();
-        }
-
-        public override IQueryable<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark> Query()
-        {
-            /*DataStructureInfo RepositoryBeforeQuery Hotels.NumberOfRoomsWithoutLockMark*/
-            return _executionContext.EntityFrameworkContext.Hotels_NumberOfRoomsWithoutLockMark.AsNoTracking();
-        }
-
-        /*DataStructureInfo RepositoryMembers Hotels.NumberOfRoomsWithoutLockMark*/
-    }
-
-    /*ModuleInfo HelperNamespaceMembers Hotels*/
 }
 
 namespace Common._Helper
@@ -5626,6 +3511,2733 @@ namespace Common._Helper
     }
 
     /*ModuleInfo HelperNamespaceMembers Common*/
+}
+
+namespace Hotels._Helper
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Linq.Expressions;
+    using System.Runtime.Serialization;
+    using Rhetos.Dom.DefaultConcepts;
+    using Rhetos.Utilities;
+
+    /*ModuleInfo Using Hotels*/
+
+    public class _ModuleRepository
+    {
+        private readonly Rhetos.Extensibility.INamedPlugins<IRepository> _repositories;
+
+        public _ModuleRepository(Rhetos.Extensibility.INamedPlugins<IRepository> repositories)
+        {
+            _repositories = repositories;
+        }
+
+        private Hotel_Repository _Hotel_Repository;
+        public Hotel_Repository Hotel { get { return _Hotel_Repository ?? (_Hotel_Repository = (Hotel_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Hotel")); } }
+
+        private Guest_Repository _Guest_Repository;
+        public Guest_Repository Guest { get { return _Guest_Repository ?? (_Guest_Repository = (Guest_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Guest")); } }
+
+        private RoomKind_Repository _RoomKind_Repository;
+        public RoomKind_Repository RoomKind { get { return _RoomKind_Repository ?? (_RoomKind_Repository = (RoomKind_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.RoomKind")); } }
+
+        private Room_Repository _Room_Repository;
+        public Room_Repository Room { get { return _Room_Repository ?? (_Room_Repository = (Room_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Room")); } }
+
+        private Good_Repository _Good_Repository;
+        public Good_Repository Good { get { return _Good_Repository ?? (_Good_Repository = (Good_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Good")); } }
+
+        private GoodKind_Repository _GoodKind_Repository;
+        public GoodKind_Repository GoodKind { get { return _GoodKind_Repository ?? (_GoodKind_Repository = (GoodKind_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.GoodKind")); } }
+
+        private Service_Repository _Service_Repository;
+        public Service_Repository Service { get { return _Service_Repository ?? (_Service_Repository = (Service_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Service")); } }
+
+        private Product_Repository _Product_Repository;
+        public Product_Repository Product { get { return _Product_Repository ?? (_Product_Repository = (Product_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Product")); } }
+
+        private Reservation_Repository _Reservation_Repository;
+        public Reservation_Repository Reservation { get { return _Reservation_Repository ?? (_Reservation_Repository = (Reservation_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Reservation")); } }
+
+        private ReservationsForCertainRoom_Repository _ReservationsForCertainRoom_Repository;
+        public ReservationsForCertainRoom_Repository ReservationsForCertainRoom { get { return _ReservationsForCertainRoom_Repository ?? (_ReservationsForCertainRoom_Repository = (ReservationsForCertainRoom_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.ReservationsForCertainRoom")); } }
+
+        private RoomGrid_Repository _RoomGrid_Repository;
+        public RoomGrid_Repository RoomGrid { get { return _RoomGrid_Repository ?? (_RoomGrid_Repository = (RoomGrid_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.RoomGrid")); } }
+
+        private InsertViseSoba_Repository _InsertViseSoba_Repository;
+        public InsertViseSoba_Repository InsertViseSoba { get { return _InsertViseSoba_Repository ?? (_InsertViseSoba_Repository = (InsertViseSoba_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.InsertViseSoba")); } }
+
+        private Invoice_Repository _Invoice_Repository;
+        public Invoice_Repository Invoice { get { return _Invoice_Repository ?? (_Invoice_Repository = (Invoice_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Invoice")); } }
+
+        private Item_Repository _Item_Repository;
+        public Item_Repository Item { get { return _Item_Repository ?? (_Item_Repository = (Item_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.Item")); } }
+
+        private NumberOfRoomsWithoutLockMark_Repository _NumberOfRoomsWithoutLockMark_Repository;
+        public NumberOfRoomsWithoutLockMark_Repository NumberOfRoomsWithoutLockMark { get { return _NumberOfRoomsWithoutLockMark_Repository ?? (_NumberOfRoomsWithoutLockMark_Repository = (NumberOfRoomsWithoutLockMark_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.NumberOfRoomsWithoutLockMark")); } }
+
+        private S1_Repository _S1_Repository;
+        public S1_Repository S1 { get { return _S1_Repository ?? (_S1_Repository = (S1_Repository)Rhetos.Extensibility.NamedPluginsExtensions.GetPlugin(_repositories, @"Hotels.S1")); } }
+
+        /*ModuleInfo RepositoryMembers Hotels*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.Hotel*/
+    public class Hotel_Repository : /*DataStructureInfo OverrideBaseType Hotels.Hotel*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Hotel, Hotels.Hotel> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Hotel, Hotels.Hotel> // Common.ReadableRepositoryBase<Hotels.Hotel> // global::Common.RepositoryBase
+        , IWritableRepository<Hotels.Hotel>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Hotel*/
+    {
+        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.Hotel*/
+
+        public Hotel_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Hotel*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            this._sqlUtility = _sqlUtility;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.Hotel*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.Hotel[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_Hotel> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.Hotel*/
+            return _executionContext.EntityFrameworkContext.Hotels_Hotel.AsNoTracking();
+        }
+
+        public void Save(IEnumerable<Hotels.Hotel> insertedNew, IEnumerable<Hotels.Hotel> updatedNew, IEnumerable<Hotels.Hotel> deletedIds, bool checkUserPermissions = false)
+        {
+            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
+                return;
+
+            /*DataStructureInfo WritableOrm ClearContext Hotels.Hotel*/
+
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Name != null && newItem.Name.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "Hotel.Name", "256" },
+                        "DataStructure:Hotels.Hotel,ID:" + invalidItem.ID.ToString() + ",Property:Name",
+                        null);
+            }
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Address != null && newItem.Address.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "Hotel.Address", "256" },
+                        "DataStructure:Hotels.Hotel,ID:" + invalidItem.ID.ToString() + ",Property:Address",
+                        null);
+            }
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Manager != null && newItem.Manager.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "Hotel.Manager", "256" },
+                        "DataStructure:Hotels.Hotel,ID:" + invalidItem.ID.ToString() + ",Property:Manager",
+                        null);
+            }
+            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Hotel*/
+
+            /*DataStructureInfo WritableOrm Initialization Hotels.Hotel*/
+
+            // Using old data, including lazy loading of navigation properties:
+            IEnumerable<Common.Queryable.Hotels_Hotel> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Hotel>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
+            IEnumerable<Common.Queryable.Hotels_Hotel> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Hotel>)updated, updatedNew.Select(item => item.ID), item => item.ID);
+
+            if (updatedNew.Count() > 0 || deletedIds.Count() > 0)
+            {
+                Hotels.Hotel[] changedItems = updated.Concat(deleted).ToArray();
+
+                var lockedItems = _domRepository.Hotels.Hotel.Filter(this.Query(changedItems.Select(item => item.ID)), new ContainsLockMark());
+                if (lockedItems.Count() > 0)
+                    throw new Rhetos.UserException(@"[Test] Name contains lock mark.", "DataStructure:Hotels.Hotel,ID:" + lockedItems.First().ID.ToString()/*LockItemsInfo ClientMessage Hotels.Hotel.ContainsLockMark*/);
+            }
+            if (deletedIds.Count() > 0)
+            {
+                List<Hotels.Room> childItems = deletedIds
+                    .SelectMany(parent => _executionContext.Repository.Hotels.Room.Query()
+                        .Where(child => child.HotelID == parent.ID)
+                        .Select(child => child.ID)
+                        .ToList())
+                    .Select(childId => new Hotels.Room { ID = childId })
+                    .ToList();
+
+                if (childItems.Count() > 0)
+                    _domRepository.Hotels.Room.Delete(childItems);
+            }
+
+            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Hotel*/
+
+            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Hotel*/
+
+            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
+            try
+            {
+                if (deletedIds.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Delete;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (updatedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Update;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (insertedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Insert;
+                    _executionContext.EntityFrameworkContext.Hotels_Hotel.AddRange(insertedNew.Select(item => item.ToNavigation()));
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                saveOperation = DomHelper.SaveOperation.None;
+                _executionContext.EntityFrameworkContext.ClearCache();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
+            {
+                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
+        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
+        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Room", @"HotelID", @"FK_Room_Hotel_HotelID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Room,Property:HotelID,Referenced:Hotels.Hotel";
+                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Hotel*/
+                if (checkUserPermissions)
+                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Hotel");
+
+                if (interpretedException != null)
+        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
+                var sqlException = _sqlUtility.ExtractSqlException(saveException);
+                if (sqlException != null)
+                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
+                throw;
+            }
+
+            deleted = null;
+            updated = this.Query(updatedNew.Select(item => item.ID));
+            IEnumerable<Common.Queryable.Hotels_Hotel> inserted = this.Query(insertedNew.Select(item => item.ID));
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Hotel*/
+
+                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Hotel*/
+
+                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Hotel");
+
+                /*DataStructureInfo WritableOrm AfterSave Hotels.Hotel*/
+
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
+        {
+            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Hotel*/
+            yield break;
+        }
+
+        public IQueryable<Common.Queryable.Hotels_Hotel> Filter(IQueryable<Common.Queryable.Hotels_Hotel> localSource, NameSearch localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_Hotel>, Common.DomRepository, NameSearch/*ComposableFilterByInfo AdditionalParametersType Hotels.Hotel.NameSearch*/, IQueryable<Common.Queryable.Hotels_Hotel>> filterFunction =
+            (query, repository, parameter) =>
+		{
+			return query.Where(item => item.Name.Contains(parameter.Pattern));
+		};
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.Hotel.NameSearch*/
+            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Hotel.NameSearch*/);
+        }
+
+        public IQueryable<Common.Queryable.Hotels_Hotel> Filter(IQueryable<Common.Queryable.Hotels_Hotel> localSource, Hotels.ContainsLockMark localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_Hotel>, Common.DomRepository, Hotels.ContainsLockMark/*ComposableFilterByInfo AdditionalParametersType Hotels.Hotel.'Hotels.ContainsLockMark'*/, IQueryable<Common.Queryable.Hotels_Hotel>> filterFunction =
+            (source, repository, parameter) => source.Where(item => item.Name.Contains("lock"));
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.Hotel.'Hotels.ContainsLockMark'*/
+            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Hotel.'Hotels.ContainsLockMark'*/);
+        }
+
+        public global::Hotels.Hotel[] Filter(NameSearch filter_Parameter)
+        {
+            Func<Common.DomRepository, NameSearch/*FilterByInfo AdditionalParametersType Hotels.Hotel.NameSearch*/, Hotels.Hotel[]> filter_Function =
+                (repository, parameter) => repository.Hotels.Hotel.Filter(repository.Hotels.Hotel.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Hotel.NameSearch*/);
+        }
+
+        public global::Hotels.Hotel[] Filter(Hotels.ContainsLockMark filter_Parameter)
+        {
+            Func<Common.DomRepository, Hotels.ContainsLockMark/*FilterByInfo AdditionalParametersType Hotels.Hotel.'Hotels.ContainsLockMark'*/, Hotels.Hotel[]> filter_Function =
+                (repository, parameter) => repository.Hotels.Hotel.Filter(repository.Hotels.Hotel.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Hotel.'Hotels.ContainsLockMark'*/);
+        }
+
+        public IQueryable<Common.Queryable.Hotels_Hotel> Filter(IQueryable<Common.Queryable.Hotels_Hotel> localSource, Common.RowPermissionsReadItems localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_Hotel>, Common.DomRepository, Common.RowPermissionsReadItems, Common.ExecutionContext/*ComposableFilterByInfo AdditionalParametersType Hotels.Hotel.'Common.RowPermissionsReadItems'*/, IQueryable<Common.Queryable.Hotels_Hotel>> filterFunction =
+            (source, repository, parameter, context) => 
+                {
+                    var filterExpression = GetRowPermissionsReadExpression(source, repository, context);
+                    return FilterExpression<Common.Queryable.Hotels_Hotel>.OptimizedWhere(source, filterExpression);
+                };
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.Hotel.'Common.RowPermissionsReadItems'*/
+            return filterFunction(localSource, _domRepository, localParameter, _executionContext/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Hotel.'Common.RowPermissionsReadItems'*/);
+        }
+
+        public static Func<IQueryable<Common.Queryable.Hotels_Hotel>, Common.DomRepository, Common.ExecutionContext,
+              Expression<Func<Common.Queryable.Hotels_Hotel, bool>> > GetRowPermissionsReadExpression =
+              (items, repository, executionContext) =>
+		{
+            var filterExpression = new FilterExpression<Common.Queryable.Hotels_Hotel>();
+			{
+                // ManagerPermission
+				Func<Common.ExecutionContext, Expression<Func<Common.Queryable.Hotels_Hotel, bool>>> getRuleFilter =
+                    context =>
+                {
+                    List<Guid> myHotelsIds = context.Repository.Hotels.Hotel.Query()
+                        .Where(h => h.Manager == context.UserInfo.UserName)
+                        .Select(h => h.ID)
+                        .ToList();
+                    return item => myHotelsIds.Contains(item.ID);
+                };
+				Expression<Func<Common.Queryable.Hotels_Hotel, bool>> ruleFilter = getRuleFilter.Invoke(executionContext);
+				filterExpression.Include(ruleFilter);
+			}
+            {
+                // AllUsers
+				Func<Common.ExecutionContext, Expression<Func<Common.Queryable.Hotels_Hotel, bool>>> getRuleFilter =
+                    context =>
+                {
+                    return item => true;
+                };
+				Expression<Func<Common.Queryable.Hotels_Hotel, bool>> ruleFilter = getRuleFilter.Invoke(executionContext);
+				filterExpression.Include(ruleFilter);
+			}
+            /*RowPermissionsReadInfo ReadFilterExpressions Hotels.Hotel.'Common.RowPermissionsReadItems'*/
+			return filterExpression.GetFilter();
+		};
+
+        public IQueryable<Common.Queryable.Hotels_Hotel> Filter(IQueryable<Common.Queryable.Hotels_Hotel> localSource, Common.RowPermissionsWriteItems localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_Hotel>, Common.DomRepository, Common.RowPermissionsWriteItems, Common.ExecutionContext/*ComposableFilterByInfo AdditionalParametersType Hotels.Hotel.'Common.RowPermissionsWriteItems'*/, IQueryable<Common.Queryable.Hotels_Hotel>> filterFunction =
+            (source, repository, parameter, context) => 
+                {
+                    var filterExpression = GetRowPermissionsWriteExpression(source, repository, context);
+                    return FilterExpression<Common.Queryable.Hotels_Hotel>.OptimizedWhere(source, filterExpression);
+                };
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.Hotel.'Common.RowPermissionsWriteItems'*/
+            return filterFunction(localSource, _domRepository, localParameter, _executionContext/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Hotel.'Common.RowPermissionsWriteItems'*/);
+        }
+
+        public static Func<IQueryable<Common.Queryable.Hotels_Hotel>, Common.DomRepository, Common.ExecutionContext,
+              Expression<Func<Common.Queryable.Hotels_Hotel, bool>> > GetRowPermissionsWriteExpression =
+              (items, repository, executionContext) =>
+		{
+            var filterExpression = new FilterExpression<Common.Queryable.Hotels_Hotel>();
+			{
+                // ManagerPermission
+				Func<Common.ExecutionContext, Expression<Func<Common.Queryable.Hotels_Hotel, bool>>> getRuleFilter =
+                    context =>
+                {
+                    List<Guid> myHotelsIds = context.Repository.Hotels.Hotel.Query()
+                        .Where(h => h.Manager == context.UserInfo.UserName)
+                        .Select(h => h.ID)
+                        .ToList();
+                    return item => myHotelsIds.Contains(item.ID);
+                };
+				Expression<Func<Common.Queryable.Hotels_Hotel, bool>> ruleFilter = getRuleFilter.Invoke(executionContext);
+				filterExpression.Include(ruleFilter);
+			}
+            /*RowPermissionsWriteInfo WriteFilterExpressions Hotels.Hotel.'Common.RowPermissionsWriteItems'*/
+			return filterExpression.GetFilter();
+		};
+
+        public global::Hotels.Hotel[] Filter(Common.RowPermissionsReadItems filter_Parameter)
+        {
+            Func<Common.DomRepository, Common.RowPermissionsReadItems/*FilterByInfo AdditionalParametersType Hotels.Hotel.'Common.RowPermissionsReadItems'*/, Hotels.Hotel[]> filter_Function =
+                (repository, parameter) => repository.Hotels.Hotel.Filter(repository.Hotels.Hotel.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Hotel.'Common.RowPermissionsReadItems'*/);
+        }
+
+        public global::Hotels.Hotel[] Filter(Common.RowPermissionsWriteItems filter_Parameter)
+        {
+            Func<Common.DomRepository, Common.RowPermissionsWriteItems/*FilterByInfo AdditionalParametersType Hotels.Hotel.'Common.RowPermissionsWriteItems'*/, Hotels.Hotel[]> filter_Function =
+                (repository, parameter) => repository.Hotels.Hotel.Filter(repository.Hotels.Hotel.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Hotel.'Common.RowPermissionsWriteItems'*/);
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.Hotel*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.Guest*/
+    public class Guest_Repository : /*DataStructureInfo OverrideBaseType Hotels.Guest*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Guest, Hotels.Guest> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Guest, Hotels.Guest> // Common.ReadableRepositoryBase<Hotels.Guest> // global::Common.RepositoryBase
+        , IWritableRepository<Hotels.Guest>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Guest*/
+    {
+        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.Guest*/
+
+        public Guest_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Guest*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            this._sqlUtility = _sqlUtility;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.Guest*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.Guest[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_Guest> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.Guest*/
+            return _executionContext.EntityFrameworkContext.Hotels_Guest.AsNoTracking();
+        }
+
+        public void Save(IEnumerable<Hotels.Guest> insertedNew, IEnumerable<Hotels.Guest> updatedNew, IEnumerable<Hotels.Guest> deletedIds, bool checkUserPermissions = false)
+        {
+            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
+                return;
+
+            /*DataStructureInfo WritableOrm ClearContext Hotels.Guest*/
+
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Name != null && newItem.Name.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "Guest.Name", "256" },
+                        "DataStructure:Hotels.Guest,ID:" + invalidItem.ID.ToString() + ",Property:Name",
+                        null);
+            }
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Surname != null && newItem.Surname.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "Guest.Surname", "256" },
+                        "DataStructure:Hotels.Guest,ID:" + invalidItem.ID.ToString() + ",Property:Surname",
+                        null);
+            }
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Phone != null && newItem.Phone.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "Guest.Phone", "256" },
+                        "DataStructure:Hotels.Guest,ID:" + invalidItem.ID.ToString() + ",Property:Phone",
+                        null);
+            }
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Email != null && newItem.Email.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "Guest.Email", "256" },
+                        "DataStructure:Hotels.Guest,ID:" + invalidItem.ID.ToString() + ",Property:Email",
+                        null);
+            }
+            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Guest*/
+
+            /*DataStructureInfo WritableOrm Initialization Hotels.Guest*/
+
+            // Using old data, including lazy loading of navigation properties:
+            IEnumerable<Common.Queryable.Hotels_Guest> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Guest>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
+            IEnumerable<Common.Queryable.Hotels_Guest> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Guest>)updated, updatedNew.Select(item => item.ID), item => item.ID);
+
+            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Guest*/
+
+            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Guest*/
+
+            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
+            try
+            {
+                if (deletedIds.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Delete;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (updatedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Update;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (insertedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Insert;
+                    _executionContext.EntityFrameworkContext.Hotels_Guest.AddRange(insertedNew.Select(item => item.ToNavigation()));
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                saveOperation = DomHelper.SaveOperation.None;
+                _executionContext.EntityFrameworkContext.ClearCache();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
+            {
+                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
+        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
+        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Reservation", @"GuestID", @"FK_Reservation_Guest_GuestID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Reservation,Property:GuestID,Referenced:Hotels.Guest";
+                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Guest*/
+                if (checkUserPermissions)
+                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Guest");
+
+                if (interpretedException != null)
+        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
+                var sqlException = _sqlUtility.ExtractSqlException(saveException);
+                if (sqlException != null)
+                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
+                throw;
+            }
+
+            deleted = null;
+            updated = this.Query(updatedNew.Select(item => item.ID));
+            IEnumerable<Common.Queryable.Hotels_Guest> inserted = this.Query(insertedNew.Select(item => item.ID));
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Guest*/
+
+                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Guest*/
+
+                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Guest");
+
+                /*DataStructureInfo WritableOrm AfterSave Hotels.Guest*/
+
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
+        {
+            if (onSave)
+            {
+                var errorIds = this.Filter(this.Query(ids), new Hotels.Email_RegExMatchFilter()).Select(item => item.ID).ToArray();
+                if (errorIds.Count() > 0)
+                    foreach (var error in GetErrorMessage_Email_RegExMatchFilter(errorIds))
+                        yield return error;
+            }
+            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Guest*/
+            yield break;
+        }
+
+        public IQueryable<Common.Queryable.Hotels_Guest> Filter(IQueryable<Common.Queryable.Hotels_Guest> localSource, Hotels.Email_RegExMatchFilter localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_Guest>, Common.DomRepository, Hotels.Email_RegExMatchFilter/*ComposableFilterByInfo AdditionalParametersType Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/, IQueryable<Common.Queryable.Hotels_Guest>> filterFunction =
+            (source, repository, parameter) =>
+                {
+                    var items = source.Where(item => !string.IsNullOrEmpty(item.Email)).Select(item => new { item.ID, item.Email }).ToList();
+                    var regex = new System.Text.RegularExpressions.Regex(@"^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$");
+                    var invalidItemIds = items.Where(item => !regex.IsMatch(item.Email)).Select(item => item.ID).ToList();
+                    return Filter(source, invalidItemIds);
+                };
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/
+            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/);
+        }
+
+        public IEnumerable<InvalidDataMessage> GetErrorMessage_Email_RegExMatchFilter(IEnumerable<Guid> invalidData_Ids)
+        {
+            const string invalidData_Description = @"Neispravna e-mail adresa.";
+            IDictionary<string, object> metadata = new Dictionary<string, object>();
+            metadata["Validation"] = @"Hotels.Email_RegExMatchFilter";
+            metadata[@"Property"] = @"Email";
+            /*InvalidDataInfo ErrorMetadata Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/
+            /*InvalidDataInfo OverrideUserMessages Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
+        }
+
+        public global::Hotels.Guest[] Filter(Hotels.Email_RegExMatchFilter filter_Parameter)
+        {
+            Func<Common.DomRepository, Hotels.Email_RegExMatchFilter/*FilterByInfo AdditionalParametersType Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/, Hotels.Guest[]> filter_Function =
+                (repository, parameter) => repository.Hotels.Guest.Filter(repository.Hotels.Guest.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Guest.'Hotels.Email_RegExMatchFilter'*/);
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.Guest*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.RoomKind*/
+    public class RoomKind_Repository : /*DataStructureInfo OverrideBaseType Hotels.RoomKind*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_RoomKind, Hotels.RoomKind> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_RoomKind, Hotels.RoomKind> // Common.ReadableRepositoryBase<Hotels.RoomKind> // global::Common.RepositoryBase
+        , IWritableRepository<Hotels.RoomKind>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.RoomKind*/
+    {
+        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.RoomKind*/
+
+        public RoomKind_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.RoomKind*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            this._sqlUtility = _sqlUtility;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.RoomKind*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.RoomKind[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_RoomKind> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.RoomKind*/
+            return _executionContext.EntityFrameworkContext.Hotels_RoomKind.AsNoTracking();
+        }
+
+        public void Save(IEnumerable<Hotels.RoomKind> insertedNew, IEnumerable<Hotels.RoomKind> updatedNew, IEnumerable<Hotels.RoomKind> deletedIds, bool checkUserPermissions = false)
+        {
+            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
+                return;
+
+            /*DataStructureInfo WritableOrm ClearContext Hotels.RoomKind*/
+
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Name != null && newItem.Name.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "RoomKind.Name", "256" },
+                        "DataStructure:Hotels.RoomKind,ID:" + invalidItem.ID.ToString() + ",Property:Name",
+                        null);
+            }
+            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.RoomKind*/
+
+            /*DataStructureInfo WritableOrm Initialization Hotels.RoomKind*/
+
+            // Using old data, including lazy loading of navigation properties:
+            IEnumerable<Common.Queryable.Hotels_RoomKind> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_RoomKind>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
+            IEnumerable<Common.Queryable.Hotels_RoomKind> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_RoomKind>)updated, updatedNew.Select(item => item.ID), item => item.ID);
+
+            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.RoomKind*/
+
+            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.RoomKind*/
+
+            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
+            try
+            {
+                if (deletedIds.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Delete;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (updatedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Update;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (insertedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Insert;
+                    _executionContext.EntityFrameworkContext.Hotels_RoomKind.AddRange(insertedNew.Select(item => item.ToNavigation()));
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                saveOperation = DomHelper.SaveOperation.None;
+                _executionContext.EntityFrameworkContext.ClearCache();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
+            {
+                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
+        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
+        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Room", @"RoomKindID", @"FK_Room_RoomKind_RoomKindID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Room,Property:RoomKindID,Referenced:Hotels.RoomKind";
+                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.RoomKind*/
+                if (checkUserPermissions)
+                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.RoomKind");
+
+                if (interpretedException != null)
+        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
+                var sqlException = _sqlUtility.ExtractSqlException(saveException);
+                if (sqlException != null)
+                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
+                throw;
+            }
+
+            deleted = null;
+            updated = this.Query(updatedNew.Select(item => item.ID));
+            IEnumerable<Common.Queryable.Hotels_RoomKind> inserted = this.Query(insertedNew.Select(item => item.ID));
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.RoomKind*/
+
+                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.RoomKind*/
+
+                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.RoomKind");
+
+                /*DataStructureInfo WritableOrm AfterSave Hotels.RoomKind*/
+
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
+        {
+            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.RoomKind*/
+            yield break;
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.RoomKind*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.Room*/
+    public class Room_Repository : /*DataStructureInfo OverrideBaseType Hotels.Room*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Room, Hotels.Room> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Room, Hotels.Room> // Common.ReadableRepositoryBase<Hotels.Room> // global::Common.RepositoryBase
+        , IWritableRepository<Hotels.Room>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Room*/
+    {
+        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.Room*/
+
+        public Room_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Room*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            this._sqlUtility = _sqlUtility;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.Room*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.Room[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_Room> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.Room*/
+            return _executionContext.EntityFrameworkContext.Hotels_Room.AsNoTracking();
+        }
+
+        public void Save(IEnumerable<Hotels.Room> insertedNew, IEnumerable<Hotels.Room> updatedNew, IEnumerable<Hotels.Room> deletedIds, bool checkUserPermissions = false)
+        {
+            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
+                return;
+
+            /*DataStructureInfo WritableOrm ClearContext Hotels.Room*/
+
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.RoomNumber != null && newItem.RoomNumber.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "Room.RoomNumber", "256" },
+                        "DataStructure:Hotels.Room,ID:" + invalidItem.ID.ToString() + ",Property:RoomNumber",
+                        null);
+            }
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Remark != null && newItem.Remark.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "Room.Remark", "256" },
+                        "DataStructure:Hotels.Room,ID:" + invalidItem.ID.ToString() + ",Property:Remark",
+                        null);
+            }
+            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Room*/
+
+            { // PostaviVrijemeZadnjeIzmjene
+                {
+					//var now = SqlUtility.GetDatabaseTime(_executionContext.SqlExecuter);
+					
+					foreach(var newItem in insertedNew.Concat(updatedNew))
+						newItem.VrijemeZadnjeIzmjene = DateTime.Now; //now;
+				}
+            }
+
+            /*DataStructureInfo WritableOrm Initialization Hotels.Room*/
+
+            // Using old data, including lazy loading of navigation properties:
+            IEnumerable<Common.Queryable.Hotels_Room> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Room>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
+            IEnumerable<Common.Queryable.Hotels_Room> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Room>)updated, updatedNew.Select(item => item.ID), item => item.ID);
+
+            AutoCodeHelper.UpdateCodesWithoutCache(
+                _executionContext.SqlExecuter, "Hotels.Room", "RoomNumber",
+                insertedNew.Select(item => AutoCodeItem.Create(item, item.RoomNumber/*AutoCodePropertyInfo Grouping Hotels.Room.RoomNumber*/)).ToList(),
+                (item, newCode) => item.RoomNumber = newCode/*AutoCodePropertyInfo GroupColumnMetadata Hotels.Room.RoomNumber*/);
+
+            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Room*/
+
+            {
+                var invalid = insertedNew.Concat(updatedNew).FirstOrDefault(item => item.RoomKindID == null /*RequiredPropertyInfo OrCondition Hotels.Room.RoomKind*/);
+                if (invalid != null)
+                    throw new Rhetos.UserException("It is not allowed to enter {0} because the required property {1} is not set.",
+                        new[] { "Hotels.Room", "RoomKind" },
+                        "DataStructure:Hotels.Room,ID:" + invalid.ID.ToString() + ",Property:RoomKindID", null);
+            }
+            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Room*/
+
+            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
+            try
+            {
+                if (deletedIds.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Delete;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (updatedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Update;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (insertedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Insert;
+                    _executionContext.EntityFrameworkContext.Hotels_Room.AddRange(insertedNew.Select(item => item.ToNavigation()));
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                saveOperation = DomHelper.SaveOperation.None;
+                _executionContext.EntityFrameworkContext.ClearCache();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
+            {
+                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
+        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
+        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.Hotel", @"ID", @"FK_Room_Hotel_HotelID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Room,Property:HotelID,Referenced:Hotels.Hotel";
+                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.RoomKind", @"ID", @"FK_Room_RoomKind_RoomKindID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Room,Property:RoomKindID,Referenced:Hotels.RoomKind";
+                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Reservation", @"RoomID", @"FK_Reservation_Room_RoomID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Reservation,Property:RoomID,Referenced:Hotels.Room";
+                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsUniqueError(interpretedException, @"Hotels.Room", @"IX_Room_RoomNumber"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Room,Property:RoomNumber";
+                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Room*/
+                if (checkUserPermissions)
+                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Room");
+
+                if (interpretedException != null)
+        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
+                var sqlException = _sqlUtility.ExtractSqlException(saveException);
+                if (sqlException != null)
+                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
+                throw;
+            }
+
+            deleted = null;
+            updated = this.Query(updatedNew.Select(item => item.ID));
+            IEnumerable<Common.Queryable.Hotels_Room> inserted = this.Query(insertedNew.Select(item => item.ID));
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Room*/
+
+                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Room*/
+
+                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Room");
+
+                /*DataStructureInfo WritableOrm AfterSave Hotels.Room*/
+
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
+        {
+            if (onSave)
+            {
+                var errorIds = this.Filter(this.Query(ids), new SystemRequiredHotel()).Select(item => item.ID).ToArray();
+                if (errorIds.Count() > 0)
+                    foreach (var error in GetErrorMessage_SystemRequiredHotel(errorIds))
+                        yield return error;
+            }
+            if (onSave)
+            {
+                var errorIds = this.Filter(this.Query(ids), new SystemRequiredRoomNumber()).Select(item => item.ID).ToArray();
+                if (errorIds.Count() > 0)
+                    foreach (var error in GetErrorMessage_SystemRequiredRoomNumber(errorIds))
+                        yield return error;
+            }
+            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Room*/
+            yield break;
+        }
+
+        public IEnumerable<InvalidDataMessage> GetErrorMessage_SystemRequiredHotel(IEnumerable<Guid> invalidData_Ids)
+        {
+            const string invalidData_Description = @"System required property {0} is not set.";
+            IDictionary<string, object> metadata = new Dictionary<string, object>();
+            metadata["Validation"] = @"SystemRequiredHotel";
+            metadata[@"Property"] = @"Hotel";
+            /*InvalidDataInfo ErrorMetadata Hotels.Room.SystemRequiredHotel*/
+            return invalidData_Ids.Select(id => new InvalidDataMessage
+            {
+                ID = id,
+                Message = invalidData_Description,
+                MessageParameters = new object[] { @"Reference Hotels.Room.Hotel" },
+                Metadata = metadata
+            });
+            // /*InvalidDataInfo OverrideUserMessages Hotels.Room.SystemRequiredHotel*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
+        }
+
+        public IEnumerable<InvalidDataMessage> GetErrorMessage_SystemRequiredRoomNumber(IEnumerable<Guid> invalidData_Ids)
+        {
+            const string invalidData_Description = @"System required property {0} is not set.";
+            IDictionary<string, object> metadata = new Dictionary<string, object>();
+            metadata["Validation"] = @"SystemRequiredRoomNumber";
+            metadata[@"Property"] = @"RoomNumber";
+            /*InvalidDataInfo ErrorMetadata Hotels.Room.SystemRequiredRoomNumber*/
+            return invalidData_Ids.Select(id => new InvalidDataMessage
+            {
+                ID = id,
+                Message = invalidData_Description,
+                MessageParameters = new object[] { @"ShortString Hotels.Room.RoomNumber" },
+                Metadata = metadata
+            });
+            // /*InvalidDataInfo OverrideUserMessages Hotels.Room.SystemRequiredRoomNumber*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
+        }
+
+        public IQueryable<Common.Queryable.Hotels_Room> Filter(IQueryable<Common.Queryable.Hotels_Room> localSource, Hotels.SystemRequiredHotel localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_Room>, Common.DomRepository, Hotels.SystemRequiredHotel/*ComposableFilterByInfo AdditionalParametersType Hotels.Room.'Hotels.SystemRequiredHotel'*/, IQueryable<Common.Queryable.Hotels_Room>> filterFunction =
+            (source, repository, parameter) => source.Where(item => item.Hotel == null);
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.Room.'Hotels.SystemRequiredHotel'*/
+            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.SystemRequiredHotel'*/);
+        }
+
+        public IQueryable<Common.Queryable.Hotels_Room> Filter(IQueryable<Common.Queryable.Hotels_Room> localSource, Hotels.SystemRequiredRoomNumber localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_Room>, Common.DomRepository, Hotels.SystemRequiredRoomNumber/*ComposableFilterByInfo AdditionalParametersType Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/, IQueryable<Common.Queryable.Hotels_Room>> filterFunction =
+            (source, repository, parameter) => source.Where(item => item.RoomNumber == null);
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/
+            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/);
+        }
+
+        public global::Hotels.Room[] Filter(Hotels.SystemRequiredHotel filter_Parameter)
+        {
+            Func<Common.DomRepository, Hotels.SystemRequiredHotel/*FilterByInfo AdditionalParametersType Hotels.Room.'Hotels.SystemRequiredHotel'*/, Hotels.Room[]> filter_Function =
+                (repository, parameter) => repository.Hotels.Room.Filter(repository.Hotels.Room.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.SystemRequiredHotel'*/);
+        }
+
+        public global::Hotels.Room[] Filter(Hotels.SystemRequiredRoomNumber filter_Parameter)
+        {
+            Func<Common.DomRepository, Hotels.SystemRequiredRoomNumber/*FilterByInfo AdditionalParametersType Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/, Hotels.Room[]> filter_Function =
+                (repository, parameter) => repository.Hotels.Room.Filter(repository.Hotels.Room.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Room.'Hotels.SystemRequiredRoomNumber'*/);
+        }
+
+        public IQueryable<Common.Queryable.Hotels_Room> Filter(IQueryable<Common.Queryable.Hotels_Room> localSource, Common.RowPermissionsReadItems localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_Room>, Common.DomRepository, Common.RowPermissionsReadItems, Common.ExecutionContext/*ComposableFilterByInfo AdditionalParametersType Hotels.Room.'Common.RowPermissionsReadItems'*/, IQueryable<Common.Queryable.Hotels_Room>> filterFunction =
+            (source, repository, parameter, context) => 
+                {
+                    var filterExpression = GetRowPermissionsReadExpression(source, repository, context);
+                    return FilterExpression<Common.Queryable.Hotels_Room>.OptimizedWhere(source, filterExpression);
+                };
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.Room.'Common.RowPermissionsReadItems'*/
+            return filterFunction(localSource, _domRepository, localParameter, _executionContext/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Room.'Common.RowPermissionsReadItems'*/);
+        }
+
+        public static Func<IQueryable<Common.Queryable.Hotels_Room>, Common.DomRepository, Common.ExecutionContext,
+              Expression<Func<Common.Queryable.Hotels_Room, bool>> > GetRowPermissionsReadExpression =
+              (items, repository, executionContext) =>
+		{
+            var filterExpression = new FilterExpression<Common.Queryable.Hotels_Room>();
+			{
+                var sameMembers = new Tuple<string, string>[] { /*RowPermissionsInheritReadInfo SameMembersRead Hotels.Room.Hotels.Hotel.Hotel*/ };
+                var parentRepository = executionContext.Repository.Hotels.Hotel;
+                var parentRowPermissionsExpression = Hotels._Helper.Hotel_Repository.GetRowPermissionsReadExpression(parentRepository.Query(), repository, executionContext);
+                var replacedExpression = new ReplaceWithReference<Common.Queryable.Hotels_Hotel, Common.Queryable.Hotels_Room>(parentRowPermissionsExpression, "Hotel" , "roomItem", sameMembers /*RowPermissionsInheritReadInfo ExtensionReferenceRead Hotels.Room.Hotels.Hotel.Hotel*/).NewExpression;
+                filterExpression.Include(replacedExpression);
+            }
+            /*RowPermissionsReadInfo ReadFilterExpressions Hotels.Room.'Common.RowPermissionsReadItems'*/
+			return filterExpression.GetFilter();
+		};
+
+        public IQueryable<Common.Queryable.Hotels_Room> Filter(IQueryable<Common.Queryable.Hotels_Room> localSource, Common.RowPermissionsWriteItems localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_Room>, Common.DomRepository, Common.RowPermissionsWriteItems, Common.ExecutionContext/*ComposableFilterByInfo AdditionalParametersType Hotels.Room.'Common.RowPermissionsWriteItems'*/, IQueryable<Common.Queryable.Hotels_Room>> filterFunction =
+            (source, repository, parameter, context) => 
+                {
+                    var filterExpression = GetRowPermissionsWriteExpression(source, repository, context);
+                    return FilterExpression<Common.Queryable.Hotels_Room>.OptimizedWhere(source, filterExpression);
+                };
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.Room.'Common.RowPermissionsWriteItems'*/
+            return filterFunction(localSource, _domRepository, localParameter, _executionContext/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Room.'Common.RowPermissionsWriteItems'*/);
+        }
+
+        public static Func<IQueryable<Common.Queryable.Hotels_Room>, Common.DomRepository, Common.ExecutionContext,
+              Expression<Func<Common.Queryable.Hotels_Room, bool>> > GetRowPermissionsWriteExpression =
+              (items, repository, executionContext) =>
+		{
+            var filterExpression = new FilterExpression<Common.Queryable.Hotels_Room>();
+			{
+                var sameMembers = new Tuple<string, string>[] { /*RowPermissionsInheritWriteInfo SameMembersWrite Hotels.Room.Hotels.Hotel.Hotel*/ };
+                var parentRepository = executionContext.Repository.Hotels.Hotel;
+                var parentRowPermissionsExpression = Hotels._Helper.Hotel_Repository.GetRowPermissionsWriteExpression(parentRepository.Query(), repository, executionContext);
+                var replacedExpression = new ReplaceWithReference<Common.Queryable.Hotels_Hotel, Common.Queryable.Hotels_Room>(parentRowPermissionsExpression, "Hotel" , "roomItem", sameMembers /*RowPermissionsInheritWriteInfo ExtensionReferenceWrite Hotels.Room.Hotels.Hotel.Hotel*/).NewExpression;
+                filterExpression.Include(replacedExpression);
+            }
+            /*RowPermissionsWriteInfo WriteFilterExpressions Hotels.Room.'Common.RowPermissionsWriteItems'*/
+			return filterExpression.GetFilter();
+		};
+
+        public global::Hotels.Room[] Filter(Common.RowPermissionsReadItems filter_Parameter)
+        {
+            Func<Common.DomRepository, Common.RowPermissionsReadItems/*FilterByInfo AdditionalParametersType Hotels.Room.'Common.RowPermissionsReadItems'*/, Hotels.Room[]> filter_Function =
+                (repository, parameter) => repository.Hotels.Room.Filter(repository.Hotels.Room.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Room.'Common.RowPermissionsReadItems'*/);
+        }
+
+        public global::Hotels.Room[] Filter(Common.RowPermissionsWriteItems filter_Parameter)
+        {
+            Func<Common.DomRepository, Common.RowPermissionsWriteItems/*FilterByInfo AdditionalParametersType Hotels.Room.'Common.RowPermissionsWriteItems'*/, Hotels.Room[]> filter_Function =
+                (repository, parameter) => repository.Hotels.Room.Filter(repository.Hotels.Room.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Room.'Common.RowPermissionsWriteItems'*/);
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.Room*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.Good*/
+    public class Good_Repository : /*DataStructureInfo OverrideBaseType Hotels.Good*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Good, Hotels.Good> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Good, Hotels.Good> // Common.ReadableRepositoryBase<Hotels.Good> // global::Common.RepositoryBase
+        , IWritableRepository<Hotels.Good>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Good*/
+    {
+        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.Good*/
+
+        public Good_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Good*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            this._sqlUtility = _sqlUtility;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.Good*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.Good[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_Good> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.Good*/
+            return _executionContext.EntityFrameworkContext.Hotels_Good.AsNoTracking();
+        }
+
+        public void Save(IEnumerable<Hotels.Good> insertedNew, IEnumerable<Hotels.Good> updatedNew, IEnumerable<Hotels.Good> deletedIds, bool checkUserPermissions = false)
+        {
+            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
+                return;
+
+            /*DataStructureInfo WritableOrm ClearContext Hotels.Good*/
+
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Name != null && newItem.Name.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "Good.Name", "256" },
+                        "DataStructure:Hotels.Good,ID:" + invalidItem.ID.ToString() + ",Property:Name",
+                        null);
+            }
+            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Good*/
+
+            /*DataStructureInfo WritableOrm Initialization Hotels.Good*/
+
+            // Using old data, including lazy loading of navigation properties:
+            IEnumerable<Common.Queryable.Hotels_Good> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Good>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
+            IEnumerable<Common.Queryable.Hotels_Good> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Good>)updated, updatedNew.Select(item => item.ID), item => item.ID);
+
+            if (deletedIds.Count() > 0)
+            {
+                List<Hotels.Service> childItems = _executionContext.Repository.Hotels.Service
+                    .Query(deletedIds.Select(parent => parent.ID))
+                    .Select(child => child.ID).ToList()
+                    .Select(childId => new Hotels.Service { ID = childId }).ToList();
+
+                if (childItems.Count() > 0)
+                    _domRepository.Hotels.Service.Delete(childItems);
+            }
+
+            if (deletedIds.Count() > 0)
+            {
+                List<Hotels.Product> childItems = _executionContext.Repository.Hotels.Product
+                    .Query(deletedIds.Select(parent => parent.ID))
+                    .Select(child => child.ID).ToList()
+                    .Select(childId => new Hotels.Product { ID = childId }).ToList();
+
+                if (childItems.Count() > 0)
+                    _domRepository.Hotels.Product.Delete(childItems);
+            }
+
+            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Good*/
+
+            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Good*/
+
+            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
+            try
+            {
+                if (deletedIds.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Delete;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (updatedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Update;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (insertedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Insert;
+                    _executionContext.EntityFrameworkContext.Hotels_Good.AddRange(insertedNew.Select(item => item.ToNavigation()));
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                saveOperation = DomHelper.SaveOperation.None;
+                _executionContext.EntityFrameworkContext.ClearCache();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
+            {
+                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
+        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
+        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Service", @"ID", @"FK_Service_Good_ID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Service,Property:ID,Referenced:Hotels.Good";
+                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Product", @"ID", @"FK_Product_Good_ID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Product,Property:ID,Referenced:Hotels.Good";
+                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Item", @"GoodID", @"FK_Item_Good_GoodID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Item,Property:GoodID,Referenced:Hotels.Good";
+                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Good*/
+                if (checkUserPermissions)
+                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Good");
+
+                if (interpretedException != null)
+        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
+                var sqlException = _sqlUtility.ExtractSqlException(saveException);
+                if (sqlException != null)
+                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
+                throw;
+            }
+
+            deleted = null;
+            updated = this.Query(updatedNew.Select(item => item.ID));
+            IEnumerable<Common.Queryable.Hotels_Good> inserted = this.Query(insertedNew.Select(item => item.ID));
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Good*/
+
+                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Good*/
+
+                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Good");
+
+                /*DataStructureInfo WritableOrm AfterSave Hotels.Good*/
+
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
+        {
+            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Good*/
+            yield break;
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.Good*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.GoodKind*/
+    public class GoodKind_Repository : /*DataStructureInfo OverrideBaseType Hotels.GoodKind*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_GoodKind, Hotels.GoodKind> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_GoodKind, Hotels.GoodKind> // Common.ReadableRepositoryBase<Hotels.GoodKind> // global::Common.RepositoryBase
+        , IWritableRepository<Hotels.GoodKind>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.GoodKind*/
+    {
+        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.GoodKind*/
+
+        public GoodKind_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.GoodKind*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            this._sqlUtility = _sqlUtility;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.GoodKind*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.GoodKind[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_GoodKind> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.GoodKind*/
+            return _executionContext.EntityFrameworkContext.Hotels_GoodKind.AsNoTracking();
+        }
+
+        public void Save(IEnumerable<Hotels.GoodKind> insertedNew, IEnumerable<Hotels.GoodKind> updatedNew, IEnumerable<Hotels.GoodKind> deletedIds, bool checkUserPermissions = false)
+        {
+            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
+                return;
+
+            /*DataStructureInfo WritableOrm ClearContext Hotels.GoodKind*/
+
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Name != null && newItem.Name.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "GoodKind.Name", "256" },
+                        "DataStructure:Hotels.GoodKind,ID:" + invalidItem.ID.ToString() + ",Property:Name",
+                        null);
+            }
+            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.GoodKind*/
+
+            /*DataStructureInfo WritableOrm Initialization Hotels.GoodKind*/
+
+            // Using old data, including lazy loading of navigation properties:
+            IEnumerable<Common.Queryable.Hotels_GoodKind> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_GoodKind>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
+            IEnumerable<Common.Queryable.Hotels_GoodKind> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_GoodKind>)updated, updatedNew.Select(item => item.ID), item => item.ID);
+
+            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.GoodKind*/
+
+            {
+                var invalid = insertedNew.Concat(updatedNew).FirstOrDefault(item => item.Name == null || string.IsNullOrWhiteSpace(item.Name) /*RequiredPropertyInfo OrCondition Hotels.GoodKind.Name*/);
+                if (invalid != null)
+                    throw new Rhetos.UserException("It is not allowed to enter {0} because the required property {1} is not set.",
+                        new[] { "Hotels.GoodKind", "Name" },
+                        "DataStructure:Hotels.GoodKind,ID:" + invalid.ID.ToString() + ",Property:Name", null);
+            }
+            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.GoodKind*/
+
+            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
+            try
+            {
+                if (deletedIds.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Delete;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (updatedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Update;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (insertedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Insert;
+                    _executionContext.EntityFrameworkContext.Hotels_GoodKind.AddRange(insertedNew.Select(item => item.ToNavigation()));
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                saveOperation = DomHelper.SaveOperation.None;
+                _executionContext.EntityFrameworkContext.ClearCache();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
+            {
+                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
+        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
+        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Service", @"GoodKindID", @"FK_Service_GoodKind_GoodKindID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Service,Property:GoodKindID,Referenced:Hotels.GoodKind";
+                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Product", @"GoodKindID", @"FK_Product_GoodKind_GoodKindID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Product,Property:GoodKindID,Referenced:Hotels.GoodKind";
+                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsUniqueError(interpretedException, @"Hotels.GoodKind", @"IX_GoodKind_Name"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.GoodKind,Property:Name";
+                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.GoodKind*/
+                if (checkUserPermissions)
+                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.GoodKind");
+
+                if (interpretedException != null)
+        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
+                var sqlException = _sqlUtility.ExtractSqlException(saveException);
+                if (sqlException != null)
+                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
+                throw;
+            }
+
+            deleted = null;
+            updated = this.Query(updatedNew.Select(item => item.ID));
+            IEnumerable<Common.Queryable.Hotels_GoodKind> inserted = this.Query(insertedNew.Select(item => item.ID));
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.GoodKind*/
+
+                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.GoodKind*/
+
+                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.GoodKind");
+
+                /*DataStructureInfo WritableOrm AfterSave Hotels.GoodKind*/
+
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
+        {
+            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.GoodKind*/
+            yield break;
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.GoodKind*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.Service*/
+    public class Service_Repository : /*DataStructureInfo OverrideBaseType Hotels.Service*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Service, Hotels.Service> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Service, Hotels.Service> // Common.ReadableRepositoryBase<Hotels.Service> // global::Common.RepositoryBase
+        , IWritableRepository<Hotels.Service>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Service*/
+    {
+        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.Service*/
+
+        public Service_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Service*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            this._sqlUtility = _sqlUtility;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.Service*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.Service[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_Service> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.Service*/
+            return _executionContext.EntityFrameworkContext.Hotels_Service.AsNoTracking();
+        }
+
+        public void Save(IEnumerable<Hotels.Service> insertedNew, IEnumerable<Hotels.Service> updatedNew, IEnumerable<Hotels.Service> deletedIds, bool checkUserPermissions = false)
+        {
+            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
+                return;
+
+            /*DataStructureInfo WritableOrm ClearContext Hotels.Service*/
+
+            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Service*/
+
+            /*DataStructureInfo WritableOrm Initialization Hotels.Service*/
+
+            // Using old data, including lazy loading of navigation properties:
+            IEnumerable<Common.Queryable.Hotels_Service> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Service>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
+            IEnumerable<Common.Queryable.Hotels_Service> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Service>)updated, updatedNew.Select(item => item.ID), item => item.ID);
+
+            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Service*/
+
+            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Service*/
+
+            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
+            try
+            {
+                if (deletedIds.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Delete;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (updatedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Update;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (insertedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Insert;
+                    _executionContext.EntityFrameworkContext.Hotels_Service.AddRange(insertedNew.Select(item => item.ToNavigation()));
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                saveOperation = DomHelper.SaveOperation.None;
+                _executionContext.EntityFrameworkContext.ClearCache();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
+            {
+                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
+        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
+        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.GoodKind", @"ID", @"FK_Service_GoodKind_GoodKindID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Service,Property:GoodKindID,Referenced:Hotels.GoodKind";
+                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Service*/
+                if (checkUserPermissions)
+                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Service");
+
+                if (interpretedException != null)
+        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
+                var sqlException = _sqlUtility.ExtractSqlException(saveException);
+                if (sqlException != null)
+                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
+                throw;
+            }
+
+            deleted = null;
+            updated = this.Query(updatedNew.Select(item => item.ID));
+            IEnumerable<Common.Queryable.Hotels_Service> inserted = this.Query(insertedNew.Select(item => item.ID));
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Service*/
+
+                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Service*/
+
+                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Service");
+
+                /*DataStructureInfo WritableOrm AfterSave Hotels.Service*/
+
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
+        {
+            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Service*/
+            yield break;
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.Service*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.Product*/
+    public class Product_Repository : /*DataStructureInfo OverrideBaseType Hotels.Product*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Product, Hotels.Product> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Product, Hotels.Product> // Common.ReadableRepositoryBase<Hotels.Product> // global::Common.RepositoryBase
+        , IWritableRepository<Hotels.Product>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Product*/
+    {
+        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.Product*/
+
+        public Product_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Product*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            this._sqlUtility = _sqlUtility;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.Product*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.Product[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_Product> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.Product*/
+            return _executionContext.EntityFrameworkContext.Hotels_Product.AsNoTracking();
+        }
+
+        public void Save(IEnumerable<Hotels.Product> insertedNew, IEnumerable<Hotels.Product> updatedNew, IEnumerable<Hotels.Product> deletedIds, bool checkUserPermissions = false)
+        {
+            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
+                return;
+
+            /*DataStructureInfo WritableOrm ClearContext Hotels.Product*/
+
+            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Product*/
+
+            /*DataStructureInfo WritableOrm Initialization Hotels.Product*/
+
+            // Using old data, including lazy loading of navigation properties:
+            IEnumerable<Common.Queryable.Hotels_Product> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Product>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
+            IEnumerable<Common.Queryable.Hotels_Product> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Product>)updated, updatedNew.Select(item => item.ID), item => item.ID);
+
+            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Product*/
+
+            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Product*/
+
+            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
+            try
+            {
+                if (deletedIds.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Delete;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (updatedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Update;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (insertedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Insert;
+                    _executionContext.EntityFrameworkContext.Hotels_Product.AddRange(insertedNew.Select(item => item.ToNavigation()));
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                saveOperation = DomHelper.SaveOperation.None;
+                _executionContext.EntityFrameworkContext.ClearCache();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
+            {
+                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
+        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
+        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.GoodKind", @"ID", @"FK_Product_GoodKind_GoodKindID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Product,Property:GoodKindID,Referenced:Hotels.GoodKind";
+                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Product*/
+                if (checkUserPermissions)
+                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Product");
+
+                if (interpretedException != null)
+        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
+                var sqlException = _sqlUtility.ExtractSqlException(saveException);
+                if (sqlException != null)
+                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
+                throw;
+            }
+
+            deleted = null;
+            updated = this.Query(updatedNew.Select(item => item.ID));
+            IEnumerable<Common.Queryable.Hotels_Product> inserted = this.Query(insertedNew.Select(item => item.ID));
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Product*/
+
+                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Product*/
+
+                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Product");
+
+                /*DataStructureInfo WritableOrm AfterSave Hotels.Product*/
+
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
+        {
+            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Product*/
+            yield break;
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.Product*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.Reservation*/
+    public class Reservation_Repository : /*DataStructureInfo OverrideBaseType Hotels.Reservation*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Reservation, Hotels.Reservation> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Reservation, Hotels.Reservation> // Common.ReadableRepositoryBase<Hotels.Reservation> // global::Common.RepositoryBase
+        , IWritableRepository<Hotels.Reservation>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Reservation*/
+    {
+        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.Reservation*/
+
+        public Reservation_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Reservation*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            this._sqlUtility = _sqlUtility;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.Reservation*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.Reservation[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_Reservation> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.Reservation*/
+            return _executionContext.EntityFrameworkContext.Hotels_Reservation.AsNoTracking();
+        }
+
+        public void Save(IEnumerable<Hotels.Reservation> insertedNew, IEnumerable<Hotels.Reservation> updatedNew, IEnumerable<Hotels.Reservation> deletedIds, bool checkUserPermissions = false)
+        {
+            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
+                return;
+
+            /*DataStructureInfo WritableOrm ClearContext Hotels.Reservation*/
+
+            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Reservation*/
+
+            /*DataStructureInfo WritableOrm Initialization Hotels.Reservation*/
+
+            // Using old data, including lazy loading of navigation properties:
+            IEnumerable<Common.Queryable.Hotels_Reservation> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Reservation>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
+            IEnumerable<Common.Queryable.Hotels_Reservation> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Reservation>)updated, updatedNew.Select(item => item.ID), item => item.ID);
+
+            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Reservation*/
+
+            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Reservation*/
+
+            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
+            try
+            {
+                if (deletedIds.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Delete;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (updatedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Update;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (insertedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Insert;
+                    _executionContext.EntityFrameworkContext.Hotels_Reservation.AddRange(insertedNew.Select(item => item.ToNavigation()));
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                saveOperation = DomHelper.SaveOperation.None;
+                _executionContext.EntityFrameworkContext.ClearCache();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
+            {
+                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
+        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
+        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.Guest", @"ID", @"FK_Reservation_Guest_GuestID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Reservation,Property:GuestID,Referenced:Hotels.Guest";
+                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.Room", @"ID", @"FK_Reservation_Room_RoomID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Reservation,Property:RoomID,Referenced:Hotels.Room";
+                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Invoice", @"ReservationID", @"FK_Invoice_Reservation_ReservationID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Invoice,Property:ReservationID,Referenced:Hotels.Reservation";
+                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Reservation*/
+                if (checkUserPermissions)
+                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Reservation");
+
+                if (interpretedException != null)
+        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
+                var sqlException = _sqlUtility.ExtractSqlException(saveException);
+                if (sqlException != null)
+                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
+                throw;
+            }
+
+            deleted = null;
+            updated = this.Query(updatedNew.Select(item => item.ID));
+            IEnumerable<Common.Queryable.Hotels_Reservation> inserted = this.Query(insertedNew.Select(item => item.ID));
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Reservation*/
+
+                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Reservation*/
+
+                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Reservation");
+
+                /*DataStructureInfo WritableOrm AfterSave Hotels.Reservation*/
+
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
+        {
+            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Reservation*/
+            yield break;
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.Reservation*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.ReservationsForCertainRoom*/
+    public class ReservationsForCertainRoom_Repository : /*DataStructureInfo OverrideBaseType Hotels.ReservationsForCertainRoom*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_ReservationsForCertainRoom, Hotels.ReservationsForCertainRoom> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_ReservationsForCertainRoom, Hotels.ReservationsForCertainRoom> // Common.ReadableRepositoryBase<Hotels.ReservationsForCertainRoom> // global::Common.RepositoryBase
+        /*DataStructureInfo RepositoryInterface Hotels.ReservationsForCertainRoom*/
+    {
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.ReservationsForCertainRoom*/
+
+        public ReservationsForCertainRoom_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext/*DataStructureInfo RepositoryConstructorArguments Hotels.ReservationsForCertainRoom*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.ReservationsForCertainRoom*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.ReservationsForCertainRoom[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_ReservationsForCertainRoom> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.ReservationsForCertainRoom*/
+            return _executionContext.EntityFrameworkContext.Hotels_ReservationsForCertainRoom.AsNoTracking();
+        }
+
+        public IQueryable<Common.Queryable.Hotels_ReservationsForCertainRoom> Filter(IQueryable<Common.Queryable.Hotels_ReservationsForCertainRoom> localSource, Common.RowPermissionsReadItems localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_ReservationsForCertainRoom>, Common.DomRepository, Common.RowPermissionsReadItems, Common.ExecutionContext/*ComposableFilterByInfo AdditionalParametersType Hotels.ReservationsForCertainRoom.'Common.RowPermissionsReadItems'*/, IQueryable<Common.Queryable.Hotels_ReservationsForCertainRoom>> filterFunction =
+            (source, repository, parameter, context) => 
+                {
+                    var filterExpression = GetRowPermissionsReadExpression(source, repository, context);
+                    return FilterExpression<Common.Queryable.Hotels_ReservationsForCertainRoom>.OptimizedWhere(source, filterExpression);
+                };
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.ReservationsForCertainRoom.'Common.RowPermissionsReadItems'*/
+            return filterFunction(localSource, _domRepository, localParameter, _executionContext/*ComposableFilterByInfo AdditionalParametersArgument Hotels.ReservationsForCertainRoom.'Common.RowPermissionsReadItems'*/);
+        }
+
+        public static Func<IQueryable<Common.Queryable.Hotels_ReservationsForCertainRoom>, Common.DomRepository, Common.ExecutionContext,
+              Expression<Func<Common.Queryable.Hotels_ReservationsForCertainRoom, bool>> > GetRowPermissionsReadExpression =
+              (items, repository, executionContext) =>
+		{
+            var filterExpression = new FilterExpression<Common.Queryable.Hotels_ReservationsForCertainRoom>();
+			{
+                var sameMembers = new Tuple<string, string>[] { /*RowPermissionsInheritReadInfo SameMembersRead Hotels.ReservationsForCertainRoom.Hotels.Room.Base*/ };
+                var parentRepository = executionContext.Repository.Hotels.Room;
+                var parentRowPermissionsExpression = Hotels._Helper.Room_Repository.GetRowPermissionsReadExpression(parentRepository.Query(), repository, executionContext);
+                var replacedExpression = new ReplaceWithReference<Common.Queryable.Hotels_Room, Common.Queryable.Hotels_ReservationsForCertainRoom>(parentRowPermissionsExpression, "Base" , "reservationsForCertainRoomItem", sameMembers , @"Extension_ReservationsForCertainRoom"/*RowPermissionsInheritReadInfo ExtensionReferenceRead Hotels.ReservationsForCertainRoom.Hotels.Room.Base*/).NewExpression;
+                filterExpression.Include(replacedExpression);
+            }
+            /*RowPermissionsReadInfo ReadFilterExpressions Hotels.ReservationsForCertainRoom.'Common.RowPermissionsReadItems'*/
+			return filterExpression.GetFilter();
+		};
+
+        public IQueryable<Common.Queryable.Hotels_ReservationsForCertainRoom> Filter(IQueryable<Common.Queryable.Hotels_ReservationsForCertainRoom> localSource, Common.RowPermissionsWriteItems localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_ReservationsForCertainRoom>, Common.DomRepository, Common.RowPermissionsWriteItems, Common.ExecutionContext/*ComposableFilterByInfo AdditionalParametersType Hotels.ReservationsForCertainRoom.'Common.RowPermissionsWriteItems'*/, IQueryable<Common.Queryable.Hotels_ReservationsForCertainRoom>> filterFunction =
+            (source, repository, parameter, context) => 
+                {
+                    var filterExpression = GetRowPermissionsWriteExpression(source, repository, context);
+                    return FilterExpression<Common.Queryable.Hotels_ReservationsForCertainRoom>.OptimizedWhere(source, filterExpression);
+                };
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.ReservationsForCertainRoom.'Common.RowPermissionsWriteItems'*/
+            return filterFunction(localSource, _domRepository, localParameter, _executionContext/*ComposableFilterByInfo AdditionalParametersArgument Hotels.ReservationsForCertainRoom.'Common.RowPermissionsWriteItems'*/);
+        }
+
+        public static Func<IQueryable<Common.Queryable.Hotels_ReservationsForCertainRoom>, Common.DomRepository, Common.ExecutionContext,
+              Expression<Func<Common.Queryable.Hotels_ReservationsForCertainRoom, bool>> > GetRowPermissionsWriteExpression =
+              (items, repository, executionContext) =>
+		{
+            var filterExpression = new FilterExpression<Common.Queryable.Hotels_ReservationsForCertainRoom>();
+			{
+                var sameMembers = new Tuple<string, string>[] { /*RowPermissionsInheritWriteInfo SameMembersWrite Hotels.ReservationsForCertainRoom.Hotels.Room.Base*/ };
+                var parentRepository = executionContext.Repository.Hotels.Room;
+                var parentRowPermissionsExpression = Hotels._Helper.Room_Repository.GetRowPermissionsWriteExpression(parentRepository.Query(), repository, executionContext);
+                var replacedExpression = new ReplaceWithReference<Common.Queryable.Hotels_Room, Common.Queryable.Hotels_ReservationsForCertainRoom>(parentRowPermissionsExpression, "Base" , "reservationsForCertainRoomItem", sameMembers , @"Extension_ReservationsForCertainRoom"/*RowPermissionsInheritWriteInfo ExtensionReferenceWrite Hotels.ReservationsForCertainRoom.Hotels.Room.Base*/).NewExpression;
+                filterExpression.Include(replacedExpression);
+            }
+            /*RowPermissionsWriteInfo WriteFilterExpressions Hotels.ReservationsForCertainRoom.'Common.RowPermissionsWriteItems'*/
+			return filterExpression.GetFilter();
+		};
+
+        public global::Hotels.ReservationsForCertainRoom[] Filter(Common.RowPermissionsReadItems filter_Parameter)
+        {
+            Func<Common.DomRepository, Common.RowPermissionsReadItems/*FilterByInfo AdditionalParametersType Hotels.ReservationsForCertainRoom.'Common.RowPermissionsReadItems'*/, Hotels.ReservationsForCertainRoom[]> filter_Function =
+                (repository, parameter) => repository.Hotels.ReservationsForCertainRoom.Filter(repository.Hotels.ReservationsForCertainRoom.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.ReservationsForCertainRoom.'Common.RowPermissionsReadItems'*/);
+        }
+
+        public global::Hotels.ReservationsForCertainRoom[] Filter(Common.RowPermissionsWriteItems filter_Parameter)
+        {
+            Func<Common.DomRepository, Common.RowPermissionsWriteItems/*FilterByInfo AdditionalParametersType Hotels.ReservationsForCertainRoom.'Common.RowPermissionsWriteItems'*/, Hotels.ReservationsForCertainRoom[]> filter_Function =
+                (repository, parameter) => repository.Hotels.ReservationsForCertainRoom.Filter(repository.Hotels.ReservationsForCertainRoom.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.ReservationsForCertainRoom.'Common.RowPermissionsWriteItems'*/);
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.ReservationsForCertainRoom*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.RoomGrid*/
+    public class RoomGrid_Repository : /*DataStructureInfo OverrideBaseType Hotels.RoomGrid*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_RoomGrid, Hotels.RoomGrid> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_RoomGrid, Hotels.RoomGrid> // Common.ReadableRepositoryBase<Hotels.RoomGrid> // global::Common.RepositoryBase
+        /*DataStructureInfo RepositoryInterface Hotels.RoomGrid*/
+    {
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.RoomGrid*/
+
+        public RoomGrid_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext/*DataStructureInfo RepositoryConstructorArguments Hotels.RoomGrid*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.RoomGrid*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.RoomGrid[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_RoomGrid> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.RoomGrid*/
+            return Query(_domRepository.Hotels.Room.Query());
+        }
+
+        public IQueryable<Common.Queryable.Hotels_RoomGrid> Query(IQueryable<Common.Queryable.Hotels_Room> source)
+        {
+            return source.Select(item => new Common.Queryable.Hotels_RoomGrid
+                {
+                    ID = item.ID,
+                    Base = item,
+                    RoomNumber = item.RoomNumber,
+                    HotelName = item.Hotel.Name,
+                    NumberOfReservations = item.Extension_ReservationsForCertainRoom.NumberOfReservations,
+                    /*BrowseDataStructureInfo BrowseProperties Hotels.RoomGrid*/
+                });
+        }
+
+        public IQueryable<Common.Queryable.Hotels_RoomGrid> Filter(IQueryable<Common.Queryable.Hotels_RoomGrid> localSource, Common.RowPermissionsReadItems localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_RoomGrid>, Common.DomRepository, Common.RowPermissionsReadItems, Common.ExecutionContext/*ComposableFilterByInfo AdditionalParametersType Hotels.RoomGrid.'Common.RowPermissionsReadItems'*/, IQueryable<Common.Queryable.Hotels_RoomGrid>> filterFunction =
+            (source, repository, parameter, context) => 
+                {
+                    var filterExpression = GetRowPermissionsReadExpression(source, repository, context);
+                    return FilterExpression<Common.Queryable.Hotels_RoomGrid>.OptimizedWhere(source, filterExpression);
+                };
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.RoomGrid.'Common.RowPermissionsReadItems'*/
+            return filterFunction(localSource, _domRepository, localParameter, _executionContext/*ComposableFilterByInfo AdditionalParametersArgument Hotels.RoomGrid.'Common.RowPermissionsReadItems'*/);
+        }
+
+        public static Func<IQueryable<Common.Queryable.Hotels_RoomGrid>, Common.DomRepository, Common.ExecutionContext,
+              Expression<Func<Common.Queryable.Hotels_RoomGrid, bool>> > GetRowPermissionsReadExpression =
+              (items, repository, executionContext) =>
+		{
+            var filterExpression = new FilterExpression<Common.Queryable.Hotels_RoomGrid>();
+			{
+                var sameMembers = new Tuple<string, string>[] { /*RowPermissionsInheritReadInfo SameMembersRead Hotels.RoomGrid.Hotels.Room.Base*/ };
+                var parentRepository = executionContext.Repository.Hotels.Room;
+                var parentRowPermissionsExpression = Hotels._Helper.Room_Repository.GetRowPermissionsReadExpression(parentRepository.Query(), repository, executionContext);
+                var replacedExpression = new ReplaceWithReference<Common.Queryable.Hotels_Room, Common.Queryable.Hotels_RoomGrid>(parentRowPermissionsExpression, "Base" , "roomGridItem", sameMembers , @"Extension_RoomGrid"/*RowPermissionsInheritReadInfo ExtensionReferenceRead Hotels.RoomGrid.Hotels.Room.Base*/).NewExpression;
+                filterExpression.Include(replacedExpression);
+            }
+            /*RowPermissionsReadInfo ReadFilterExpressions Hotels.RoomGrid.'Common.RowPermissionsReadItems'*/
+			return filterExpression.GetFilter();
+		};
+
+        public IQueryable<Common.Queryable.Hotels_RoomGrid> Filter(IQueryable<Common.Queryable.Hotels_RoomGrid> localSource, Common.RowPermissionsWriteItems localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_RoomGrid>, Common.DomRepository, Common.RowPermissionsWriteItems, Common.ExecutionContext/*ComposableFilterByInfo AdditionalParametersType Hotels.RoomGrid.'Common.RowPermissionsWriteItems'*/, IQueryable<Common.Queryable.Hotels_RoomGrid>> filterFunction =
+            (source, repository, parameter, context) => 
+                {
+                    var filterExpression = GetRowPermissionsWriteExpression(source, repository, context);
+                    return FilterExpression<Common.Queryable.Hotels_RoomGrid>.OptimizedWhere(source, filterExpression);
+                };
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.RoomGrid.'Common.RowPermissionsWriteItems'*/
+            return filterFunction(localSource, _domRepository, localParameter, _executionContext/*ComposableFilterByInfo AdditionalParametersArgument Hotels.RoomGrid.'Common.RowPermissionsWriteItems'*/);
+        }
+
+        public static Func<IQueryable<Common.Queryable.Hotels_RoomGrid>, Common.DomRepository, Common.ExecutionContext,
+              Expression<Func<Common.Queryable.Hotels_RoomGrid, bool>> > GetRowPermissionsWriteExpression =
+              (items, repository, executionContext) =>
+		{
+            var filterExpression = new FilterExpression<Common.Queryable.Hotels_RoomGrid>();
+			{
+                var sameMembers = new Tuple<string, string>[] { /*RowPermissionsInheritWriteInfo SameMembersWrite Hotels.RoomGrid.Hotels.Room.Base*/ };
+                var parentRepository = executionContext.Repository.Hotels.Room;
+                var parentRowPermissionsExpression = Hotels._Helper.Room_Repository.GetRowPermissionsWriteExpression(parentRepository.Query(), repository, executionContext);
+                var replacedExpression = new ReplaceWithReference<Common.Queryable.Hotels_Room, Common.Queryable.Hotels_RoomGrid>(parentRowPermissionsExpression, "Base" , "roomGridItem", sameMembers , @"Extension_RoomGrid"/*RowPermissionsInheritWriteInfo ExtensionReferenceWrite Hotels.RoomGrid.Hotels.Room.Base*/).NewExpression;
+                filterExpression.Include(replacedExpression);
+            }
+            /*RowPermissionsWriteInfo WriteFilterExpressions Hotels.RoomGrid.'Common.RowPermissionsWriteItems'*/
+			return filterExpression.GetFilter();
+		};
+
+        public global::Hotels.RoomGrid[] Filter(Common.RowPermissionsReadItems filter_Parameter)
+        {
+            Func<Common.DomRepository, Common.RowPermissionsReadItems/*FilterByInfo AdditionalParametersType Hotels.RoomGrid.'Common.RowPermissionsReadItems'*/, Hotels.RoomGrid[]> filter_Function =
+                (repository, parameter) => repository.Hotels.RoomGrid.Filter(repository.Hotels.RoomGrid.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.RoomGrid.'Common.RowPermissionsReadItems'*/);
+        }
+
+        public global::Hotels.RoomGrid[] Filter(Common.RowPermissionsWriteItems filter_Parameter)
+        {
+            Func<Common.DomRepository, Common.RowPermissionsWriteItems/*FilterByInfo AdditionalParametersType Hotels.RoomGrid.'Common.RowPermissionsWriteItems'*/, Hotels.RoomGrid[]> filter_Function =
+                (repository, parameter) => repository.Hotels.RoomGrid.Filter(repository.Hotels.RoomGrid.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.RoomGrid.'Common.RowPermissionsWriteItems'*/);
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.RoomGrid*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.InsertViseSoba*/
+    public class InsertViseSoba_Repository : /*DataStructureInfo OverrideBaseType Hotels.InsertViseSoba*/ global::Common.RepositoryBase
+        , IActionRepository/*DataStructureInfo RepositoryInterface Hotels.InsertViseSoba*/
+    {
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.InsertViseSoba*/
+
+        public InsertViseSoba_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext/*DataStructureInfo RepositoryConstructorArguments Hotels.InsertViseSoba*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.InsertViseSoba*/
+        }
+
+        public void Execute(Hotels.InsertViseSoba actionParameter)
+        {
+            Action<Hotels.InsertViseSoba, Common.DomRepository, IUserInfo/*DataStructureInfo AdditionalParametersType Hotels.InsertViseSoba*/> action_Object = (parameter, repository, userInfo) =>
+	{
+		for (int i=0; i<parameter.RoomCount; i++)
+		{
+			var newRoom = new Hotels.Room 
+			{ 
+				RoomNumber = parameter.Prefix, 
+				Remark = parameter.Remark, 
+				HotelID = parameter.HotelID,
+				RoomKindID = parameter.RoomKindID
+			};
+			repository.Hotels.Room.Insert(newRoom);
+		}
+	};
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*ActionInfo BeforeAction Hotels.InsertViseSoba*/
+                action_Object(actionParameter, _domRepository, _executionContext.UserInfo/*DataStructureInfo AdditionalParametersArgument Hotels.InsertViseSoba*/);
+                /*ActionInfo AfterAction Hotels.InsertViseSoba*/
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        void IActionRepository.Execute(object actionParameter)
+        {
+            Execute((Hotels.InsertViseSoba) actionParameter);
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.InsertViseSoba*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.Invoice*/
+    public class Invoice_Repository : /*DataStructureInfo OverrideBaseType Hotels.Invoice*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Invoice, Hotels.Invoice> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Invoice, Hotels.Invoice> // Common.ReadableRepositoryBase<Hotels.Invoice> // global::Common.RepositoryBase
+        , IWritableRepository<Hotels.Invoice>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Invoice*/
+    {
+        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.Invoice*/
+
+        public Invoice_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Invoice*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            this._sqlUtility = _sqlUtility;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.Invoice*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.Invoice[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_Invoice> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.Invoice*/
+            return _executionContext.EntityFrameworkContext.Hotels_Invoice.AsNoTracking();
+        }
+
+        public void Save(IEnumerable<Hotels.Invoice> insertedNew, IEnumerable<Hotels.Invoice> updatedNew, IEnumerable<Hotels.Invoice> deletedIds, bool checkUserPermissions = false)
+        {
+            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
+                return;
+
+            /*DataStructureInfo WritableOrm ClearContext Hotels.Invoice*/
+
+            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Invoice*/
+
+            /*DataStructureInfo WritableOrm Initialization Hotels.Invoice*/
+
+            // Using old data, including lazy loading of navigation properties:
+            IEnumerable<Common.Queryable.Hotels_Invoice> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Invoice>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
+            IEnumerable<Common.Queryable.Hotels_Invoice> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Invoice>)updated, updatedNew.Select(item => item.ID), item => item.ID);
+
+            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Invoice*/
+
+            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Invoice*/
+
+            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
+            try
+            {
+                if (deletedIds.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Delete;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (updatedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Update;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (insertedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Insert;
+                    _executionContext.EntityFrameworkContext.Hotels_Invoice.AddRange(insertedNew.Select(item => item.ToNavigation()));
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                saveOperation = DomHelper.SaveOperation.None;
+                _executionContext.EntityFrameworkContext.ClearCache();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
+            {
+                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
+        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
+        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.Reservation", @"ID", @"FK_Invoice_Reservation_ReservationID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Invoice,Property:ReservationID,Referenced:Hotels.Reservation";
+                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnDelete(interpretedException, @"Hotels.Item", @"InvoiceID", @"FK_Item_Invoice_InvoiceID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Item,Property:InvoiceID,Referenced:Hotels.Invoice";
+                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Invoice*/
+                if (checkUserPermissions)
+                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Invoice");
+
+                if (interpretedException != null)
+        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
+                var sqlException = _sqlUtility.ExtractSqlException(saveException);
+                if (sqlException != null)
+                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
+                throw;
+            }
+
+            deleted = null;
+            updated = this.Query(updatedNew.Select(item => item.ID));
+            IEnumerable<Common.Queryable.Hotels_Invoice> inserted = this.Query(insertedNew.Select(item => item.ID));
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Invoice*/
+
+                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Invoice*/
+
+                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Invoice");
+
+                /*DataStructureInfo WritableOrm AfterSave Hotels.Invoice*/
+
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
+        {
+            if (onSave)
+            {
+                var errorIds = this.Filter(this.Query(ids), new Hotels.Discount_MaxValueFilter()).Select(item => item.ID).ToArray();
+                if (errorIds.Count() > 0)
+                    foreach (var error in GetErrorMessage_Discount_MaxValueFilter(errorIds))
+                        yield return error;
+            }
+            if (onSave)
+            {
+                var errorIds = this.Filter(this.Query(ids), new Hotels.Discount_MinValueFilter()).Select(item => item.ID).ToArray();
+                if (errorIds.Count() > 0)
+                    foreach (var error in GetErrorMessage_Discount_MinValueFilter(errorIds))
+                        yield return error;
+            }
+            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Invoice*/
+            yield break;
+        }
+
+        public IQueryable<Common.Queryable.Hotels_Invoice> Filter(IQueryable<Common.Queryable.Hotels_Invoice> localSource, Hotels.Discount_MaxValueFilter localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_Invoice>, Common.DomRepository, Hotels.Discount_MaxValueFilter/*ComposableFilterByInfo AdditionalParametersType Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/, IQueryable<Common.Queryable.Hotels_Invoice>> filterFunction =
+            (items, repository, parameter) => { int limit = 1; return items.Where(item => item.Discount != null && item.Discount > limit); };
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/
+            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/);
+        }
+
+        public IEnumerable<InvalidDataMessage> GetErrorMessage_Discount_MaxValueFilter(IEnumerable<Guid> invalidData_Ids)
+        {
+            const string invalidData_Description = @"Maximum value of {0} is {1}.";
+            IDictionary<string, object> metadata = new Dictionary<string, object>();
+            metadata["Validation"] = @"Hotels.Discount_MaxValueFilter";
+            metadata[@"Property"] = @"Discount";
+            /*InvalidDataInfo ErrorMetadata Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/
+            return invalidData_Ids.Select(id => new InvalidDataMessage
+            {
+                ID = id,
+                Message = invalidData_Description,
+                MessageParameters = new object[] { @"Discount", @"1" },
+                Metadata = metadata
+            });
+            // /*InvalidDataInfo OverrideUserMessages Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
+        }
+
+        public IQueryable<Common.Queryable.Hotels_Invoice> Filter(IQueryable<Common.Queryable.Hotels_Invoice> localSource, Hotels.Discount_MinValueFilter localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_Invoice>, Common.DomRepository, Hotels.Discount_MinValueFilter/*ComposableFilterByInfo AdditionalParametersType Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/, IQueryable<Common.Queryable.Hotels_Invoice>> filterFunction =
+            (items, repository, parameter) => { int limit = 0; return items.Where(item => item.Discount != null && item.Discount < limit); };
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/
+            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/);
+        }
+
+        public IEnumerable<InvalidDataMessage> GetErrorMessage_Discount_MinValueFilter(IEnumerable<Guid> invalidData_Ids)
+        {
+            const string invalidData_Description = @"Minimum value of {0} is {1}.";
+            IDictionary<string, object> metadata = new Dictionary<string, object>();
+            metadata["Validation"] = @"Hotels.Discount_MinValueFilter";
+            metadata[@"Property"] = @"Discount";
+            /*InvalidDataInfo ErrorMetadata Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/
+            return invalidData_Ids.Select(id => new InvalidDataMessage
+            {
+                ID = id,
+                Message = invalidData_Description,
+                MessageParameters = new object[] { @"Discount", @"0" },
+                Metadata = metadata
+            });
+            // /*InvalidDataInfo OverrideUserMessages Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
+        }
+
+        public global::Hotels.Invoice[] Filter(Hotels.Discount_MaxValueFilter filter_Parameter)
+        {
+            Func<Common.DomRepository, Hotels.Discount_MaxValueFilter/*FilterByInfo AdditionalParametersType Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/, Hotels.Invoice[]> filter_Function =
+                (repository, parameter) => repository.Hotels.Invoice.Filter(repository.Hotels.Invoice.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Invoice.'Hotels.Discount_MaxValueFilter'*/);
+        }
+
+        public global::Hotels.Invoice[] Filter(Hotels.Discount_MinValueFilter filter_Parameter)
+        {
+            Func<Common.DomRepository, Hotels.Discount_MinValueFilter/*FilterByInfo AdditionalParametersType Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/, Hotels.Invoice[]> filter_Function =
+                (repository, parameter) => repository.Hotels.Invoice.Filter(repository.Hotels.Invoice.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.Invoice.'Hotels.Discount_MinValueFilter'*/);
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.Invoice*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.Item*/
+    public class Item_Repository : /*DataStructureInfo OverrideBaseType Hotels.Item*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_Item, Hotels.Item> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_Item, Hotels.Item> // Common.ReadableRepositoryBase<Hotels.Item> // global::Common.RepositoryBase
+        , IWritableRepository<Hotels.Item>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.Item*/
+    {
+        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.Item*/
+
+        public Item_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.Item*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            this._sqlUtility = _sqlUtility;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.Item*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.Item[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_Item> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.Item*/
+            return _executionContext.EntityFrameworkContext.Hotels_Item.AsNoTracking();
+        }
+
+        public void Save(IEnumerable<Hotels.Item> insertedNew, IEnumerable<Hotels.Item> updatedNew, IEnumerable<Hotels.Item> deletedIds, bool checkUserPermissions = false)
+        {
+            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
+                return;
+
+            /*DataStructureInfo WritableOrm ClearContext Hotels.Item*/
+
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Name != null && newItem.Name.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "Item.Name", "256" },
+                        "DataStructure:Hotels.Item,ID:" + invalidItem.ID.ToString() + ",Property:Name",
+                        null);
+            }
+            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.Item*/
+
+            /*DataStructureInfo WritableOrm Initialization Hotels.Item*/
+
+            // Using old data, including lazy loading of navigation properties:
+            IEnumerable<Common.Queryable.Hotels_Item> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Item>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
+            IEnumerable<Common.Queryable.Hotels_Item> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_Item>)updated, updatedNew.Select(item => item.ID), item => item.ID);
+
+            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.Item*/
+
+            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.Item*/
+
+            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
+            try
+            {
+                if (deletedIds.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Delete;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (updatedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Update;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (insertedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Insert;
+                    _executionContext.EntityFrameworkContext.Hotels_Item.AddRange(insertedNew.Select(item => item.ToNavigation()));
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                saveOperation = DomHelper.SaveOperation.None;
+                _executionContext.EntityFrameworkContext.ClearCache();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
+            {
+                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
+        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
+        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.Good", @"ID", @"FK_Item_Good_GoodID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Item,Property:GoodID,Referenced:Hotels.Good";
+                if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsReferenceErrorOnInsertUpdate(interpretedException, @"Hotels.Invoice", @"ID", @"FK_Item_Invoice_InvoiceID"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.Item,Property:InvoiceID,Referenced:Hotels.Invoice";
+                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.Item*/
+                if (checkUserPermissions)
+                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.Item");
+
+                if (interpretedException != null)
+        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
+                var sqlException = _sqlUtility.ExtractSqlException(saveException);
+                if (sqlException != null)
+                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
+                throw;
+            }
+
+            deleted = null;
+            updated = this.Query(updatedNew.Select(item => item.ID));
+            IEnumerable<Common.Queryable.Hotels_Item> inserted = this.Query(insertedNew.Select(item => item.ID));
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.Item*/
+
+                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.Item*/
+
+                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.Item");
+
+                /*DataStructureInfo WritableOrm AfterSave Hotels.Item*/
+
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
+        {
+            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.Item*/
+            yield break;
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.Item*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.NumberOfRoomsWithoutLockMark*/
+    public class NumberOfRoomsWithoutLockMark_Repository : /*DataStructureInfo OverrideBaseType Hotels.NumberOfRoomsWithoutLockMark*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark, Hotels.NumberOfRoomsWithoutLockMark> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark, Hotels.NumberOfRoomsWithoutLockMark> // Common.ReadableRepositoryBase<Hotels.NumberOfRoomsWithoutLockMark> // global::Common.RepositoryBase
+        /*DataStructureInfo RepositoryInterface Hotels.NumberOfRoomsWithoutLockMark*/
+    {
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.NumberOfRoomsWithoutLockMark*/
+
+        public NumberOfRoomsWithoutLockMark_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext/*DataStructureInfo RepositoryConstructorArguments Hotels.NumberOfRoomsWithoutLockMark*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.NumberOfRoomsWithoutLockMark*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.NumberOfRoomsWithoutLockMark[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.NumberOfRoomsWithoutLockMark*/
+            return _executionContext.EntityFrameworkContext.Hotels_NumberOfRoomsWithoutLockMark.AsNoTracking();
+        }
+
+        public IQueryable<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark> Filter(IQueryable<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark> localSource, Common.RowPermissionsReadItems localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>, Common.DomRepository, Common.RowPermissionsReadItems, Common.ExecutionContext/*ComposableFilterByInfo AdditionalParametersType Hotels.NumberOfRoomsWithoutLockMark.'Common.RowPermissionsReadItems'*/, IQueryable<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>> filterFunction =
+            (source, repository, parameter, context) => 
+                {
+                    var filterExpression = GetRowPermissionsReadExpression(source, repository, context);
+                    return FilterExpression<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>.OptimizedWhere(source, filterExpression);
+                };
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.NumberOfRoomsWithoutLockMark.'Common.RowPermissionsReadItems'*/
+            return filterFunction(localSource, _domRepository, localParameter, _executionContext/*ComposableFilterByInfo AdditionalParametersArgument Hotels.NumberOfRoomsWithoutLockMark.'Common.RowPermissionsReadItems'*/);
+        }
+
+        public static Func<IQueryable<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>, Common.DomRepository, Common.ExecutionContext,
+              Expression<Func<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark, bool>> > GetRowPermissionsReadExpression =
+              (items, repository, executionContext) =>
+		{
+            var filterExpression = new FilterExpression<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>();
+			{
+                var sameMembers = new Tuple<string, string>[] { /*RowPermissionsInheritReadInfo SameMembersRead Hotels.NumberOfRoomsWithoutLockMark.Hotels.Hotel.Base*/ };
+                var parentRepository = executionContext.Repository.Hotels.Hotel;
+                var parentRowPermissionsExpression = Hotels._Helper.Hotel_Repository.GetRowPermissionsReadExpression(parentRepository.Query(), repository, executionContext);
+                var replacedExpression = new ReplaceWithReference<Common.Queryable.Hotels_Hotel, Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>(parentRowPermissionsExpression, "Base" , "numberOfRoomsWithoutLockMarkItem", sameMembers , @"Extension_NumberOfRoomsWithoutLockMark"/*RowPermissionsInheritReadInfo ExtensionReferenceRead Hotels.NumberOfRoomsWithoutLockMark.Hotels.Hotel.Base*/).NewExpression;
+                filterExpression.Include(replacedExpression);
+            }
+            /*RowPermissionsReadInfo ReadFilterExpressions Hotels.NumberOfRoomsWithoutLockMark.'Common.RowPermissionsReadItems'*/
+			return filterExpression.GetFilter();
+		};
+
+        public IQueryable<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark> Filter(IQueryable<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark> localSource, Common.RowPermissionsWriteItems localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>, Common.DomRepository, Common.RowPermissionsWriteItems, Common.ExecutionContext/*ComposableFilterByInfo AdditionalParametersType Hotels.NumberOfRoomsWithoutLockMark.'Common.RowPermissionsWriteItems'*/, IQueryable<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>> filterFunction =
+            (source, repository, parameter, context) => 
+                {
+                    var filterExpression = GetRowPermissionsWriteExpression(source, repository, context);
+                    return FilterExpression<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>.OptimizedWhere(source, filterExpression);
+                };
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.NumberOfRoomsWithoutLockMark.'Common.RowPermissionsWriteItems'*/
+            return filterFunction(localSource, _domRepository, localParameter, _executionContext/*ComposableFilterByInfo AdditionalParametersArgument Hotels.NumberOfRoomsWithoutLockMark.'Common.RowPermissionsWriteItems'*/);
+        }
+
+        public static Func<IQueryable<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>, Common.DomRepository, Common.ExecutionContext,
+              Expression<Func<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark, bool>> > GetRowPermissionsWriteExpression =
+              (items, repository, executionContext) =>
+		{
+            var filterExpression = new FilterExpression<Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>();
+			{
+                var sameMembers = new Tuple<string, string>[] { /*RowPermissionsInheritWriteInfo SameMembersWrite Hotels.NumberOfRoomsWithoutLockMark.Hotels.Hotel.Base*/ };
+                var parentRepository = executionContext.Repository.Hotels.Hotel;
+                var parentRowPermissionsExpression = Hotels._Helper.Hotel_Repository.GetRowPermissionsWriteExpression(parentRepository.Query(), repository, executionContext);
+                var replacedExpression = new ReplaceWithReference<Common.Queryable.Hotels_Hotel, Common.Queryable.Hotels_NumberOfRoomsWithoutLockMark>(parentRowPermissionsExpression, "Base" , "numberOfRoomsWithoutLockMarkItem", sameMembers , @"Extension_NumberOfRoomsWithoutLockMark"/*RowPermissionsInheritWriteInfo ExtensionReferenceWrite Hotels.NumberOfRoomsWithoutLockMark.Hotels.Hotel.Base*/).NewExpression;
+                filterExpression.Include(replacedExpression);
+            }
+            /*RowPermissionsWriteInfo WriteFilterExpressions Hotels.NumberOfRoomsWithoutLockMark.'Common.RowPermissionsWriteItems'*/
+			return filterExpression.GetFilter();
+		};
+
+        public global::Hotels.NumberOfRoomsWithoutLockMark[] Filter(Common.RowPermissionsReadItems filter_Parameter)
+        {
+            Func<Common.DomRepository, Common.RowPermissionsReadItems/*FilterByInfo AdditionalParametersType Hotels.NumberOfRoomsWithoutLockMark.'Common.RowPermissionsReadItems'*/, Hotels.NumberOfRoomsWithoutLockMark[]> filter_Function =
+                (repository, parameter) => repository.Hotels.NumberOfRoomsWithoutLockMark.Filter(repository.Hotels.NumberOfRoomsWithoutLockMark.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.NumberOfRoomsWithoutLockMark.'Common.RowPermissionsReadItems'*/);
+        }
+
+        public global::Hotels.NumberOfRoomsWithoutLockMark[] Filter(Common.RowPermissionsWriteItems filter_Parameter)
+        {
+            Func<Common.DomRepository, Common.RowPermissionsWriteItems/*FilterByInfo AdditionalParametersType Hotels.NumberOfRoomsWithoutLockMark.'Common.RowPermissionsWriteItems'*/, Hotels.NumberOfRoomsWithoutLockMark[]> filter_Function =
+                (repository, parameter) => repository.Hotels.NumberOfRoomsWithoutLockMark.Filter(repository.Hotels.NumberOfRoomsWithoutLockMark.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.NumberOfRoomsWithoutLockMark.'Common.RowPermissionsWriteItems'*/);
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.NumberOfRoomsWithoutLockMark*/
+    }
+
+    /*DataStructureInfo RepositoryAttributes Hotels.S1*/
+    public class S1_Repository : /*DataStructureInfo OverrideBaseType Hotels.S1*/ Common.OrmRepositoryBase<Common.Queryable.Hotels_S1, Hotels.S1> // Common.QueryableRepositoryBase<Common.Queryable.Hotels_S1, Hotels.S1> // Common.ReadableRepositoryBase<Hotels.S1> // global::Common.RepositoryBase
+        , IWritableRepository<Hotels.S1>, IValidateRepository/*DataStructureInfo RepositoryInterface Hotels.S1*/
+    {
+        private readonly Rhetos.Utilities.ISqlUtility _sqlUtility;
+        /*DataStructureInfo RepositoryPrivateMembers Hotels.S1*/
+
+        public S1_Repository(Common.DomRepository domRepository, Common.ExecutionContext executionContext, Rhetos.Utilities.ISqlUtility _sqlUtility/*DataStructureInfo RepositoryConstructorArguments Hotels.S1*/)
+        {
+            _domRepository = domRepository;
+            _executionContext = executionContext;
+            this._sqlUtility = _sqlUtility;
+            /*DataStructureInfo RepositoryConstructorCode Hotels.S1*/
+        }
+
+        [Obsolete("Use Load() or Query() method.")]
+        public override global::Hotels.S1[] All()
+        {
+            return Query().ToSimple().ToArray();
+        }
+
+        public override IQueryable<Common.Queryable.Hotels_S1> Query()
+        {
+            /*DataStructureInfo RepositoryBeforeQuery Hotels.S1*/
+            return _executionContext.EntityFrameworkContext.Hotels_S1.AsNoTracking();
+        }
+
+        public void Save(IEnumerable<Hotels.S1> insertedNew, IEnumerable<Hotels.S1> updatedNew, IEnumerable<Hotels.S1> deletedIds, bool checkUserPermissions = false)
+        {
+            if (!DomHelper.CleanUpSaveMethodArguments(ref insertedNew, ref updatedNew, ref deletedIds))
+                return;
+
+            /*DataStructureInfo WritableOrm ClearContext Hotels.S1*/
+
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Oznaka != null && newItem.Oznaka.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "S1.Oznaka", "256" },
+                        "DataStructure:Hotels.S1,ID:" + invalidItem.ID.ToString() + ",Property:Oznaka",
+                        null);
+            }
+            {
+                var invalidItem = insertedNew.Concat(updatedNew).Where(newItem => newItem.Naziv != null && newItem.Naziv.Length > 256).FirstOrDefault();
+                if (invalidItem != null)
+                    throw new Rhetos.UserException(
+                        "Maximum length of property {0} is {1}.",
+                        new[] { "S1.Naziv", "256" },
+                        "DataStructure:Hotels.S1,ID:" + invalidItem.ID.ToString() + ",Property:Naziv",
+                        null);
+            }
+            /*DataStructureInfo WritableOrm ArgumentValidation Hotels.S1*/
+
+            /*DataStructureInfo WritableOrm Initialization Hotels.S1*/
+
+            // Using old data, including lazy loading of navigation properties:
+            IEnumerable<Common.Queryable.Hotels_S1> deleted = this.Query(deletedIds.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_S1>)deleted, deletedIds.Select(item => item.ID), item => item.ID);
+            IEnumerable<Common.Queryable.Hotels_S1> updated = this.Query(updatedNew.Select(item => item.ID)).ToList();
+            Rhetos.Utilities.Graph.SortByGivenOrder((List<Common.Queryable.Hotels_S1>)updated, updatedNew.Select(item => item.ID), item => item.ID);
+
+            AutoCodeHelper.UpdateCodesWithoutCache(
+                _executionContext.SqlExecuter, "Hotels.S1", "Oznaka",
+                insertedNew.Select(item => AutoCodeItem.Create(item, item.Oznaka/*AutoCodePropertyInfo Grouping Hotels.S1.Oznaka*/)).ToList(),
+                (item, newCode) => item.Oznaka = newCode/*AutoCodePropertyInfo GroupColumnMetadata Hotels.S1.Oznaka*/);
+
+            /*DataStructureInfo WritableOrm OldDataLoaded Hotels.S1*/
+
+            {
+                var invalid = insertedNew.Concat(updatedNew).FirstOrDefault(item => item.Naziv == null || string.IsNullOrWhiteSpace(item.Naziv) /*RequiredPropertyInfo OrCondition Hotels.S1.Naziv*/);
+                if (invalid != null)
+                    throw new Rhetos.UserException("It is not allowed to enter {0} because the required property {1} is not set.",
+                        new[] { "Hotels.S1", "Naziv" },
+                        "DataStructure:Hotels.S1,ID:" + invalid.ID.ToString() + ",Property:Naziv", null);
+            }
+            /*DataStructureInfo WritableOrm ProcessedOldData Hotels.S1*/
+
+            DomHelper.SaveOperation saveOperation = DomHelper.SaveOperation.None;
+            try
+            {
+                if (deletedIds.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Delete;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in deletedIds.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (updatedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Update;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = false;
+                    foreach (var item in updatedNew.Select(item => item.ToNavigation()))
+                        _executionContext.EntityFrameworkContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    _executionContext.EntityFrameworkContext.Configuration.AutoDetectChangesEnabled = true;
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                if (insertedNew.Count() > 0)
+                {
+                    saveOperation = DomHelper.SaveOperation.Insert;
+                    _executionContext.EntityFrameworkContext.Hotels_S1.AddRange(insertedNew.Select(item => item.ToNavigation()));
+                    _executionContext.EntityFrameworkContext.SaveChanges();
+                }
+
+                saveOperation = DomHelper.SaveOperation.None;
+                _executionContext.EntityFrameworkContext.ClearCache();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException saveException)
+            {
+                DomHelper.ThrowIfSavingNonexistentId(saveException, checkUserPermissions, saveOperation);
+        		Rhetos.RhetosException interpretedException = _sqlUtility.InterpretSqlException(saveException);
+        		if (interpretedException is Rhetos.UserException && Rhetos.Utilities.MsSqlUtility.IsUniqueError(interpretedException, @"Hotels.S1", @"IX_S1_Oznaka"))
+                    ((Rhetos.UserException)interpretedException).SystemMessage = @"DataStructure:Hotels.S1,Property:Oznaka";
+                /*DataStructureInfo WritableOrm OnDatabaseError Hotels.S1*/
+                if (checkUserPermissions)
+                    Rhetos.Utilities.MsSqlUtility.ThrowIfPrimaryKeyErrorOnInsert(interpretedException, "Hotels.S1");
+
+                if (interpretedException != null)
+        			Rhetos.Utilities.ExceptionsUtility.Rethrow(interpretedException);
+                var sqlException = _sqlUtility.ExtractSqlException(saveException);
+                if (sqlException != null)
+                    Rhetos.Utilities.ExceptionsUtility.Rethrow(sqlException);
+                throw;
+            }
+
+            deleted = null;
+            updated = this.Query(updatedNew.Select(item => item.ID));
+            IEnumerable<Common.Queryable.Hotels_S1> inserted = this.Query(insertedNew.Select(item => item.ID));
+
+            bool allEffectsCompleted = false;
+            try
+            {
+                /*DataStructureInfo WritableOrm OnSaveTag1 Hotels.S1*/
+
+                /*DataStructureInfo WritableOrm OnSaveTag2 Hotels.S1*/
+
+                Rhetos.Dom.DefaultConcepts.InvalidDataMessage.ValidateOnSave(insertedNew, updatedNew, this, "Hotels.S1");
+
+                /*DataStructureInfo WritableOrm AfterSave Hotels.S1*/
+
+                allEffectsCompleted = true;
+            }
+            finally
+            {
+                if (!allEffectsCompleted)
+                    _executionContext.PersistenceTransaction.DiscardChanges();
+            }
+        }
+
+        public IEnumerable<Rhetos.Dom.DefaultConcepts.InvalidDataMessage> Validate(IList<Guid> ids, bool onSave)
+        {
+            if (onSave)
+            {
+                var errorIds = this.Filter(this.Query(ids), new SystemRequiredOznaka()).Select(item => item.ID).ToArray();
+                if (errorIds.Count() > 0)
+                    foreach (var error in GetErrorMessage_SystemRequiredOznaka(errorIds))
+                        yield return error;
+            }
+            /*DataStructureInfo WritableOrm OnSaveValidate Hotels.S1*/
+            yield break;
+        }
+
+        public IEnumerable<InvalidDataMessage> GetErrorMessage_SystemRequiredOznaka(IEnumerable<Guid> invalidData_Ids)
+        {
+            const string invalidData_Description = @"System required property {0} is not set.";
+            IDictionary<string, object> metadata = new Dictionary<string, object>();
+            metadata["Validation"] = @"SystemRequiredOznaka";
+            metadata[@"Property"] = @"Oznaka";
+            /*InvalidDataInfo ErrorMetadata Hotels.S1.SystemRequiredOznaka*/
+            return invalidData_Ids.Select(id => new InvalidDataMessage
+            {
+                ID = id,
+                Message = invalidData_Description,
+                MessageParameters = new object[] { @"ShortString Hotels.S1.Oznaka" },
+                Metadata = metadata
+            });
+            // /*InvalidDataInfo OverrideUserMessages Hotels.S1.SystemRequiredOznaka*/ return invalidData_Ids.Select(id => new InvalidDataMessage { ID = id, Message = invalidData_Description, Metadata = metadata });
+        }
+
+        public IQueryable<Common.Queryable.Hotels_S1> Filter(IQueryable<Common.Queryable.Hotels_S1> localSource, Hotels.SystemRequiredOznaka localParameter)
+        {
+            Func<IQueryable<Common.Queryable.Hotels_S1>, Common.DomRepository, Hotels.SystemRequiredOznaka/*ComposableFilterByInfo AdditionalParametersType Hotels.S1.'Hotels.SystemRequiredOznaka'*/, IQueryable<Common.Queryable.Hotels_S1>> filterFunction =
+            (source, repository, parameter) => source.Where(item => item.Oznaka == null);
+
+            /*ComposableFilterByInfo BeforeFilter Hotels.S1.'Hotels.SystemRequiredOznaka'*/
+            return filterFunction(localSource, _domRepository, localParameter/*ComposableFilterByInfo AdditionalParametersArgument Hotels.S1.'Hotels.SystemRequiredOznaka'*/);
+        }
+
+        public global::Hotels.S1[] Filter(Hotels.SystemRequiredOznaka filter_Parameter)
+        {
+            Func<Common.DomRepository, Hotels.SystemRequiredOznaka/*FilterByInfo AdditionalParametersType Hotels.S1.'Hotels.SystemRequiredOznaka'*/, Hotels.S1[]> filter_Function =
+                (repository, parameter) => repository.Hotels.S1.Filter(repository.Hotels.S1.Query(), parameter).ToArray();
+
+            return filter_Function(_domRepository, filter_Parameter/*FilterByInfo AdditionalParametersArgument Hotels.S1.'Hotels.SystemRequiredOznaka'*/);
+        }
+
+        /*DataStructureInfo RepositoryMembers Hotels.S1*/
+    }
+
+    /*ModuleInfo HelperNamespaceMembers Hotels*/
 }
 
 /*RepositoryClasses*/
